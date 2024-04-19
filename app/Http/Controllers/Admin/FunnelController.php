@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller as Controller;
 use App\Models\Funnel;
-use App\Models\Quiz\Quiz;
 use Illuminate\Http\Request;
 
 class FunnelController extends Controller
@@ -27,34 +26,29 @@ class FunnelController extends Controller
         return view('admin.pages.funnel.index', ['items' => $items]);
     }
 
-    public function create(Funnel $item)
+    public function create(Funnel $funnel)
     {
         return view('admin.pages.funnel.create', [
-            'item' => $item,
-            'quizzes' => Quiz::where('is_published', true)->get(),
+            'funnel' => $funnel,
         ]);
     }
 
     public function edit(Funnel $funnel)
     {
-        return view('admin.pages.funnel.edit', [
-            'item' => $funnel,
-            'quizzes' => Quiz::where('is_published', true)->get(),
+        return view('admin.pages.funnel.tabs.edit', [
+            'funnel' => $funnel,
         ]);
     }
 
     public function storeNew(Request $request)
     {
-        $quizIds = Quiz::where('is_published', true)->get()->pluck('id')->all();
         $request->validate([
-            'quiz_id' => 'required|integer|in:'.implode(',', $quizIds),
             'name' => 'required|min:1|max:255',
             'configuration' => 'required|json',
             'is_active' => 'boolean',
         ]);
 
         $funnel = (new Funnel())->create([
-            'quiz_id' => $request->quiz_id,
             'name' => $request->name,
             'configuration' => $request->configuration,
             'is_active' => (bool) $request->is_active,
@@ -67,17 +61,13 @@ class FunnelController extends Controller
 
     public function update(Funnel $funnel, Request $request)
     {
-        $quizIds = Quiz::where('is_published', true)->get()->pluck('id')->all();
-
         $request->validate([
-            'quiz_id' => 'required|integer|in:'.implode(',', $quizIds),
             'name' => 'required|min:1|max:255',
             'configuration' => 'required|json',
             'is_active' => 'boolean',
         ]);
 
         $funnel->update([
-            'quiz_id' => $request->quiz_id,
             'name' => $request->name,
             'configuration' => $request->configuration,
             'is_active' => (bool) $request->is_active,
@@ -86,5 +76,12 @@ class FunnelController extends Controller
         $request->session()->flash('alert-success', trans('admin.page.funnel.messages.funnel_updated'));
 
         return back();
+    }
+
+    public function pages(Funnel $funnel)
+    {
+        return view('admin.pages.funnel.tabs.page', [
+            'funnel' => $funnel,
+        ]);
     }
 }

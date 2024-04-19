@@ -1,17 +1,6 @@
 
 <div class="card-body">
     <div class="form-group mb-3">
-        <label for="topic_id">{{ trans('admin.page.quiz.form.topic') }}</label>
-        <select class="form-control" name="topic_id" id="topic_id" value="{{ old('topic_id', $item?->topic_id) }}">
-            @foreach ($topics as $topic)
-                <option value="{{ $topic->id }}" @selected(old('topic_id', $item?->topic_id == $topic->id))">
-                    {{ $topic->topic }}
-                </option>
-            @endforeach
-        </select>
-    </div>
-
-    <div class="form-group mb-3">
         <label for="title">{{ trans('admin.page.quiz.form.title') }}</label>
         <input type="text" class="form-control" name="title" id="title" value="{{ old('title', $item?->title) }}"/>
     </div>

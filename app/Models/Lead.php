@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Casts\Uuid;
-use App\Models\Quiz\Quiz;
+use App\Models\FunnelQuiz\FunnelQuiz;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,7 +20,7 @@ class Lead extends Model
 
     public function quiz()
     {
-        return $this->belongsTo(Quiz::class);
+        return $this->belongsTo(FunnelQuiz::class);
     }
 
     public function funnel()

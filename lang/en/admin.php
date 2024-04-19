@@ -7,9 +7,17 @@ return [
         'funnels' => 'Funnels',
         'leads' => 'Leads',
         'quizzes' => 'Quizzes',
-        'topics' => 'Topics',
+        'app_questions' => 'App questions',
+        'file_manager' => 'File manager',
+        'horizon' => 'Horizon',
+        'adminer' => 'Adminer',
+        'transactional_email' => 'Transactional emails',
+        'subscriptions' => 'Subscriptions',
+        'plans' => 'Plans',
     ],
     'button' => [
+        'cancel' => 'Cancel',
+        'submit' => 'Submit',
         'create' => 'Create',
         'update' => 'Update',
         'back' => 'Back',
@@ -25,6 +33,8 @@ return [
             'buttons' => [
                 'create_funnel' => 'Create new funnel',
                 'filter' => 'Filter',
+                'edit' => 'Edit',
+                'pages' => 'Pages',
             ],
             'form' => [
                 'name' => 'Name',
@@ -44,11 +54,6 @@ return [
             ],
         ],
         'quiz' => [
-            'topic' => [
-                'content_header' => [
-                    'create' => 'Create new topic',
-                ],
-            ],
             'content_header' => [
                 'quizzes' => 'Quizzes',
                 'create' => 'Create quiz',
@@ -61,10 +66,17 @@ return [
                 'title' => 'Title',
                 'description' => 'Description',
                 'is_public' => 'Is public',
-                'topic' => 'Topic by which will be queried quiz in the funnel',
             ],
             'buttons' => [
                 'create_quiz' => 'Create new quiz',
+            ],
+            'content' => [
+                'name' => 'Name',
+                'created_at' => 'Created at',
+                'id' => 'ID',
+                'yes' => 'Yes',
+                'no' => 'No',
+                'is_active' => 'Is active',
             ],
             'questions' => [
                 'content_header' => [
@@ -131,6 +143,30 @@ return [
                 'quiz_answers' => 'Quiz answers',
                 'created_at' => 'Created at',
                 'updated_at' => 'Updated at',
+            ],
+        ],
+        'app_question' => [
+            'content_header' => [
+                'app_questions' => 'All questions',
+            ],
+            'content' => [
+                'id' => 'ID',
+                'code' => 'Question',
+                'created_at' => 'Created at',
+            ],
+        ],
+        'file_manager' => [
+            'content_header' => [
+                'file_manager' => 'File manager',
+            ],
+            'content' => [
+                'current_path' => 'Current path',
+                'backwards' => 'Backwards',
+                'upload' => 'Upload',
+                'confirm_remove' => 'Dou you really want to remove file :file?',
+                'folder' => 'Folder',
+                'file' => 'File',
+                'file_name' => 'File name',
             ],
         ],
     ],

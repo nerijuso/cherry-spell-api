@@ -43,28 +43,48 @@
                       </span>
                     </a>
                 </li>
-                <li class="nav-item dropdown @if(preg_match('/^admin.funnels/', Route::currentRouteName())) active @endif">
-                    <a class="nav-link" href="{{route('admin.funnels')}}" >
+                <li class="nav-item dropdown @if(preg_match('/^admin.app_questions/', Route::currentRouteName())) active @endif">
+                    <a class="nav-link" href="{{route('admin.app_questions')}}" >
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-folder-question"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 19h-10a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2.5" /><path d="M19 22v.01" /><path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
+                        <span class="nav-link-title">
+                            {{ trans('admin.aside.app_questions') }}
+                      </span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown @if(preg_match('/^admin.quizzes/', Route::currentRouteName()) || preg_match('/^admin.funnels/', Route::currentRouteName())) active @endif">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true" >
                         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-filter"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z" /></svg>
                         <span class="nav-link-title">
                             {{ trans('admin.aside.funnels') }}
                       </span>
                     </a>
-                </li>
-                <li class="nav-item dropdown @if(preg_match('/^admin.quizzes/', Route::currentRouteName())) active @endif">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true" >
-                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-zoom-question"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /><path d="M10 13l0 .01" /><path d="M10 10a1.5 1.5 0 1 0 -1.14 -2.474" /></svg>                        <span class="nav-link-title">
-                             {{ trans('admin.aside.quizzes') }}
-                      </span>
-                    </a>
-                    <div class="dropdown-menu @if(preg_match('/^admin.quizzes/', Route::currentRouteName())) show @endif">
+                    <div class="dropdown-menu @if(preg_match('/^admin.quizzes/', Route::currentRouteName()) || preg_match('/^admin.funnels/', Route::currentRouteName())) show @endif">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="{{route('admin.quizzes.topics')}}">
-                                    {{ trans('admin.aside.topics') }}
+                                <a class="dropdown-item" href="{{route('admin.funnels')}}">
+                                    {{ trans('admin.aside.funnels') }}
                                 </a>
                                 <a class="dropdown-item" href="{{route('admin.quizzes')}}">
                                     {{ trans('admin.aside.quizzes') }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown @if(preg_match('/^admin.subscriptions/', Route::currentRouteName())) active @endif">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true" >
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-businessplan"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 6m-5 0a5 3 0 1 0 10 0a5 3 0 1 0 -10 0" /><path d="M11 6v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" /><path d="M11 10v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" /><path d="M11 14v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" /><path d="M7 9h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M5 15v1m0 -8v1" /></svg>                        <span class="nav-link-title">
+                            {{ trans('admin.aside.subscriptions') }}
+                      </span>
+                    </a>
+                    <div class="dropdown-menu @if(preg_match('/^admin.subscriptions/', Route::currentRouteName())) show @endif">
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="{{route('admin.subscriptions.plans')}}">
+                                    {{ trans('admin.aside.plans') }}
+                                </a>
+                                <a class="dropdown-item" href="{{route('admin.subscriptions')}}">
+                                    {{ trans('admin.aside.subscriptions') }}
                                 </a>
                             </div>
                         </div>
@@ -94,13 +114,16 @@
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
                                 <a class="dropdown-item" href="/{{config('horizon.path')}}">
-                                    Horizon
+                                    {{trans('admin.aside.horizon')}}
                                 </a>
                                 <a class="dropdown-item" target="_blank" rel="nofollow noopener" href="{{route('admin.adminer')}}">
-                                    Adminer
+                                    {{trans('admin.aside.adminer')}}
                                 </a>
                                 <a class="dropdown-item" href="{{route('admin.mail_templates.index')}}">
-                                    Transactional email
+                                    {{trans('admin.aside.transactional_email')}}
+                                </a>
+                                <a class="dropdown-item" href="{{route('admin.system.file_manager')}}">
+                                    {{trans('admin.aside.file_manager')}}
                                 </a>
                             </div>
                         </div>

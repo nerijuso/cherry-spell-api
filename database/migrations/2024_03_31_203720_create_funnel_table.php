@@ -15,8 +15,19 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->boolean('is_active')->index();
-            $table->foreignId('quiz_id')->constrained();
             $table->json('configuration');
+            $table->timestamps();
+        });
+
+        Schema::create('funnel_pages', function (Blueprint $table) {
+            $table->id();
+            $table->string('type')->nullable()->index();
+            $table->foreignId('funnel_id')->constrained()->cascadeOnDelete();
+            $table->integer('next_page_id')->nullable()->default(null);
+            $table->boolean('is_active')->default(true);
+            $table->integer('position')->default(0);
+            $table->json('data')->nullable();
+            $table->json('configuration')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +37,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('funnel_pages');
         Schema::dropIfExists('funnels');
     }
 };

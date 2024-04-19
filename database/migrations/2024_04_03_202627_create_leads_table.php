@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
             $table->char('code', 16)->charset('binary')->unique();
-            $table->foreignId('quiz_id')->nullable()->constrained();
+            $table->foreignId('funnel_quiz_id')->nullable()->constrained();
             $table->foreignId('funnel_id')->nullable()->constrained();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('country_id')->nullable()->constrained();

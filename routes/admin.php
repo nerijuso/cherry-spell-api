@@ -26,7 +26,33 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('create', 'FunnelController@create')->name('funnels.create');
         Route::post('store', 'FunnelController@storeNew')->name('funnels.store');
         Route::get('{funnel}', 'FunnelController@edit')->name('funnels.edit')->whereNumber('funnel');
+        Route::get('{funnel}/pages', 'FunnelController@pages')->name('funnels.pages')->whereNumber('funnel');
         Route::post('{funnel}', 'FunnelController@update')->name('funnels.update')->whereNumber('funnel');
+    });
+
+    Route::group(['prefix' => 'quizzes'], function () {
+        Route::group(['prefix' => '{quiz}/questions'], function () {
+            Route::get('/', 'FunnelQuizzes\FunnelQuestionController@index')->name('quizzes.questions');
+            Route::get('create', 'FunnelQuizzes\FunnelQuestionController@create')->name('quizzes.questions.create');
+            Route::post('store', 'FunnelQuizzes\FunnelQuestionController@storeNew')->name('quizzes.questions.store');
+            Route::get('{question}', 'FunnelQuizzes\FunnelQuestionController@edit')->name('quizzes.questions.edit')->whereNumber('question');
+            Route::post('{question}', 'FunnelQuizzes\FunnelQuestionController@update')->name('quizzes.questions.update')->whereNumber('question');
+            Route::get('{question}/remove_image', 'FunnelQuizzes\FunnelQuestionController@removeImage')->name('quizzes.questions.remove_image')->whereNumber('question');
+
+            Route::group(['prefix' => '{question}/options'], function () {
+                Route::get('create', 'FunnelQuizzes\FunnelQuestionOptionController@create')->name('quizzes.questions.options.create');
+                Route::post('store', 'FunnelQuizzes\FunnelQuestionOptionController@storeNew')->name('quizzes.questions.options.store');
+                Route::get('{option}', 'FunnelQuizzes\FunnelQuestionOptionController@edit')->name('quizzes.questions.options.edit')->whereNumber('option');
+                Route::post('{option}', 'FunnelQuizzes\FunnelQuestionOptionController@update')->name('quizzes.questions.options.update')->whereNumber('option');
+                Route::get('{option}/remove_image', 'FunnelQuizzes\FunnelQuestionOptionController@removeImage')->name('quizzes.questions.options.remove_image')->whereNumber('option');
+            })->whereNumber('question');
+        })->whereNumber('quiz');
+
+        Route::get('/', 'FunnelQuizzes\FunnelQuizController@index')->name('quizzes');
+        Route::get('create', 'FunnelQuizzes\FunnelQuizController@create')->name('quizzes.create');
+        Route::post('store', 'FunnelQuizzes\FunnelQuizController@storeNew')->name('quizzes.store');
+        Route::get('{quiz}', 'FunnelQuizzes\FunnelQuizController@edit')->name('quizzes.edit')->whereNumber('quiz');
+        Route::post('{quiz}', 'FunnelQuizzes\FunnelQuizController@update')->name('quizzes.update')->whereNumber('quiz');
     });
 
     Route::group(['prefix' => 'leads'], function () {
@@ -34,43 +60,25 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('{lead}', 'LeadController@view')->name('leads.view')->whereNumber('lead');
     });
 
-    Route::group(['prefix' => 'quizzes'], function () {
-        Route::group(['prefix' => 'topics'], function () {
-            Route::get('/', 'Quizzes\TopicController@index')->name('quizzes.topics');
-            Route::get('create', 'Quizzes\TopicController@create')->name('quizzes.topics.create');
-            Route::post('store', 'Quizzes\TopicController@storeNew')->name('quizzes.topics.store');
-            Route::get('{topic}', 'Quizzes\TopicController@edit')->name('quizzes.topics.edit');
-            Route::post('{topic}', 'Quizzes\TopicController@update')->name('quizzes.topics.update');
-        });
+    Route::group(['prefix' => 'subscriptions'], function () {
+        Route::get('/', 'SubscriptionController@index')->name('subscriptions');
+        Route::get('plans', 'SubscriptionController@view')->name('subscriptions.plans');
+    });
 
-        Route::group(['prefix' => '{quiz}/questions'], function () {
-            Route::get('/', 'Quizzes\QuestionController@index')->name('quizzes.questions');
-            Route::get('create', 'Quizzes\QuestionController@create')->name('quizzes.questions.create');
-            Route::post('store', 'Quizzes\QuestionController@storeNew')->name('quizzes.questions.store');
-            Route::get('{question}', 'Quizzes\QuestionController@edit')->name('quizzes.questions.edit')->whereNumber('question');
-            Route::post('{question}', 'Quizzes\QuestionController@update')->name('quizzes.questions.update')->whereNumber('question');
-            Route::get('{question}/remove_image', 'Quizzes\QuestionController@removeImage')->name('quizzes.questions.remove_image')->whereNumber('question');
-
-            Route::group(['prefix' => '{question}/options'], function () {
-                Route::get('create', 'Quizzes\QuestionOptionController@create')->name('quizzes.questions.options.create');
-                Route::post('store', 'Quizzes\QuestionOptionController@storeNew')->name('quizzes.questions.options.store');
-                Route::get('{option}', 'Quizzes\QuestionOptionController@edit')->name('quizzes.questions.options.edit')->whereNumber('option');
-                Route::post('{option}', 'Quizzes\QuestionOptionController@update')->name('quizzes.questions.options.update')->whereNumber('option');
-                Route::get('{option}/remove_image', 'Quizzes\QuestionOptionController@removeImage')->name('quizzes.questions.options.remove_image')->whereNumber('option');
-            })->whereNumber('question');
-        })->whereNumber('quiz');
-
-        Route::get('/', 'Quizzes\QuizController@index')->name('quizzes');
-        Route::get('create', 'Quizzes\QuizController@create')->name('quizzes.create');
-        Route::post('store', 'Quizzes\QuizController@storeNew')->name('quizzes.store');
-        Route::get('{quiz}', 'Quizzes\QuizController@edit')->name('quizzes.edit')->whereNumber('quiz');
-        Route::post('{quiz}', 'Quizzes\QuizController@update')->name('quizzes.update')->whereNumber('quiz');
+    Route::group(['prefix' => 'app_questions'], function () {
+        Route::get('/', 'AppQuestionController@index')->name('app_questions');
     });
 
     Route::group(['prefix' => 'system'], function () {
         Route::any('my_sql_console', 'Adminer\AdminerController@index')->name('adminer');
         Route::get('view-mail-template', 'System\MailTemplateController@index')->name('mail_templates.index');
         Route::get('view-mail-template/{mailable}', 'System\MailTemplateController@view')->name('mail_templates.view');
+
+        Route::group(['prefix' => 'file_manager', 'permission' => 'use_file_manager_module'], function () {
+            Route::get('/', 'FileManagerController@index')->name('system.file_manager');
+            Route::post('/upload', 'FileManagerController@upload')->name('system.file_manager.upload');
+            Route::get('/delete', 'FileManagerController@delete')->name('system.file_manager.delete');
+        });
     });
 });
 

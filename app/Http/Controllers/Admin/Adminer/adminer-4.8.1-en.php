@@ -85,7 +85,7 @@ if ($Yc || ini_get('filter.default_flags')) {
         $Wi = $Ae;
     }
 
-return version_compare($kh, $Wi) >= 0;
+    return version_compare($kh, $Wi) >= 0;
 }function charset($g)
 {
     return min_version('5.5.3', 0, $g) ? 'utf8mb4' : 'utf8';
@@ -127,7 +127,7 @@ return version_compare($kh, $Wi) >= 0;
         }
     }
 
-return $I;
+    return $I;
 }function html_select($D, $xf, $Y = '', $qf = true, $le = '')
 {
     if ($qf) {
@@ -137,7 +137,7 @@ return $I;
         $I .= "<label><input type='radio' name='".h($D)."' value='".h($z)."'".($z == $Y ? ' checked' : '').'>'.h($X).'</label>';
     }
 
-return $I;
+    return $I;
 }function select_input($Ha, $xf, $Y = '', $qf = '', $cg = '')
 {
     $Vh = ($xf ? 'select' : 'input');
@@ -159,7 +159,7 @@ return $I;
         $t = -1;
     }
 
-return $t++ % 2 ? $I : '';
+    return $t++ % 2 ? $I : '';
 }function js_escape($P)
 {
     return addcslashes($P, "\r\n'\\/");
@@ -187,7 +187,7 @@ return $t++ % 2 ? $I : '';
         $I = (SID && ! ($_COOKIE && ini_bool('session.use_cookies')));
     }
 
-return $I;
+    return $I;
 }function set_password($Vi, $M, $V, $F)
 {
     $_SESSION['pwds'][$Vi][$M][$V] = ($_COOKIE['adminer_key'] && is_string($F) ? [encrypt_string($F, $_COOKIE['adminer_key'])] : $F);
@@ -198,7 +198,7 @@ return $I;
         $I = ($_COOKIE['adminer_key'] ? decrypt_string($I[0], $_COOKIE['adminer_key']) : false);
     }
 
-return $I;
+    return $I;
 }function q($P)
 {
     global $g;
@@ -215,7 +215,7 @@ return $I;
         }
     }
 
-return $I;
+    return $I;
 }function get_key_vals($G, $h = null, $nh = true)
 {
     global $g;
@@ -233,7 +233,7 @@ return $I;
         }
     }
 
-return $I;
+    return $I;
 }function get_rows($G, $h = null, $n = "<p class='error'>")
 {
     global $g;
@@ -248,7 +248,7 @@ return $I;
         echo $n.error()."\n";
     }
 
-return $I;
+    return $I;
 }function unique_array($J, $x)
 {
     foreach ($x as $w) {
@@ -260,7 +260,7 @@ return $I;
                 }$I[$z] = $J[$z];
             }
 
-return $I;
+            return $I;
         }
     }
 }function escape_key($z)
@@ -269,7 +269,7 @@ return $I;
         return $C[1].idf_escape(idf_unescape($C[2])).$C[3];
     }
 
-return idf_escape($z);
+    return idf_escape($z);
 }function where($Z, $p = [])
 {
     global $g,$y;
@@ -285,7 +285,7 @@ return idf_escape($z);
         $I[] = escape_key($z).' IS NULL';
     }
 
-return implode(' AND ', $I);
+    return implode(' AND ', $I);
 }function where_check($X, $p = [])
 {
     parse_str($X, $ab);
@@ -307,7 +307,7 @@ return implode(' AND ', $I);
         }
     }
 
-return $I;
+    return $I;
 }function adm_cookie($D, $Y, $ve = 2592000)
 {
     global $ba;
@@ -371,7 +371,7 @@ return $I;
         adm_redirect($B, $Ke.$yh);
     }
 
-return true;
+    return true;
 }function queries($G)
 {
     global $g;
@@ -392,7 +392,7 @@ return true;
         }
     }
 
-return true;
+    return true;
 }function queries_redirect($B, $Ke, $Ag)
 {
     [$vg, $di] = queries(null);
@@ -436,7 +436,7 @@ return true;
         }
     }
 
-return $I;
+    return $I;
 }function upload_error($n)
 {
     $He = ($n == UPLOAD_ERR_INI_SIZE ? ini_get('upload_max_filesize') : 0);
@@ -454,7 +454,7 @@ return $I;
         preg_match('(^('.repeat_pattern("[\t\r\n -~]", $te).')($)?)', $P, $C);
     }
 
-return h($C[1]).$Jh.(isset($C[2]) ? '' : '<i>…</i>');
+    return h($C[1]).$Jh.(isset($C[2]) ? '' : '<i>…</i>');
 }function format_number($X)
 {
     return strtr(number_format($X, 0, '.', ','), preg_split('~~u', '0123456789', -1, PREG_SPLIT_NO_EMPTY));
@@ -475,7 +475,7 @@ return h($C[1]).$Jh.(isset($C[2]) ? '' : '<i>…</i>');
         }
     }
 
-return $I;
+    return $I;
 }function hidden_fields_get()
 {
     echo (sid() ? '<input type="hidden" name="'.session_name().'" value="'.h(session_id()).'">' : ''),(SERVER !== null ? '<input type="hidden" name="'.DRIVER.'" value="'.h(SERVER).'">' : ''),'<input type="hidden" name="username" value="'.h($_GET['username']).'">';
@@ -494,7 +494,7 @@ return $I;
         }
     }
 
-return $I;
+    return $I;
 }function enum_input($T, $Ha, $o, $Y, $xc = null)
 {
     global $b;
@@ -506,7 +506,7 @@ return $I;
         $I .= " <label><input type='$T'$Ha value='".($t + 1)."'".($cb ? ' checked' : '').'>'.h($b->editVal($X, $o)).'</label>';
     }
 
-return $I;
+    return $I;
 }function input($o, $Y, $s)
 {
     global $U,$b,$y;
@@ -579,7 +579,7 @@ return $I;
             return 'NULL';
         }
 
-return +$Y;
+        return +$Y;
     }if ($o['auto_increment'] && $Y == '') {
         return null;
     }if ($s == 'orig') {
@@ -595,17 +595,17 @@ return +$Y;
             return false;
         }
 
-return $Y;
+        return $Y;
     }if (preg_match('~blob|bytea|raw|file~', $o['type']) && ini_bool('file_uploads')) {
         $Xc = get_file("fields-$v");
         if (! is_string($Xc)) {
             return false;
         }
 
-return $m->quoteBinary($Xc);
+        return $m->quoteBinary($Xc);
     }
 
-return $b->processInput($o, $Y, $s);
+    return $b->processInput($o, $Y, $s);
 }function fields_from_edit()
 {
     global $m;
@@ -621,7 +621,7 @@ return $b->processInput($o, $Y, $s);
         $I[$D] = ['field' => $D, 'privileges' => ['insert' => 1, 'update' => 1], 'null' => 1, 'auto_increment' => ($z == $m->primary)];
     }
 
-return $I;
+    return $I;
 }function search_tables()
 {
     global $b,$g;
@@ -675,7 +675,7 @@ return $I;
         }
     }
 
-return $I;
+    return $I;
 }function file_open_lock($q)
 {
     $ld = @fopen($q, 'r+');
@@ -708,7 +708,7 @@ return $I;
         fclose($ld);
     }
 
-return $I;
+    return $I;
 }function rand_string()
 {
     return md5(uniqid(mt_rand(), true));
@@ -721,7 +721,7 @@ return $I;
             $I .= '<tr>'.($X != array_values($X) ? '<th>'.h($fe) : '').'<td>'.select_value($W, $A, $o, $ci);
         }
 
-return "<table cellspacing='0'>$I</table>";
+        return "<table cellspacing='0'>$I</table>";
     }if (! $A) {
         $A = $b->selectLink($X, $o);
     }if ($A === null) {
@@ -741,7 +741,7 @@ return "<table cellspacing='0'>$I</table>";
         }
     }
 
-return $b->selectVal($I, $A, $o, $X);
+    return $b->selectVal($I, $A, $o, $X);
 }function is_mail($uc)
 {
     $Ga = '[-a-z0-9!#$%&\'*+/=?^_`{|}~]';
@@ -789,7 +789,7 @@ var timeout = setTimeout(function () {
         flush();
     }
 
-return $I;
+    return $I;
 }function get_token()
 {
     $yg = rand(1, 1e6);
@@ -831,7 +831,7 @@ return $I;
         }$kj = $tc;
     }
 
-return $I;
+    return $I;
 }function on_help($pb, $ph = 0)
 {
     return script("mixin(qsl('select, input'), {onmouseover: function (event) { helpMouseover.call(this, event, $pb, $ph) }, onmouseout: helpMouseout});", '');
@@ -1009,7 +1009,7 @@ function get_lang()
                     $this->error = 'Unknown error.';
                 }
 
-return false;
+                return false;
             }$this->store_result($H);
 
             return $H;
@@ -1107,7 +1107,7 @@ function add_driver($u, $D)
             echo $b->selectQuery($G, $Ch, ! $I);
         }
 
-return $I;
+        return $I;
     }
 
     public function delete($Q, $wg, $_ = 0)
@@ -1311,7 +1311,7 @@ if (isset($_GET['sqlite']) || isset($_GET['sqlite2'])) {
                         return true;
                     }
 
-return new Min_Result($H);
+                    return new Min_Result($H);
                 }
 
                 public function quote($P)
@@ -1359,7 +1359,7 @@ return new Min_Result($H);
                         $I[idf_unescape($z)] = $X;
                     }
 
-return $I;
+                    return $I;
                 }
 
                 public function fetch_row()
@@ -1376,7 +1376,7 @@ return $I;
                         $D = ($C[5] != '' ? $C[5] : idf_unescape($C[4]));
                     }
 
-return (object) ['name' => $D, 'orgname' => $D, 'orgtable' => $Q];
+                    return (object) ['name' => $D, 'orgname' => $D, 'orgtable' => $Q];
                 }
             }
         }
@@ -1409,7 +1409,7 @@ return (object) ['name' => $D, 'orgname' => $D, 'orgtable' => $Q];
                     return true;
                 }
 
-return false;
+                return false;
             }
 
             public function multi_query($G)
@@ -1431,7 +1431,7 @@ return false;
                 $Ti[] = '('.implode(', ', $N).')';
             }
 
-return queries('REPLACE INTO '.table($Q).' ('.implode(', ', array_keys(reset($K))).") VALUES\n".implode(",\n", $Ti));
+            return queries('REPLACE INTO '.table($Q).' ('.implode(', ', array_keys(reset($K))).") VALUES\n".implode(",\n", $Ti));
         }
 
         public function tableHelp($D)
@@ -1456,7 +1456,7 @@ return queries('REPLACE INTO '.table($Q).' ('.implode(', ', array_keys(reset($K)
             return 'Database does not support password.';
         }
 
-return new Min_DB;
+        return new Min_DB;
     }function get_databases()
     {
         return [];
@@ -1496,7 +1496,7 @@ return new Min_DB;
             $I[$J['name']]['Auto_increment'] = $J['seq'];
         }
 
-return $D != '' ? $I[$D] : $I;
+        return $D != '' ? $I[$D] : $I;
     }function is_view($R)
     {
         return $R['Engine'] == 'view';
@@ -1531,7 +1531,7 @@ return $D != '' ? $I[$D] : $I;
             }
         }
 
-return $I;
+        return $I;
     }function indexes($Q, $h = null)
     {
         global $g;
@@ -1573,7 +1573,7 @@ return $I;
             }
         }
 
-return $I;
+        return $I;
     }function foreign_keys($Q)
     {
         $I = [];
@@ -1585,7 +1585,7 @@ return $I;
             $r['target'][] = $J['to'];
         }
 
-return $I;
+        return $I;
     }function adm_view($D)
     {
         global $g;
@@ -1612,7 +1612,7 @@ return $I;
             return false;
         }
 
-return true;
+        return true;
     }function create_database($l, $d)
     {
         global $g;
@@ -1645,7 +1645,7 @@ return true;
             }
         }
 
-return true;
+        return true;
     }function rename_database($D, $d)
     {
         global $g;
@@ -1694,7 +1694,7 @@ return true;
             }queries('COMMIT');
         }
 
-return true;
+        return true;
     }function recreate_table($Q, $D, $p, $Hf, $fd, $Ka, $x = [])
     {
         global $g;
@@ -1767,7 +1767,7 @@ return true;
             }queries('COMMIT');
         }
 
-return true;
+        return true;
     }function index_sql($Q, $T, $D, $f)
     {
         return "CREATE $T ".($T != 'INDEX' ? 'INDEX ' : '').idf_escape($D != '' ? $D : uniqid($Q.'_')).' ON '.table($Q)." $f";
@@ -1783,7 +1783,7 @@ return true;
             }
         }
 
-return true;
+        return true;
     }function truncate_tables($S)
     {
         return apply_queries('DELETE FROM', $S);
@@ -1816,7 +1816,7 @@ return true;
             $I[$J['name']] = [$C[1], $C[2]];
         }
 
-return $I;
+        return $I;
     }function trigger_options()
     {
         return ['Timing' => ['BEFORE', 'AFTER', 'INSTEAD OF'], 'Event' => ['INSERT', 'UPDATE', 'UPDATE OF', 'DELETE'], 'Type' => ['FOR EACH ROW']];
@@ -1855,7 +1855,7 @@ return $I;
             }$I .= ";\n\n".index_sql($Q, $w['type'], $D, '('.implode(', ', array_map('idf_escape', $w['columns'])).')');
         }
 
-return $I;
+        return $I;
     }function truncate_sql($Q)
     {
         return 'DELETE FROM '.table($Q);
@@ -1872,7 +1872,7 @@ return $I;
             $I[$z] = $g->result("PRAGMA $z");
         }
 
-return $I;
+        return $I;
     }function show_status()
     {
         $I = [];
@@ -1881,7 +1881,7 @@ return $I;
             $I[$z] = $X;
         }
 
-return $I;
+        return $I;
     }function convert_field($o)
     {
     }function unconvert_field($o, $I)
@@ -1945,7 +1945,7 @@ if (isset($_GET['pgsql'])) {
                     pg_set_client_encoding($this->_link, 'UTF8');
                 }
 
-return (bool) $this->_link;
+                return (bool) $this->_link;
             }
 
             public function quote($P)
@@ -1973,7 +1973,7 @@ return (bool) $this->_link;
                     $this->_link = $I;
                 }
 
-return $I;
+                return $I;
             }
 
             public function close()
@@ -1998,7 +1998,7 @@ return $I;
                     $this->query('RESET statement_timeout');
                 }
 
-return $I;
+                return $I;
             }
 
             public function multi_query($G)
@@ -2023,7 +2023,7 @@ return $I;
                     return false;
                 }
 
-return pg_fetch_result($H->_result, 0, $o);
+                return pg_fetch_result($H->_result, 0, $o);
             }
 
             public function warnings()
@@ -2109,7 +2109,7 @@ return pg_fetch_result($H->_result, 0, $o);
                     parent::query('RESET statement_timeout');
                 }
 
-return $I;
+                return $I;
             }
 
             public function warnings()
@@ -2139,7 +2139,7 @@ return $I;
                 }
             }
 
-return true;
+            return true;
         }
 
         public function slowQuery($G, $ei)
@@ -2197,10 +2197,10 @@ return true;
                 }
             }
 
-return $g;
+            return $g;
         }
 
-return $g->error;
+        return $g->error;
     }function get_databases()
     {
         return get_vals("SELECT datname FROM pg_database WHERE has_database_privilege(datname, 'CONNECT') ORDER BY datname");
@@ -2250,7 +2250,7 @@ WHERE relkind IN ('r', 'm', 'v', 'f', 'p')
             $I[$J['Name']] = $J;
         }
 
-return $D != '' ? $I[$D] : $I;
+        return $D != '' ? $I[$D] : $I;
     }function is_view($R)
     {
         return in_array($R['Engine'], ['view', 'materialized view']);
@@ -2291,7 +2291,7 @@ ORDER BY a.attnum') as $J) {
             }$I[$J['field']] = $J;
         }
 
-return $I;
+        return $I;
     }function indexes($Q, $h = null)
     {
         global $g;
@@ -2312,7 +2312,7 @@ return $I;
             }$I[$Hg]['lengths'] = [];
         }
 
-return $I;
+        return $I;
     }function foreign_keys($Q)
     {
         global $pf;
@@ -2334,7 +2334,7 @@ ORDER BY conkey, conname") as $J) {
             }
         }
 
-return $I;
+        return $I;
     }function constraints($Q)
     {
         global $pf;
@@ -2351,7 +2351,7 @@ ORDER BY connamespace, conname') as $J) {
             $I[$J['conname']] = $J['consrc'];
         }
 
-return $I;
+        return $I;
     }function adm_view($D)
     {
         global $g;
@@ -2371,7 +2371,7 @@ return $I;
             $I = $C[1].preg_replace('~((?:[^&]|&[^;]*;){'.strlen($C[3]).'})(.*)~', '\1<b>\2</b>', $C[2]).$C[4];
         }
 
-return nl_br($I);
+        return nl_br($I);
     }function create_database($l, $d)
     {
         return queries('CREATE DATABASE '.idf_escape($l).($d ? ' ENCODING '.idf_escape($d) : ''));
@@ -2434,7 +2434,7 @@ return nl_br($I);
             }
         }
 
-return true;
+        return true;
     }function alter_indexes($Q, $c)
     {
         $i = [];
@@ -2458,7 +2458,7 @@ return true;
             }
         }
 
-return true;
+        return true;
     }function truncate_tables($S)
     {
         return queries('TRUNCATE '.implode(', ', array_map('table', $S)));
@@ -2476,7 +2476,7 @@ return true;
             }
         }
 
-return true;
+        return true;
     }function move_tables($S, $Yi, $Wh)
     {
         foreach (array_merge($S, $Yi) as $Q) {
@@ -2486,7 +2486,7 @@ return true;
             }
         }
 
-return true;
+        return true;
     }function trigger($D, $Q)
     {
         if ($D == '') {
@@ -2505,7 +2505,7 @@ return true;
             }$I = $J;
         }
 
-return $I;
+        return $I;
     }function triggers($Q)
     {
         $I = [];
@@ -2514,7 +2514,7 @@ return $I;
             $I[$wi['Trigger']] = [$wi['Timing'], $wi['Event']];
         }
 
-return $I;
+        return $I;
     }function trigger_options()
     {
         return ['Timing' => ['BEFORE', 'AFTER'], 'Event' => ['INSERT', 'UPDATE', 'UPDATE OF', 'DELETE', 'INSERT OR UPDATE', 'INSERT OR UPDATE OF', 'DELETE OR INSERT', 'DELETE OR UPDATE', 'DELETE OR UPDATE OF', 'DELETE OR INSERT OR UPDATE', 'DELETE OR INSERT OR UPDATE OF'], 'Type' => ['FOR EACH ROW', 'FOR EACH STATEMENT']];
@@ -2548,7 +2548,7 @@ ORDER BY SPECIFIC_NAME');
             $I[] = $o['type'];
         }
 
-return idf_escape($D).'('.implode(', ', $I).')';
+        return idf_escape($D).'('.implode(', ', $I).')';
     }function last_id()
     {
         return 0;
@@ -2562,7 +2562,7 @@ return idf_escape($D).'('.implode(', ', $I).')';
             return $Gg[1];
         }
 
-return false;
+        return false;
     }function types()
     {
         return
@@ -2592,7 +2592,7 @@ AND typelem = 0");
             }
         }
 
-return $I;
+        return $I;
     }function foreign_keys_sql($Q)
     {
         $I = '';
@@ -2603,7 +2603,7 @@ return $I;
             $I .= 'ALTER TABLE ONLY '.idf_escape($O['nspname']).'.'.idf_escape($O['Name']).' ADD CONSTRAINT '.idf_escape($bd)." $ad[definition] ".($ad['deferrable'] ? 'DEFERRABLE' : 'NOT DEFERRABLE').";\n";
         }
 
-return $I ? "$I\n" : $I;
+        return $I ? "$I\n" : $I;
     }function create_sql($Q, $Ka, $Hh)
     {
         global $g;
@@ -2657,7 +2657,7 @@ return $I ? "$I\n" : $I;
             }
         }
 
-return rtrim($I, ';');
+        return rtrim($I, ';');
     }function truncate_sql($Q)
     {
         return 'TRUNCATE '.table($Q);
@@ -2670,7 +2670,7 @@ return rtrim($I, ';');
             $I .= "\nCREATE TRIGGER ".idf_escape($wi['Trigger'])." $wi[Timing] $wi[Event] ON ".idf_escape($O['nspname']).'.'.idf_escape($O['Name'])." $wi[Type] $wi[Statement];;\n";
         }
 
-return $I;
+        return $I;
     }function use_sql($j)
     {
         return "\connect ".idf_escape($j);
@@ -2710,7 +2710,7 @@ return $I;
             $Gh[$z] = array_keys($X);
         }
 
-return ['possible_drivers' => ['PgSQL', 'PDO_PgSQL'], 'jush' => 'pgsql', 'types' => $U, 'structured_types' => $Gh, 'unsigned' => [], 'operators' => ['=', '<', '>', '<=', '>=', '!=', '~', '!~', 'LIKE', 'LIKE %%', 'ILIKE', 'ILIKE %%', 'IN', 'IS NULL', 'NOT LIKE', 'NOT IN', 'IS NOT NULL'], 'functions' => ['char_length', 'lower', 'round', 'to_hex', 'to_timestamp', 'upper'], 'grouping' => ['avg', 'count', 'count distinct', 'max', 'min', 'sum'], 'edit_functions' => [['char' => 'md5', 'date|time' => 'now'], [number_type() => '+/-', 'date|time' => '+ interval/- interval', 'char|text' => '||']]];
+        return ['possible_drivers' => ['PgSQL', 'PDO_PgSQL'], 'jush' => 'pgsql', 'types' => $U, 'structured_types' => $Gh, 'unsigned' => [], 'operators' => ['=', '<', '>', '<=', '>=', '!=', '~', '!~', 'LIKE', 'LIKE %%', 'ILIKE', 'ILIKE %%', 'IN', 'IS NULL', 'NOT LIKE', 'NOT IN', 'IS NOT NULL'], 'functions' => ['char_length', 'lower', 'round', 'to_hex', 'to_timestamp', 'upper'], 'grouping' => ['avg', 'count', 'count distinct', 'max', 'min', 'sum'], 'edit_functions' => [['char' => 'md5', 'date|time' => 'now'], [number_type() => '+/-', 'date|time' => '+ interval/- interval', 'char|text' => '||']]];
     }
 }$ic['oracle'] = 'Oracle (beta)';
 if (isset($_GET['oracle'])) {
@@ -2787,7 +2787,7 @@ if (isset($_GET['oracle'])) {
                     oci_free_statement($H);
                 }
 
-return $I;
+                return $I;
             }
 
             public function multi_query($G)
@@ -2812,7 +2812,7 @@ return $I;
                     return false;
                 }
 
-return oci_result($H->_result, $o);
+                return oci_result($H->_result, $o);
             }
         }class Min_Result
         {
@@ -2835,7 +2835,7 @@ return oci_result($H->_result, $o);
                     }
                 }
 
-return $J;
+                return $J;
             }
 
             public function fetch_assoc()
@@ -2909,7 +2909,7 @@ return $J;
                 }
             }
 
-return true;
+            return true;
         }
     }function idf_escape($v)
     {
@@ -2926,7 +2926,7 @@ return true;
             return $g;
         }
 
-return $g->error;
+        return $g->error;
     }function get_databases()
     {
         return get_vals('SELECT tablespace_name FROM user_tablespaces ORDER BY 1');
@@ -2962,7 +2962,7 @@ return $g->error;
             return '';
         }
 
-return "$ig$Kf = sys_context('USERENV', 'CURRENT_SCHEMA')";
+        return "$ig$Kf = sys_context('USERENV', 'CURRENT_SCHEMA')";
     }function views_table($f)
     {
         $Kf = where_owner('');
@@ -2985,7 +2985,7 @@ ORDER BY 1");
             $I[$l] = $g->result('SELECT COUNT(*) FROM all_tables WHERE tablespace_name = '.q($l));
         }
 
-return $I;
+        return $I;
     }function table_status($D = '')
     {
         $I = [];
@@ -3001,7 +3001,7 @@ ORDER BY 1') as $J) {
             }$I[$J['Name']] = $J;
         }
 
-return $I;
+        return $I;
     }function is_view($R)
     {
         return $R['Engine'] == 'view';
@@ -3020,7 +3020,7 @@ return $I;
             }$I[$J['COLUMN_NAME']] = ['field' => $J['COLUMN_NAME'], 'full_type' => $T.($te ? "($te)" : ''), 'type' => strtolower($T), 'length' => $te, 'default' => $J['DATA_DEFAULT'], 'null' => ($J['NULLABLE'] == 'Y'), 'privileges' => ['insert' => 1, 'select' => 1, 'update' => 1]];
         }
 
-return $I;
+        return $I;
     }function indexes($Q, $h = null)
     {
         $I = [];
@@ -3040,7 +3040,7 @@ ORDER BY ac.constraint_type, aic.column_position", $h) as $J) {
             $I[$Kd]['descs'][] = ($J['DESCEND'] && $J['DESCEND'] == 'DESC' ? '1' : null);
         }
 
-return $I;
+        return $I;
     }function adm_view($D)
     {
         $Xi = views_table('view_name, text');
@@ -3091,7 +3091,7 @@ return $I;
             return queries('CREATE TABLE '.table($D)." (\n".implode(",\n", $c)."\n)");
         }
 
-return (! $c || queries('ALTER TABLE '.table($Q)."\n".implode("\n", $c))) && (! $jc || queries('ALTER TABLE '.table($Q).' DROP ('.implode(', ', $jc).')')) && ($Q == $D || queries('ALTER TABLE '.table($Q).' RENAME TO '.table($D)));
+        return (! $c || queries('ALTER TABLE '.table($Q)."\n".implode("\n", $c))) && (! $jc || queries('ALTER TABLE '.table($Q).' DROP ('.implode(', ', $jc).')')) && ($Q == $D || queries('ALTER TABLE '.table($Q).' RENAME TO '.table($D)));
     }function alter_indexes($Q, $c)
     {
         $jc = [];
@@ -3114,7 +3114,7 @@ return (! $c || queries('ALTER TABLE '.table($Q)."\n".implode("\n", $c))) && (! 
             }
         }
 
-return true;
+        return true;
     }function foreign_keys($Q)
     {
         $I = [];
@@ -3133,7 +3133,7 @@ AND c_src.TABLE_NAME = ".q($Q);
             $I[$J['NAME']] = ['db' => $J['DEST_DB'], 'table' => $J['DEST_TABLE'], 'source' => [$J['SRC_COLUMN']], 'target' => [$J['DEST_COLUMN']], 'on_delete' => $J['ON_DELETE'], 'on_update' => null];
         }
 
-return $I;
+        return $I;
     }function truncate_tables($S)
     {
         return apply_queries('TRUNCATE TABLE', $S);
@@ -3163,7 +3163,7 @@ return $I;
             $h = $g;
         }
 
-return $h->query('ALTER SESSION SET CURRENT_SCHEMA = '.idf_escape($ah));
+        return $h->query('ALTER SESSION SET CURRENT_SCHEMA = '.idf_escape($ah));
     }function show_variables()
     {
         return get_key_vals('SELECT name, display_value FROM v$parameter');
@@ -3198,7 +3198,7 @@ ORDER BY PROCESS
             $Gh[$z] = array_keys($X);
         }
 
-return ['possible_drivers' => ['OCI8', 'PDO_OCI'], 'jush' => 'oracle', 'types' => $U, 'structured_types' => $Gh, 'unsigned' => [], 'operators' => ['=', '<', '>', '<=', '>=', '!=', 'LIKE', 'LIKE %%', 'IN', 'IS NULL', 'NOT LIKE', 'NOT REGEXP', 'NOT IN', 'IS NOT NULL', 'SQL'], 'functions' => ['length', 'lower', 'round', 'upper'], 'grouping' => ['avg', 'count', 'count distinct', 'max', 'min', 'sum'], 'edit_functions' => [['date' => 'current_date', 'timestamp' => 'current_timestamp'], ['number|float|double' => '+/-', 'date|timestamp' => '+ interval/- interval', 'char|clob' => '||']]];
+        return ['possible_drivers' => ['OCI8', 'PDO_OCI'], 'jush' => 'oracle', 'types' => $U, 'structured_types' => $Gh, 'unsigned' => [], 'operators' => ['=', '<', '>', '<=', '>=', '!=', 'LIKE', 'LIKE %%', 'IN', 'IS NULL', 'NOT LIKE', 'NOT REGEXP', 'NOT IN', 'IS NOT NULL', 'SQL'], 'functions' => ['length', 'lower', 'round', 'upper'], 'grouping' => ['avg', 'count', 'count distinct', 'max', 'min', 'sum'], 'edit_functions' => [['date' => 'current_date', 'timestamp' => 'current_timestamp'], ['number|float|double' => '+/-', 'date|timestamp' => '+ interval/- interval', 'char|clob' => '||']]];
     }
 }$ic['mssql'] = 'MS SQL (beta)';
 if (isset($_GET['mssql'])) {
@@ -3244,7 +3244,7 @@ if (isset($_GET['mssql'])) {
                     $this->_get_error();
                 }
 
-return (bool) $this->_link;
+                return (bool) $this->_link;
             }
 
             public function quote($P)
@@ -3267,7 +3267,7 @@ return (bool) $this->_link;
                     return false;
                 }
 
-return $this->store_result($H);
+                return $this->store_result($H);
             }
 
             public function multi_query($G)
@@ -3280,7 +3280,7 @@ return $this->store_result($H);
                     return false;
                 }
 
-return true;
+                return true;
             }
 
             public function store_result($H = null)
@@ -3333,7 +3333,7 @@ return true;
                     }
                 }
 
-return $J;
+                return $J;
             }
 
             public function fetch_assoc()
@@ -3399,7 +3399,7 @@ return $J;
                     $this->error = mssql_get_last_message();
                 }
 
-return (bool) $this->_link;
+                return (bool) $this->_link;
             }
 
             public function quote($P)
@@ -3426,7 +3426,7 @@ return (bool) $this->_link;
                     return true;
                 }
 
-return new Min_Result($H);
+                return new Min_Result($H);
             }
 
             public function multi_query($G)
@@ -3451,7 +3451,7 @@ return new Min_Result($H);
                     return false;
                 }
 
-return mssql_result($H->_result, 0, $o);
+                return mssql_result($H->_result, 0, $o);
             }
         }class Min_Result
         {
@@ -3537,7 +3537,7 @@ return mssql_result($H->_result, 0, $o);
                 }
             }
 
-return true;
+            return true;
         }
 
         public function begin()
@@ -3559,7 +3559,7 @@ return true;
             return $g;
         }
 
-return $g->error;
+        return $g->error;
     }function get_databases()
     {
         return get_vals("SELECT name FROM sys.databases WHERE name NOT IN ('master', 'tempdb', 'model', 'msdb')");
@@ -3594,7 +3594,7 @@ return $g->error;
             $I[$l] = $g->result('SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES');
         }
 
-return $I;
+        return $I;
     }function table_status($D = '')
     {
         $I = [];
@@ -3604,7 +3604,7 @@ return $I;
             }$I[$J['Name']] = $J;
         }
 
-return $I;
+        return $I;
     }function is_view($R)
     {
         return $R['Engine'] == 'VIEW';
@@ -3626,7 +3626,7 @@ WHERE o.schema_id = SCHEMA_ID('.q(get_schema()).") AND o.type IN ('S', 'U', 'V')
             $I[$J['name']] = ['field' => $J['name'], 'full_type' => $T.($te ? "($te)" : ''), 'type' => $T, 'length' => $te, 'default' => $J['default'], 'null' => $J['is_nullable'], 'auto_increment' => $J['is_identity'], 'collation' => $J['collation_name'], 'privileges' => ['insert' => 1, 'select' => 1, 'update' => 1], 'primary' => $J['is_identity'], 'comment' => $tb[$J['name']]];
         }
 
-return $I;
+        return $I;
     }function indexes($Q, $h = null)
     {
         $I = [];
@@ -3642,7 +3642,7 @@ WHERE OBJECT_NAME(i.object_id) = '.q($Q), $h) as $J) {
             $I[$D]['descs'][$J['key_ordinal']] = ($J['is_descending_key'] ? '1' : null);
         }
 
-return $I;
+        return $I;
     }function adm_view($D)
     {
         global $g;
@@ -3655,7 +3655,7 @@ return $I;
             $I[preg_replace('~_.*~', '', $d)][] = $d;
         }
 
-return $I;
+        return $I;
     }function information_schema($l)
     {
         return false;
@@ -3718,7 +3718,7 @@ return $I;
             queries("EXEC sp_addextendedproperty @name = N'MS_Description', @value = ".$rb.", @level0type = N'Schema', @level0name = ".q(get_schema()).", @level1type = N'Table', @level1name = ".q($D).", @level2type = N'Column', @level2name = ".q($z));
         }
 
-return true;
+        return true;
     }function alter_indexes($Q, $c)
     {
         $w = [];
@@ -3735,7 +3735,7 @@ return true;
             }
         }
 
-return (! $w || queries('DROP INDEX '.implode(', ', $w))) && (! $jc || queries('ALTER TABLE '.table($Q).' DROP '.implode(', ', $jc)));
+        return (! $w || queries('DROP INDEX '.implode(', ', $w))) && (! $jc || queries('ALTER TABLE '.table($Q).' DROP '.implode(', ', $jc)));
     }function last_id()
     {
         global $g;
@@ -3761,7 +3761,7 @@ return (! $w || queries('DROP INDEX '.implode(', ', $w))) && (! $jc || queries('
             $r['target'][] = $J['PKCOLUMN_NAME'];
         }
 
-return $I;
+        return $I;
     }function truncate_tables($S)
     {
         return apply_queries('TRUNCATE TABLE', $S);
@@ -3790,7 +3790,7 @@ WHERE s.xtype = 'TR' AND s.name = ".q($D));
             $I['Statement'] = preg_replace('~^.+\s+AS\s+~isU', '', $I['text']);
         }
 
-return $I;
+        return $I;
     }function triggers($Q)
     {
         $I = [];
@@ -3803,7 +3803,7 @@ WHERE sys1.xtype = 'TR' AND sys2.name = ".q($Q)) as $J) {
             $I[$J['name']] = [$J['Timing'], $J['Event']];
         }
 
-return $I;
+        return $I;
     }function trigger_options()
     {
         return ['Timing' => ['AFTER', 'INSTEAD OF'], 'Event' => ['INSERT', 'UPDATE', 'DELETE'], 'Type' => ['AS']];
@@ -3817,7 +3817,7 @@ return $I;
             return $_GET['ns'];
         }
 
-return $g->result('SELECT SCHEMA_NAME()');
+        return $g->result('SELECT SCHEMA_NAME()');
     }function set_schema($Zg)
     {
         return true;
@@ -3847,7 +3847,7 @@ return $g->result('SELECT SCHEMA_NAME()');
             $Gh[$z] = array_keys($X);
         }
 
-return ['possible_drivers' => ['SQLSRV', 'MSSQL', 'PDO_DBLIB'], 'jush' => 'mssql', 'types' => $U, 'structured_types' => $Gh, 'unsigned' => [], 'operators' => ['=', '<', '>', '<=', '>=', '!=', 'LIKE', 'LIKE %%', 'IN', 'IS NULL', 'NOT LIKE', 'NOT IN', 'IS NOT NULL'], 'functions' => ['len', 'lower', 'round', 'upper'], 'grouping' => ['avg', 'count', 'count distinct', 'max', 'min', 'sum'], 'edit_functions' => [['date|time' => 'getdate'], ['int|decimal|real|float|money|datetime' => '+/-', 'char|text' => '+']]];
+        return ['possible_drivers' => ['SQLSRV', 'MSSQL', 'PDO_DBLIB'], 'jush' => 'mssql', 'types' => $U, 'structured_types' => $Gh, 'unsigned' => [], 'operators' => ['=', '<', '>', '<=', '>=', '!=', 'LIKE', 'LIKE %%', 'IN', 'IS NULL', 'NOT LIKE', 'NOT IN', 'IS NOT NULL'], 'functions' => ['len', 'lower', 'round', 'upper'], 'grouping' => ['avg', 'count', 'count distinct', 'max', 'min', 'sum'], 'edit_functions' => [['date|time' => 'getdate'], ['int|decimal|real|float|money|datetime' => '+/-', 'char|text' => '+']]];
     }
 }$ic['mongo'] = 'MongoDB (alpha)';
 if (isset($_GET['mongo'])) {
@@ -3953,7 +3953,7 @@ if (isset($_GET['mongo'])) {
                     return $I;
                 }
 
-return array_values($I);
+                return array_values($I);
             }
 
             public function fetch_field()
@@ -3976,7 +3976,7 @@ return array_values($I);
                     $uh[$X] = ($Gb ? -1 : 1);
                 }
 
-return new Min_Result($this->_conn->_db->selectCollection($Q)->find([], $L)->sort($uh)->limit($_ != '' ? +$_ : 0)->skip($E * $_));
+                return new Min_Result($this->_conn->_db->selectCollection($Q)->find([], $L)->sort($uh)->limit($_ != '' ? +$_ : 0)->skip($E * $_));
             }
 
             public function insert($Q, $N)
@@ -4003,7 +4003,7 @@ return new Min_Result($this->_conn->_db->selectCollection($Q)->find([], $L)->sor
                 $I[] = $l['name'];
             }
 
-return $I;
+            return $I;
         }function count_tables($k)
         {
             global $g;
@@ -4012,7 +4012,7 @@ return $I;
                 $I[$l] = count($g->_link->selectDB($l)->getCollectionNames(true));
             }
 
-return $I;
+            return $I;
         }function tables_list()
         {
             global $g;
@@ -4028,7 +4028,7 @@ return $I;
                 }
             }
 
-return true;
+            return true;
         }function indexes($Q, $h = null)
         {
             global $g;
@@ -4040,7 +4040,7 @@ return true;
                 }$I[$w['name']] = ['type' => ($w['name'] == '_id_' ? 'PRIMARY' : ($w['unique'] ? 'UNIQUE' : 'INDEX')), 'columns' => array_keys($w['key']), 'lengths' => [], 'descs' => $cc];
             }
 
-return $I;
+            return $I;
         }function fields($Q)
         {
             return fields_from_edit();
@@ -4165,7 +4165,7 @@ return $I;
                     return $I;
                 }
 
-return array_values($I);
+                return array_values($I);
             }
 
             public function fetch_field()
@@ -4261,7 +4261,7 @@ return array_values($I);
                 }
             }
 
-return $I;
+            return $I;
         }function count_tables($k)
         {
             $I = [];
@@ -4275,7 +4275,7 @@ return $I;
                 $mb[$H->name] = 'table';
             }
 
-return $mb;
+            return $mb;
         }function drop_databases($k)
         {
             return false;
@@ -4292,7 +4292,7 @@ return $mb;
                 }$I[$w->name] = ['type' => ($w->name == '_id_' ? 'PRIMARY' : (isset($w->unique) ? 'UNIQUE' : 'INDEX')), 'columns' => $f, 'lengths' => [], 'descs' => $cc];
             }
 
-return $I;
+            return $I;
         }function fields($Q)
         {
             global $m;
@@ -4309,7 +4309,7 @@ return $I;
                 }
             }
 
-return $p;
+            return $p;
         }function found_rows($R, $Z)
         {
             global $g;
@@ -4331,7 +4331,7 @@ return $p;
                 $Z = [];
             }
 
-return where_to_query($Z, $jj);
+            return where_to_query($Z, $jj);
         }function where_to_query($ej = [], $fj = [])
         {
             global $b;
@@ -4378,7 +4378,7 @@ return where_to_query($Z, $jj);
                 }
             }
 
-return $Pb;
+            return $Pb;
         }$uf = ['=', '!=', '>', '<', '>=', '<=', 'regex', '(f)=', '(f)!=', '(f)>', '(f)<', '(f)>=', '(f)<=', '(date)=', '(date)!=', '(date)>', '(date)<', '(date)>=', '(date)<='];
     }function table($v)
     {
@@ -4396,7 +4396,7 @@ return $Pb;
             }
         }
 
-return $I;
+        return $I;
     }function create_database($l, $d)
     {
         return true;
@@ -4438,7 +4438,7 @@ return $I;
             return $g->error;
         }
 
-return $g;
+        return $g;
     }function alter_indexes($Q, $c)
     {
         global $g;
@@ -4459,7 +4459,7 @@ return $g;
             }
         }
 
-return true;
+        return true;
     }function support($Tc)
     {
         return preg_match('~database|indexes|descidx~', $Tc);
@@ -4500,7 +4500,7 @@ return true;
             }
         }
 
-return true;
+        return true;
     }function truncate_tables($S)
     {
         global $g;
@@ -4511,7 +4511,7 @@ return true;
             }
         }
 
-return true;
+        return true;
     }function driver_config()
     {
         global $uf;
@@ -4564,7 +4564,7 @@ if (isset($_GET['elastic'])) {
                     }
                 }
 
-return $I;
+                return $I;
             }
 
             public function query($Xf, $Bb = [], $Pe = 'GET')
@@ -4581,7 +4581,7 @@ return $I;
                     $this->server_info = $I['version']['number'];
                 }
 
-return (bool) $I;
+                return (bool) $I;
             }
 
             public function select_db($j)
@@ -4679,7 +4679,7 @@ return (bool) $I;
                 }$I[] = $J;
             }
 
-return new Min_Result($I);
+            return new Min_Result($I);
         }
 
         public function update($T, $_g, $wg, $_ = 0, $hh = "\n")
@@ -4692,7 +4692,7 @@ return new Min_Result($I);
                 return $this->_conn->query($G, $_g, 'POST');
             }
 
-return false;
+            return false;
         }
 
         public function insert($T, $_g)
@@ -4726,7 +4726,7 @@ return false;
                 }
             }
 
-return $this->_conn->affected_rows;
+            return $this->_conn->affected_rows;
         }
     }function connect()
     {
@@ -4739,7 +4739,7 @@ return $this->_conn->affected_rows;
             return $g;
         }
 
-return $g->error;
+        return $g->error;
     }function support($Tc)
     {
         return preg_match('~database|table|columns~', $Tc);
@@ -4758,7 +4758,7 @@ return $g->error;
             sort($I, SORT_STRING);
         }
 
-return $I;
+        return $I;
     }function collations()
     {
         return [];
@@ -4780,7 +4780,7 @@ return $I;
             }
         }
 
-return $I;
+        return $I;
     }function tables_list()
     {
         global $g;
@@ -4791,7 +4791,7 @@ return $I;
             $I = array_fill_keys(array_keys($I[$g->_db]['mappings']), 'table');
         }
 
-return $I;
+        return $I;
     }function table_status($D = '', $Sc = false)
     {
         global $g;
@@ -4807,7 +4807,7 @@ return $I;
             }
         }
 
-return $I;
+        return $I;
     }function error()
     {
         global $g;
@@ -4848,7 +4848,7 @@ return $I;
             }
         }
 
-return $I;
+        return $I;
     }function foreign_keys($Q)
     {
         return [];
@@ -4890,7 +4890,7 @@ return $I;
             $sg = ['properties' => $sg];
         }
 
-return $g->query("_mapping/{$D}", $sg, 'PUT');
+        return $g->query("_mapping/{$D}", $sg, 'PUT');
     }function drop_tables($S)
     {
         global $g;
@@ -4899,7 +4899,7 @@ return $g->query("_mapping/{$D}", $sg, 'PUT');
             $I = $I && $g->query(urlencode($Q), [], 'DELETE');
         }
 
-return $I;
+        return $I;
     }function last_id()
     {
         global $g;
@@ -4914,7 +4914,7 @@ return $I;
             $Gh[$z] = array_keys($X);
         }
 
-return ['possible_drivers' => ['json + allow_url_fopen'], 'jush' => 'elastic', 'operators' => ['=', 'query'], 'functions' => [], 'grouping' => [], 'edit_functions' => [['json']], 'types' => $U, 'structured_types' => $Gh];
+        return ['possible_drivers' => ['json + allow_url_fopen'], 'jush' => 'elastic', 'operators' => ['=', 'query'], 'functions' => [], 'grouping' => [], 'edit_functions' => [['json']], 'types' => $U, 'structured_types' => $Gh];
     }
 }class Adminer
 {
@@ -4991,7 +4991,7 @@ return ['possible_drivers' => ['json + allow_url_fopen'], 'jush' => 'elastic', '
             $I[] = "$q?v=".crc32(file_get_contents($q));
         }
 
-return $I;
+        return $I;
     }
 
     public function loginForm()
@@ -5011,7 +5011,7 @@ return $I;
             return sprintf('Adminer does not support accessing a database without a password, <a href="https://www.adminer.org/en/password/"%s>more information</a>.', target_blank());
         }
 
-return true;
+        return true;
     }
 
     public function tableName($Nh)
@@ -5068,7 +5068,7 @@ return true;
             $I = ", <a href='#$u'>".'Warnings'.'</a>'.script("qsl('a').onclick = partial(toggle, '$u');", '')."$I<div id='$u' class='hidden'>\n$bj</div>\n";
         }
 
-return "<p><code class='jush-$y'>".h(str_replace("\n", ' ', $G))."</code> <span class='time'>(".format_time($Ch).')</span>'.(support('sql') ? " <a href='".h(ME).'sql='.urlencode($G)."'>".'Edit'.'</a>' : '').$I;
+        return "<p><code class='jush-$y'>".h(str_replace("\n", ' ', $G))."</code> <span class='time'>(".format_time($Ch).')</span>'.(support('sql') ? " <a href='".h(ME).'sql='.urlencode($G)."'>".'Edit'.'</a>' : '').$I;
     }
 
     public function sqlCommandQuery($G)
@@ -5099,7 +5099,7 @@ return "<p><code class='jush-$y'>".h(str_replace("\n", ' ', $G))."</code> <span 
             $I = "<code class='jush-js'>$I</code>";
         }
 
-return $A ? "<a href='".h($A)."'".(is_url($A) ? target_blank() : '').">$I</a>" : $I;
+        return $A ? "<a href='".h($A)."'".(is_url($A) ? target_blank() : '').">$I</a>" : $I;
     }
 
     public function editVal($X, $o)
@@ -5224,7 +5224,7 @@ return $A ? "<a href='".h($A)."'".(is_url($A) ? target_blank() : '').">$I</a>" :
             }
         }
 
-return [$L, $qd];
+        return [$L, $qd];
     }
 
     public function selectSearchProcess($p, $x)
@@ -5266,7 +5266,7 @@ return [$L, $qd];
             }
         }
 
-return $I;
+        return $I;
     }
 
     public function selectOrderProcess($p, $x)
@@ -5278,7 +5278,7 @@ return $I;
             }
         }
 
-return $I;
+        return $I;
     }
 
     public function selectLimitProcess()
@@ -5318,7 +5318,7 @@ return $I;
             $I = "<a href='#$u' class='toggle'>".'Warnings'."</a>, $I<div id='$u' class='hidden'>\n$bj</div>\n";
         }
 
-return " <span class='time'>".@date('H:i:s').'</span>'." $I<div id='$_h' class='hidden'><pre><code class='jush-$y'>".shorten_utf8($G, 1000).'</code></pre>'.($di ? " <span class='time'>($di)</span>" : '').(support('sql') ? '<p><a href="'.h(str_replace('db='.urlencode(DB), 'db='.urlencode($_GET['db']), ME).'sql=&history='.(count($Ad[$_GET['db']]) - 1)).'">'.'Edit'.'</a>' : '').'</div>';
+        return " <span class='time'>".@date('H:i:s').'</span>'." $I<div id='$_h' class='hidden'><pre><code class='jush-$y'>".shorten_utf8($G, 1000).'</code></pre>'.($di ? " <span class='time'>($di)</span>" : '').(support('sql') ? '<p><a href="'.h(str_replace('db='.urlencode(DB), 'db='.urlencode($_GET['db']), ME).'sql=&history='.(count($Ad[$_GET['db']]) - 1)).'">'.'Edit'.'</a>' : '').'</div>';
     }
 
     public function editRowPrint($Q, $p, $J, $Ii)
@@ -5344,7 +5344,7 @@ return " <span class='time'>".@date('H:i:s').'</span>'." $I<div id='$_h' class='
             $I = 'Auto Increment';
         }
 
-return explode('/', $I);
+        return explode('/', $I);
     }
 
     public function editInput($Q, $o, $Ha, $Y)
@@ -5353,7 +5353,7 @@ return explode('/', $I);
             return (isset($_GET['select']) ? "<label><input type='radio'$Ha value='-1' checked><i>".'original'.'</i></label> ' : '').($o['null'] ? "<label><input type='radio'$Ha value=''".($Y !== null || isset($_GET['select']) ? '' : ' checked').'><i>NULL</i></label> ' : '').enum_input('radio', $Ha, $o, $Y, 0);
         }
 
-return '';
+        return '';
     }
 
     public function editHint($Q, $o, $Y)
@@ -5381,7 +5381,7 @@ return '';
             $I = "$s($I)";
         }
 
-return unconvert_field($o, $I);
+        return unconvert_field($o, $I);
     }
 
     public function dumpOutput()
@@ -5391,7 +5391,7 @@ return unconvert_field($o, $I);
             $I['gz'] = 'gzip';
         }
 
-return $I;
+        return $I;
     }
 
     public function dumpFormat()
@@ -5498,7 +5498,7 @@ return $I;
             ob_start('ob_gzencode', 1e6);
         }
 
-return $Mc;
+        return $Mc;
     }
 
     public function importServerPath()
@@ -5694,7 +5694,7 @@ if (! defined('DRIVER')) {
                     $this->error = mysql_error();
                 }
 
-return (bool) $this->_link;
+                return (bool) $this->_link;
             }
 
             public function set_charset($Za)
@@ -5705,7 +5705,7 @@ return (bool) $this->_link;
                     }mysql_set_charset('utf8', $this->_link);
                 }
 
-return $this->query("SET NAMES $Za");
+                return $this->query("SET NAMES $Za");
             }
 
             public function quote($P)
@@ -5734,7 +5734,7 @@ return $this->query("SET NAMES $Za");
                     return true;
                 }
 
-return new Min_Result($H);
+                return new Min_Result($H);
             }
 
             public function multi_query($G)
@@ -5759,7 +5759,7 @@ return new Min_Result($H);
                     return false;
                 }
 
-return mysql_result($H->_result, 0, $o);
+                return mysql_result($H->_result, 0, $o);
             }
         }class Min_Result
         {
@@ -5868,7 +5868,7 @@ return mysql_result($H->_result, 0, $o);
                 $te += strlen($Y) + 2;
             }
 
-return queries($ig.implode(",\n", $Ti).$Jh);
+            return queries($ig.implode(",\n", $Ti).$Jh);
         }
 
         public function slowQuery($G, $ei)
@@ -5926,13 +5926,13 @@ return queries($ig.implode(",\n", $Ti).$Jh);
                 $U['json'] = 4294967295;
             }
 
-return $g;
+            return $g;
         }$I = $g->error;
         if (function_exists('iconv') && ! is_utf8($I) && strlen($Xg = iconv('windows-1250', 'utf-8', $I)) > strlen($I)) {
             $I = $Xg;
         }
 
-return $I;
+        return $I;
     }function get_databases($dd)
     {
         $I = get_session('dbs');
@@ -5944,7 +5944,7 @@ return $I;
             stop_session();
         }
 
-return $I;
+        return $I;
     }function limit($G, $Z, $_, $hf = 0, $hh = ' ')
     {
         return " $G$Z".($_ !== null ? $hh."LIMIT $_".($hf ? " OFFSET $hf" : '') : '');
@@ -5962,7 +5962,7 @@ return $I;
             $I = $lb[$C[1]][-1];
         }
 
-return $I;
+        return $I;
     }function engines()
     {
         $I = [];
@@ -5972,7 +5972,7 @@ return $I;
             }
         }
 
-return $I;
+        return $I;
     }function logged_user()
     {
         global $g;
@@ -5988,7 +5988,7 @@ return $I;
             $I[$l] = count(get_vals('SHOW TABLES IN '.idf_escape($l)));
         }
 
-return $I;
+        return $I;
     }function table_status($D = '', $Sc = false)
     {
         $I = [];
@@ -6002,7 +6002,7 @@ return $I;
             }$I[$J['Name']] = $J;
         }
 
-return $I;
+        return $I;
     }function is_view($R)
     {
         return $R['Engine'] === null;
@@ -6017,7 +6017,7 @@ return $I;
             $I[$J['Field']] = ['field' => $J['Field'], 'full_type' => $J['Type'], 'type' => $C[1], 'length' => $C[2], 'unsigned' => ltrim($C[3].$C[4]), 'default' => ($J['Default'] != '' || preg_match('~char|set~', $C[1]) ? (preg_match('~text~', $C[1]) ? stripslashes(preg_replace("~^'(.*)'\$~", '\1', $J['Default'])) : $J['Default']) : null), 'null' => ($J['Null'] == 'YES'), 'auto_increment' => ($J['Extra'] == 'auto_increment'), 'on_update' => (preg_match('~^on update (.+)~i', $J['Extra'], $C) ? $C[1] : ''), 'collation' => $J['Collation'], 'privileges' => array_flip(preg_split('~, *~', $J['Privileges'])), 'comment' => $J['Comment'], 'primary' => ($J['Key'] == 'PRI'), 'generated' => preg_match('~^(VIRTUAL|PERSISTENT|STORED)~', $J['Extra'])];
         }
 
-return $I;
+        return $I;
     }function indexes($Q, $h = null)
     {
         $I = [];
@@ -6029,7 +6029,7 @@ return $I;
             $I[$D]['descs'][] = null;
         }
 
-return $I;
+        return $I;
     }function foreign_keys($Q)
     {
         global $g,$pf;
@@ -6045,7 +6045,7 @@ return $I;
             }
         }
 
-return $I;
+        return $I;
     }function adm_view($D)
     {
         global $g;
@@ -6065,7 +6065,7 @@ return $I;
             asort($I[$z]);
         }
 
-return $I;
+        return $I;
     }function information_schema($l)
     {
         return (min_version(5) && $l == 'information_schema') || (min_version(5.5) && $l == 'performance_schema');
@@ -6100,7 +6100,7 @@ return $I;
             drop_databases($I ? [DB] : []);
         }
 
-return $I;
+        return $I;
     }function auto_increment()
     {
         $La = ' PRIMARY KEY';
@@ -6115,7 +6115,7 @@ return $I;
             }
         }
 
-return " AUTO_INCREMENT$La";
+        return " AUTO_INCREMENT$La";
     }function alter_table($Q, $D, $p, $fd, $rb, $yc, $d, $Ka, $Tf)
     {
         $c = [];
@@ -6131,14 +6131,14 @@ return " AUTO_INCREMENT$La";
             $c[] = ltrim($O);
         }
 
-return $c || $Tf ? queries('ALTER TABLE '.table($Q)."\n".implode(",\n", $c).$Tf) : true;
+        return $c || $Tf ? queries('ALTER TABLE '.table($Q)."\n".implode(",\n", $c).$Tf) : true;
     }function alter_indexes($Q, $c)
     {
         foreach ($c as $z => $X) {
             $c[$z] = ($X[2] == 'DROP' ? "\nDROP INDEX ".idf_escape($X[1]) : "\nADD $X[0] ".($X[0] == 'PRIMARY' ? 'KEY ' : '').($X[1] != '' ? idf_escape($X[1]).' ' : '').'('.implode(', ', $X[2]).')');
         }
 
-return queries('ALTER TABLE '.table($Q).implode(',', $c));
+        return queries('ALTER TABLE '.table($Q).implode(',', $c));
     }function truncate_tables($S)
     {
         return apply_queries('TRUNCATE TABLE', $S);
@@ -6166,10 +6166,10 @@ return queries('ALTER TABLE '.table($Q).implode(',', $c));
                 }
             }
 
-return true;
+            return true;
         }
 
-return false;
+        return false;
     }function copy_tables($S, $Yi, $Wh)
     {
         queries("SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO'");
@@ -6191,7 +6191,7 @@ return false;
             }
         }
 
-return true;
+        return true;
     }function trigger($D)
     {
         if ($D == '') {
@@ -6206,7 +6206,7 @@ return true;
             $I[$J['Trigger']] = [$J['Timing'], $J['Event']];
         }
 
-return $I;
+        return $I;
     }function trigger_options()
     {
         return ['Timing' => ['BEFORE', 'AFTER'], 'Event' => ['INSERT', 'UPDATE', 'DELETE'], 'Type' => ['FOR EACH ROW']];
@@ -6227,7 +6227,7 @@ return $I;
             return ['fields' => $p, 'definition' => $C[11]];
         }
 
-return ['fields' => $p, 'returns' => ['type' => $C[12], 'length' => $C[13], 'unsigned' => $C[15], 'collation' => $C[16]], 'definition' => $C[17], 'language' => 'SQL'];
+        return ['fields' => $p, 'returns' => ['type' => $C[12], 'length' => $C[13], 'unsigned' => $C[15], 'collation' => $C[16]], 'definition' => $C[17], 'language' => 'SQL'];
     }function routines()
     {
         return get_rows('SELECT ROUTINE_NAME AS SPECIFIC_NAME, ROUTINE_NAME, ROUTINE_TYPE, DTD_IDENTIFIER FROM information_schema.ROUTINES WHERE ROUTINE_SCHEMA = '.q(DB));
@@ -6268,7 +6268,7 @@ return ['fields' => $p, 'returns' => ['type' => $C[12], 'length' => $C[13], 'uns
             $I = preg_replace('~ AUTO_INCREMENT=\d+~', '', $I);
         }
 
-return $I;
+        return $I;
     }function truncate_sql($Q)
     {
         return 'TRUNCATE '.table($Q);
@@ -6282,7 +6282,7 @@ return $I;
             $I .= "\nCREATE TRIGGER ".idf_escape($J['Trigger'])." $J[Timing] $J[Event] ON ".table($J['Table'])." FOR EACH ROW\n$J[Statement];;\n";
         }
 
-return $I;
+        return $I;
     }function show_variables()
     {
         return get_key_vals('SHOW VARIABLES');
@@ -6311,7 +6311,7 @@ return $I;
             $I = (min_version(8) ? 'ST_' : '')."GeomFromText($I, SRID($o[field]))";
         }
 
-return $I;
+        return $I;
     }function support($Tc)
     {
         return ! preg_match('~scheme|sequence|type|view_trigger|materializedview'.(min_version(8) ? '' : '|descidx'.(min_version(5.1) ? '' : '|event|partitioning'.(min_version(5) ? '' : '|routine|trigger|view'))).'~', $Tc);
@@ -6335,7 +6335,7 @@ return $I;
             $Gh[$z] = array_keys($X);
         }
 
-return ['possible_drivers' => ['MySQLi', 'MySQL', 'PDO_MySQL'], 'jush' => 'sql', 'types' => $U, 'structured_types' => $Gh, 'unsigned' => ['unsigned', 'zerofill', 'unsigned zerofill'], 'operators' => ['=', '<', '>', '<=', '>=', '!=', 'LIKE', 'LIKE %%', 'REGEXP', 'IN', 'FIND_IN_SET', 'IS NULL', 'NOT LIKE', 'NOT REGEXP', 'NOT IN', 'IS NOT NULL', 'SQL'], 'functions' => ['char_length', 'date', 'from_unixtime', 'lower', 'round', 'floor', 'ceil', 'sec_to_time', 'time_to_sec', 'upper'], 'grouping' => ['avg', 'count', 'count distinct', 'group_concat', 'max', 'min', 'sum'], 'edit_functions' => [['char' => 'md5/sha1/password/encrypt/uuid', 'binary' => 'md5/sha1', 'date|time' => 'now'], [number_type() => '+/-', 'date' => '+ interval/- interval', 'time' => 'addtime/subtime', 'char|text' => 'concat']]];
+        return ['possible_drivers' => ['MySQLi', 'MySQL', 'PDO_MySQL'], 'jush' => 'sql', 'types' => $U, 'structured_types' => $Gh, 'unsigned' => ['unsigned', 'zerofill', 'unsigned zerofill'], 'operators' => ['=', '<', '>', '<=', '>=', '!=', 'LIKE', 'LIKE %%', 'REGEXP', 'IN', 'FIND_IN_SET', 'IS NULL', 'NOT LIKE', 'NOT REGEXP', 'NOT IN', 'IS NOT NULL', 'SQL'], 'functions' => ['char_length', 'date', 'from_unixtime', 'lower', 'round', 'floor', 'ceil', 'sec_to_time', 'time_to_sec', 'upper'], 'grouping' => ['avg', 'count', 'count distinct', 'group_concat', 'max', 'min', 'sum'], 'edit_functions' => [['char' => 'md5/sha1/password/encrypt/uuid', 'binary' => 'md5/sha1', 'date|time' => 'now'], [number_type() => '+/-', 'date' => '+ interval/- interval', 'time' => 'addtime/subtime', 'char|text' => 'concat']]];
     }
 }$vb = driver_config();
 $hg = $vb['possible_drivers'];
@@ -6463,7 +6463,7 @@ var thousandsSeparator = \'',js_escape(','),'\';
         $bf = base64_encode(rand_string());
     }
 
-return $bf;
+    return $bf;
 }function page_messages($n)
 {
     $Ji = preg_replace('~^[^?]*~', '', $_SERVER['REQUEST_URI']);
@@ -6501,7 +6501,7 @@ return $bf;
         $Ue += 4294967296;
     }
 
-return (int) $Ue;
+    return (int) $Ue;
 }function long2str($W, $aj)
 {
     $Xg = '';
@@ -6511,7 +6511,7 @@ return (int) $Ue;
         return substr($Xg, 0, end($W));
     }
 
-return $Xg;
+    return $Xg;
 }function str2long($Xg, $aj)
 {
     $W = array_values(unpack('V*', str_pad($Xg, 4 * ceil(strlen($Xg) / 4), "\0")));
@@ -6519,7 +6519,7 @@ return $Xg;
         $W[] = strlen($Xg);
     }
 
-return $W;
+    return $W;
 }function xxtea_mx($mj, $lj, $Kh, $fe)
 {
     return int32((($mj >> 5 & 0x7FFFFFF) ^ $lj << 2) + (($lj >> 3 & 0x1FFFFFFF) ^ $mj << 4)) ^ int32(($Kh ^ $lj) + ($fe ^ $mj));
@@ -6548,7 +6548,7 @@ return $W;
         $W[$Ue] = $mj;
     }
 
-return long2str($W, false);
+    return long2str($W, false);
 }function decrypt_string($Fh, $z)
 {
     if ($Fh == '') {
@@ -6576,7 +6576,7 @@ return long2str($W, false);
         $Kh = int32($Kh - 0x9E3779B9);
     }
 
-return long2str($W, true);
+    return long2str($W, true);
 }$g = '';
 $yd = $_SESSION['token'];
 if (! $yd) {
@@ -6819,7 +6819,7 @@ if ($_POST) {
         }
     }
 
-return $I;
+    return $I;
 }function adminer_settings()
 {
     parse_str($_COOKIE['adminer_settings'], $oh);
@@ -6948,7 +6948,7 @@ return $I;
         return false;
     }
 
-return true;
+    return true;
 }function normalize_enum($C)
 {
     return "'".str_replace("'", "''", addcslashes(stripcslashes(str_replace($C[0][0].$C[0][0], $C[0][0], substr($C[0], 1, -1))), '\\'))."'";
@@ -6960,7 +6960,7 @@ return true;
         return $od == 'GRANT' ? queries("$od ALL PRIVILEGES$of WITH GRANT OPTION") : queries("$od ALL PRIVILEGES$of") && queries("$od GRANT OPTION$of");
     }
 
-return queries("$od ".preg_replace('~(GRANT OPTION)\([^)]*\)~', '\1', implode("$f, ", $pg).$f).$of);
+    return queries("$od ".preg_replace('~(GRANT OPTION)\([^)]*\)~', '\1', implode("$f, ", $pg).$f).$of);
 }function drop_create($jc, $i, $kc, $ai, $mc, $B, $Ne, $Le, $Me, $lf, $Ye)
 {
     if ($_POST['drop']) {
@@ -7024,7 +7024,7 @@ return queries("$od ".preg_replace('~(GRANT OPTION)\([^)]*\)~', '\1', implode("$
         case 'k':$X *= 1024;
     }
 
-return $X;
+    return $X;
 }function doc_link($Yf, $bi = '<sup>?</sup>')
 {
     global $y,$g;
@@ -7036,7 +7036,7 @@ return $X;
         $Yf['sql'] = (isset($Yf['mariadb']) ? $Yf['mariadb'] : str_replace('.html', '/', $Yf['sql']));
     }
 
-return $Yf[$y] ? "<a href='".h($Li[$y].$Yf[$y])."'".target_blank().">$bi</a>" : '';
+    return $Yf[$y] ? "<a href='".h($Li[$y].$Yf[$y])."'".target_blank().">$bi</a>" : '';
 }function ob_gzencode($P)
 {
     return gzencode($P);
@@ -7050,7 +7050,7 @@ return $Yf[$y] ? "<a href='".h($Li[$y].$Yf[$y])."'".target_blank().">$bi</a>" : 
         $I += $R['Data_length'] + $R['Index_length'];
     }
 
-return format_number($I);
+    return format_number($I);
 }function set_utf8mb4($i)
 {
     global $g;

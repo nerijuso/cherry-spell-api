@@ -24,7 +24,6 @@ class FunnelController extends Controller
     {
         $lead = (new GenerateFunnelLead())($funnel, $request);
 
-
         return new FunnelQuizDataResource($lead);
     }
 }

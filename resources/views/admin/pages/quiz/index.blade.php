@@ -37,19 +37,17 @@
                 <div class="card">
                     <table class="table table-hover">
                         <tr>
-                            <th nowrap>ID</th>
-                            <th nowrap>Topic</th>
-                            <th nowrap>Name</th>
-                            <th nowrap>Active</th>
-                            <th nowrap>Created at</th>
+                            <th nowrap>{{ trans('admin.page.quiz.content.id') }}</th>
+                            <th nowrap>{{ trans('admin.page.quiz.content.name') }}</th>
+                            <th nowrap>{{ trans('admin.page.quiz.content.is_active') }}</th>
+                            <th nowrap>{{ trans('admin.page.quiz.content.created_at') }}</th>
                             <th nowrap></th>
                         </tr>
                         @foreach($items as $item)
                             <tr>
                                 <td nowrap>{{ $item->id }}</td>
-                                <td nowrap>{{ $item->topic->topic }}</td>
                                 <td nowrap>{{ $item->title }}</td>
-                                <td nowrap>{{ $item->is_published ? 'Yes' : 'No' }}</td>
+                                <td nowrap>{{ $item->is_published ? trans('admin.page.quiz.content.yes') : trans('admin.page.quiz.content.no') }}</td>
                                 <td nowrap>{{ $item->created_at }}</td>
                                 <td class="text-right">
                                     <a href="{{ route('admin.quizzes.edit', $item->id) }}">
