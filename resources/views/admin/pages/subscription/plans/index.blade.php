@@ -7,7 +7,7 @@
 @section('page_head_buttons')
     <div class="col-auto ms-auto d-print-none">
         <div class="btn-list">
-            <a href="{{route('admin.subscription.plans.create') }}" class="btn btn-primary d-none d-sm-inline-block">
+            <a href="{{route('admin.subscriptions.plans.create') }}" class="btn btn-primary d-none d-sm-inline-block">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 5l0 14"></path><path d="M5 12l14 0"></path></svg>
                 {{ trans('admin.page.subscription.buttons.create_plan') }}
             </a>
@@ -18,7 +18,7 @@
 @section('content')
     <div class="box">
         <div class="box-header">
-            <form name="filter" action="{{ route('admin.subscription.plans') }}" method="GET">
+            <form name="filter" action="{{ route('admin.subscriptions.plans') }}" method="GET">
                 <div class="row mb-3">
                     <div class="col-lg-4 col-md-3">
                         <div class="form-group">
@@ -40,7 +40,7 @@
                             <th nowrap>{{ trans('admin.page.subscription.content.id') }}</th>
                             <th nowrap>{{ trans('admin.page.subscription.content.name') }}</th>
                             <th nowrap>{{ trans('admin.page.subscription.content.price') }}</th>
-                            <th nowrap>{{ trans('admin.page.subscription.content.is_active') }}</th>
+                            <th nowrap>{{ trans('admin.page.subscription.content.is_hidden') }}</th>
                             <th nowrap>{{ trans('admin.page.subscription.content.created_at') }}</th>
                             <th nowrap></th>
                         </tr>
@@ -52,7 +52,7 @@
                                 <td nowrap>{{ $item->is_hidden ? trans('admin.page.subscription.content.yes') : trans('admin.page.subscription.content.no') }}</td>
                                 <td nowrap>{{ $item->created_at }}</td>
                                 <td class="text-right">
-                                    <a href="{{ route('admin.subscription.plan.edit', $item->id) }}">
+                                    <a href="{{ route('admin.subscriptions.plans.edit', $item->id) }}">
                                         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-edit"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" /><path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" /><path d="M16 5l3 3" /></svg>
                                     </a>
                                 </td>

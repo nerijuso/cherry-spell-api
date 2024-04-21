@@ -12,7 +12,7 @@ class SubscriptionPlan extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'description' => 'array',
+        'description' => 'string',
         'is_popular' => 'boolean',
         'has_trial' => 'boolean',
         'is_hidden' => 'boolean',

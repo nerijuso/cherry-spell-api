@@ -3,10 +3,10 @@
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\VarDumper\VarDumper;
 
-if (! function_exists('auth_admin')) {
-    function auth_admin()
+if (! function_exists('auth_user')) {
+    function auth_user()
     {
-        return Auth::guard('admins')->user();
+        return Auth::guard()->user();
     }
 }
 

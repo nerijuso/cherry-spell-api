@@ -35,7 +35,9 @@ class FunnelQuestionOptionController extends Controller
             'option' => 'required|min:1|max:255',
             'order' => 'required|int|min:1|max:255',
             'is_active' => 'boolean',
-            'file' => 'file|image',
+            'media_file_name_1x' => 'file|image',
+            'media_file_name_2x' => 'file|image',
+            'media_file_name_3x' => 'file|image',
         ]);
 
         DB::transaction(function () use ($request, $question) {
@@ -45,7 +47,9 @@ class FunnelQuestionOptionController extends Controller
                 'order' => $request->order,
                 'is_active' => (bool) $request->is_active,
             ]);
-            $questionOption->saveFile($request->file);
+            $questionOption->saveFile($request->media_file_name_1x, null, '1x');
+            $questionOption->saveFile($request->media_file_name_2x, null, '2x');
+            $questionOption->saveFile($request->media_file_name_3x, null, '3x');
 
             return $questionOption;
         });
@@ -53,25 +57,29 @@ class FunnelQuestionOptionController extends Controller
         return redirect(route('admin.quizzes.questions.edit', ['quiz' => $quiz->id, 'question' => $question->id]));
     }
 
-    public function update(FunnelQuizQuestion $quiz, FunnelQuizQuestion $question, FunnelQuizQuestionOption $option, Request $request)
+    public function update(FunnelQuizQuestion $quiz, FunnelQuizQuestion $question, FunnelQuizQuestionOption $questionOption, Request $request)
     {
         $request->validate([
             'option' => 'required|min:1|max:255',
             'order' => 'required|int|min:1|max:255',
             'is_active' => 'boolean',
-            'file' => 'file|image',
+            'media_file_name_1x' => 'file|image',
+            'media_file_name_2x' => 'file|image',
+            'media_file_name_3x' => 'file|image',
         ]);
 
-        DB::transaction(function () use ($request, $option) {
-            $option->update([
+        DB::transaction(function () use ($request, $questionOption) {
+            $questionOption->update([
                 'option' => $request->option,
                 'order' => $request->order,
                 'is_active' => (bool) $request->is_active,
             ]);
 
-            $option->saveFile($request->file);
+            $questionOption->saveFile($request->media_file_name_1x, null, '1x');
+            $questionOption->saveFile($request->media_file_name_2x, null, '2x');
+            $questionOption->saveFile($request->media_file_name_3x, null, '3x');
 
-            return $option;
+            return $questionOption;
         });
 
         $request->session()->flash('alert-success', 'Task was successful!');
@@ -79,9 +87,9 @@ class FunnelQuestionOptionController extends Controller
         return redirect(route('admin.quizzes.questions.edit', ['quiz' => $quiz->id, 'question' => $question->id]));
     }
 
-    public function removeImage(FunnelQuiz $quiz, FunnelQuizQuestion $question, FunnelQuizQuestionOption $option)
+    public function removeImage(FunnelQuiz $quiz, FunnelQuizQuestion $question, FunnelQuizQuestionOption $option, $size)
     {
-        $option->removeFile();
+        $option->removeFile($size);
 
         return back();
     }

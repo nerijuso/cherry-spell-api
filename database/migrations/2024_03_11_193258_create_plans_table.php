@@ -14,14 +14,12 @@ return new class extends Migration
         Schema::create('subscription_plans', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('key')->unique();
+            $table->string('ref_id')->unique()->nullable();
             $table->decimal('old_price')->nullable();
             $table->decimal('price')->default(0);
             $table->boolean('is_popular')->default(false)->index();
             $table->boolean('has_trial')->default(false)->index();
             $table->boolean('is_hidden')->default(false)->index();
-            $table->string('currency')->default('USD');
-            $table->string('currency_symbol')->default('$');
             $table->integer('trial_days')->unsigned()->nullable();
             $table->integer('sort')->default(0);
             $table->json('description');

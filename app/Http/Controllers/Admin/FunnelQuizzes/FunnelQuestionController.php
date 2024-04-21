@@ -38,7 +38,9 @@ class FunnelQuestionController extends Controller
             'question' => 'required|min:1|max:255',
             'order' => 'required|int|min:1|max:255',
             'is_active' => 'boolean',
-            'file' => 'file|image',
+            'media_file_name_1x' => 'file|image',
+            'media_file_name_2x' => 'file|image',
+            'media_file_name_3x' => 'file|image',
         ]);
 
         $question = DB::transaction(function () use ($request, $quiz) {
@@ -49,7 +51,9 @@ class FunnelQuestionController extends Controller
                 'order' => $request->order,
                 'is_active' => (bool) $request->is_active,
             ]);
-            $question->saveFile($request->file);
+            $question->saveFile($request->media_file_name_1x, null, '1x');
+            $question->saveFile($request->media_file_name_2x, null, '2x');
+            $question->saveFile($request->media_file_name_3x, null, '3x');
 
             return $question;
         });
@@ -60,11 +64,13 @@ class FunnelQuestionController extends Controller
     public function update(FunnelQuizQuestion $quiz, FunnelQuizQuestion $question, Request $request)
     {
         $request->validate([
-            'type' => 'required|string|in:'.implode(',', QuizQuestionType::all()),
+            'type' => 'required|string|in:'.implode(',', FunnelQuizQuestionType::all()),
             'question' => 'required|min:1|max:255',
             'order' => 'required|int|min:1|max:255',
             'is_active' => 'boolean',
-            'file' => 'file|image',
+            'media_file_name_1x' => 'file|image',
+            'media_file_name_2x' => 'file|image',
+            'media_file_name_3x' => 'file|image',
         ]);
 
         DB::transaction(function () use ($request, $question) {
@@ -75,7 +81,9 @@ class FunnelQuestionController extends Controller
                 'is_active' => (bool) $request->is_active,
             ]);
 
-            $question->saveFile($request->file);
+            $question->saveFile($request->media_file_name_1x, null, '1x');
+            $question->saveFile($request->media_file_name_2x, null, '2x');
+            $question->saveFile($request->media_file_name_3x, null, '3x');
 
             return $question;
         });
@@ -85,9 +93,9 @@ class FunnelQuestionController extends Controller
         return back();
     }
 
-    public function removeImage(FunnelQuizQuestion $quiz, FunnelQuizQuestion $question)
+    public function removeImage(FunnelQuizQuestion $quiz, FunnelQuizQuestion $question, $size)
     {
-        $question->removeFile();
+        $question->removeFile($size);
 
         return back();
     }

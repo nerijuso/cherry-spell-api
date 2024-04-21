@@ -1,0 +1,267 @@
+[
+    {
+        "question": "What is your gender?",
+        "type": "single",
+        "description": null,
+        "options": [
+            {
+                "name": "Male",
+                "description": null
+            },
+            {
+                "name": "Female",
+                "description": null
+            }
+        ]
+    },
+    {
+        "question": "What's your age?",
+        "description": "Different age groups have varying concerns, challenges, and priorities in relationships.",
+        "type": "single",
+        "options": [
+            {
+                "name": "18-25",
+                "description": null
+            },
+            {
+                "name": "26-35",
+                "description": null
+            },
+            {
+                "name": "36-45",
+                "description": null
+            },
+            {
+                "name": "46-65",
+                "description": null
+            },
+            {
+                "name":  "66+",
+                "description": null
+            }
+        ]
+    },
+    {
+        "question": "How long have you been together with your partner?",
+        "type": "single",
+        "description": null,
+        "options": [
+            {
+                "name": "Less than a year",
+                "description": null
+            },
+            {
+                "name": "1-3 years",
+                "description": null
+            },
+            {
+                "name": "3-5 years",
+                "description": null
+            },
+            {
+                "name": "5-10 years",
+                "description": null
+            },
+            {
+                "name":  "10+",
+                "description": null
+            }
+        ]
+    },
+    {
+        "question": "Do you have kids?",
+        "description": "Select all that apply.",
+        "type": "multi_select",
+        "options": [
+            {
+                "name": "No kids",
+                "description": "Help text",
+                "media_file_name_1x": "demo/data/images/question_options/close_circle.png",
+                "media_file_name_2x": "demo/data/images/question_options/close_circle@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/close_circle@3x.png"
+            },
+            {
+                "name": "Baby",
+                "description": "Under 1 year",
+                "media_file_name_1x": "demo/data/images/question_options/crib.png",
+                "media_file_name_2x": "demo/data/images/question_options/crib@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/crib@3x.png"
+            },
+            {
+                "name": "Young children",
+                "description": "Up to 4 year",
+                "media_file_name_1x": "demo/data/images/question_options/child.png",
+                "media_file_name_2x": "demo/data/images/question_options/child@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/child@3x.png"
+            },
+            {
+                "name": "School age children",
+                "description": "Up to 4 years",
+                "media_file_name_1x": "demo/data/images/question_options/smile.png",
+                "media_file_name_2x": "demo/data/images/question_options/smile@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/smile@3x.png"
+            },
+            {
+                "name": "Teenage",
+                "description": "Up to 12 years",
+                "media_file_name_1x": "demo/data/images/question_options/teenage.png",
+                "media_file_name_2x": "demo/data/images/question_options/teenage@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/teenage@3x.png"
+            }
+        ]
+    },
+    {
+        "question": "What do you want to improve in your relationship?",
+        "description": "Select all that apply.",
+        "type": "multi_select",
+        "options": [
+            {
+                "name": "I want to enjoy sex again",
+                "description": null,
+                "media_file_name_1x": "demo/data/images/question_options/fire_hot.png",
+                "media_file_name_2x": "demo/data/images/question_options/fire_hot@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/fire_hot@3x.png"
+            },
+            {
+                "name": "I want to improve sex life",
+                "description": null,
+                "media_file_name_1x": "demo/data/images/question_options/love_life.png",
+                "media_file_name_2x": "demo/data/images/question_options/love_life@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/love_life@3x.png"
+            },
+            {
+                "name": "I want to feel more connected with my partner",
+                "description": null,
+                "media_file_name_1x": "demo/data/images/question_options/support.png",
+                "media_file_name_2x": "demo/data/images/question_options/support@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/support@3x.png"
+            },
+            {
+                "name": "I want my body to respond differently during sex",
+                "description": null,
+                "media_file_name_1x": "demo/data/images/question_options/person.png",
+                "media_file_name_2x": "demo/data/images/question_options/person@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/person@3x.png"
+            },
+            {
+                "name": "I want to feel less anxious about sex",
+                "description": null,
+                "media_file_name_1x": "demo/data/images/question_options/calm.png",
+                "media_file_name_2x": "demo/data/images/question_options/calm@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/calm@3x.png"
+            }
+        ]
+    },
+    {
+        "question": "Do you have any sex related issues?",
+        "description": "Choose any that you think apply:",
+        "type": "multi_select",
+        "options": [
+            {
+                "name": "Problems with low libido",
+                "description": null
+            },
+            {
+                "name": "Problems getting an orgasm",
+                "description": null
+            },
+            {
+                "name": "Orgasming too quickly",
+                "description": null
+            },
+            {
+                "name": "Difficulty with arousal/erection",
+                "description": null
+            },
+            {
+                "name": "Discomfort/Pain during sex",
+                "description": null
+            },
+            {
+                "name": "None",
+                "description": null
+            }
+        ]
+    },
+    {
+        "question": "Who is typically the initiator of sex in your relationship",
+        "description": null,
+        "type": "single",
+        "options": [
+            {
+                "name": "Me",
+                "description": null
+            },
+            {
+                "name": "Partner",
+                "description": null
+            },
+            {
+                "name": "Equal",
+                "description": null
+            },
+            {
+                "name": "Not sure",
+                "description": null
+            }
+        ]
+    },
+    {
+        "question": "How openly are you discussing sex issues with your partner?",
+        "description": null,
+        "type": "single",
+        "options": [
+            {
+                "name": "Very openly",
+                "description": null,
+                "media_file_name_1x": "demo/data/images/question_options/smile_happy.png",
+                "media_file_name_2x": "demo/data/images/question_options/smile_happy@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/smile_happy@3x.png"
+            },
+            {
+                "name": "Openly",
+                "description": null,
+                "media_file_name_1x": "demo/data/images/question_options/smile.png",
+                "media_file_name_2x": "demo/data/images/question_options/smile@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/smile@3x.png"
+            },
+            {
+                "name": "Not very open",
+                "description": null,
+                "media_file_name_1x": "demo/data/images/question_options/smile_neutral.png",
+                "media_file_name_2x": "demo/data/images/question_options/smile_neutral@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/smile_neutral@3x.png"
+            },
+            {
+                "name": "We don't talk",
+                "description": null,
+                "media_file_name_1x": "demo/data/images/question_options/smile_sad.png",
+                "media_file_name_2x": "demo/data/images/question_options/smile_sad@2x.png",
+                "media_file_name_3x": "demo/data/images/question_options/smile_sad@3x.png"
+            }
+        ]
+    },
+    {
+        "question": "On average, how often do you and your partner engage in sexual activity?",
+        "description": null,
+        "type": "single",
+        "options": [
+            {
+                "name": "Once a week",
+                "description": null
+            },
+            {
+                "name": "Once or twice a month",
+                "description": null
+            },
+            {
+                "name": "A few times a quarter",
+                "description": null
+            },
+            {
+                "name": "Less frequently",
+                "description": null
+            }
+        ]
+    }
+]

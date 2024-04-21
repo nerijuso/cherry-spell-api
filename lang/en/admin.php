@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'menu' => [
+        'logout' => 'Logout',
+        'profile' => 'User profile',
+    ],
     'aside' => [
         'users' => 'Users',
         'home' => 'Home',
@@ -153,6 +157,44 @@ return [
                 'id' => 'ID',
                 'code' => 'Question',
                 'created_at' => 'Created at',
+            ],
+        ],
+        'subscription' => [
+            'content_header' => [
+                'subscriptions' => 'Subscriptions',
+                'plans' => 'Subscription plans',
+                'edit' => 'Edit subscription plan',
+                'create' => 'Create subscription plan',
+            ],
+            'buttons' => [
+                'filter' => 'Filter',
+                'create_plan' => 'Create new plan'
+            ],
+            'form' => [
+                'filter_by_name' => 'Filter by name',
+                'name' => 'Name',
+                'is_active' => 'Is active',
+                'price' => 'Price',
+                'old_price' => 'Old Price',
+                'sort' => 'Sort (10, 20, 30...)',
+                'is_popular' => 'Is popular',
+                'is_hidden' => 'Is hidden',
+            ],
+            'messages' => [
+                'subscription_plan_created' => 'Subscription plan created',
+                'subscription_plan_updated' => 'Subscription plan updated'
+            ],
+            'content' => [
+                'id' => 'ID',
+                'name' => 'Name',
+                'price' => 'Price',
+                'user' => 'User name',
+                'plan' => 'Plan',
+                'is_active' => 'Is active',
+                'yes' => 'Yes',
+                'no' => 'No',
+                'created_at' => 'Created at',
+                'is_hidden' => 'Is hidden',
             ],
         ],
         'file_manager' => [

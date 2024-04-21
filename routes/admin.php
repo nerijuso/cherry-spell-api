@@ -37,14 +37,14 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('store', 'FunnelQuizzes\FunnelQuestionController@storeNew')->name('quizzes.questions.store');
             Route::get('{question}', 'FunnelQuizzes\FunnelQuestionController@edit')->name('quizzes.questions.edit')->whereNumber('question');
             Route::post('{question}', 'FunnelQuizzes\FunnelQuestionController@update')->name('quizzes.questions.update')->whereNumber('question');
-            Route::get('{question}/remove_image', 'FunnelQuizzes\FunnelQuestionController@removeImage')->name('quizzes.questions.remove_image')->whereNumber('question');
+            Route::get('{question}/remove_image/{size}', 'FunnelQuizzes\FunnelQuestionController@removeImage')->name('quizzes.questions.remove_image')->whereNumber('question');
 
             Route::group(['prefix' => '{question}/options'], function () {
                 Route::get('create', 'FunnelQuizzes\FunnelQuestionOptionController@create')->name('quizzes.questions.options.create');
                 Route::post('store', 'FunnelQuizzes\FunnelQuestionOptionController@storeNew')->name('quizzes.questions.options.store');
                 Route::get('{option}', 'FunnelQuizzes\FunnelQuestionOptionController@edit')->name('quizzes.questions.options.edit')->whereNumber('option');
                 Route::post('{option}', 'FunnelQuizzes\FunnelQuestionOptionController@update')->name('quizzes.questions.options.update')->whereNumber('option');
-                Route::get('{option}/remove_image', 'FunnelQuizzes\FunnelQuestionOptionController@removeImage')->name('quizzes.questions.options.remove_image')->whereNumber('option');
+                Route::get('{option}/remove_image/{size}', 'FunnelQuizzes\FunnelQuestionOptionController@removeImage')->name('quizzes.questions.options.remove_image')->whereNumber('option');
             })->whereNumber('question');
         })->whereNumber('quiz');
 
@@ -61,8 +61,12 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'subscriptions'], function () {
-        Route::get('/', 'SubscriptionController@index')->name('subscriptions');
-        Route::get('plans', 'SubscriptionController@view')->name('subscriptions.plans');
+        Route::get('/', 'Subscription\SubscriptionController@index')->name('subscriptions');
+        Route::get('plans', 'Subscription\SubscriptionPlansController@plans')->name('subscriptions.plans');
+        Route::get('plans/create', 'Subscription\SubscriptionPlansController@create')->name('subscriptions.plans.create');
+        Route::post('plans/store', 'Subscription\SubscriptionPlansController@store')->name('subscriptions.plans.store');
+        Route::get('plans/{subscriptionPlan}', 'Subscription\SubscriptionPlansController@edit')->name('subscriptions.plans.edit');
+        Route::post('plans/{subscriptionPlan}', 'Subscription\SubscriptionPlansController@update')->name('subscriptions.plans.update');
     });
 
     Route::group(['prefix' => 'app_questions'], function () {

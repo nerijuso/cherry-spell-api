@@ -32,7 +32,7 @@ class FunnelQuizController extends Controller
     {
         return view('admin.pages.quiz.edit', [
             'item' => $quiz,
-            'questions' => $quiz->questions()->orderBy('order')->get(),
+            'questions' => $quiz->funnelQuizQuestion()->orderBy('order')->get(),
         ]);
     }
 

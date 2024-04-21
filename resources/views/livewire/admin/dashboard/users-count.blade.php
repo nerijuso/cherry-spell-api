@@ -16,9 +16,7 @@
                 <div class="font-weight-medium">
                     {{ $users_count }} Users
                 </div>
-                <div class="text-secondary">
-                    {{ $users_with_qr_code }} user with qr code
-                </div>
+
             </div>
         </div>
     </div>

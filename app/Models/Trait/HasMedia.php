@@ -8,14 +8,34 @@ use Illuminate\Support\Str;
 
 trait HasMedia
 {
-    public function getPublicMediaUrlAttribute()
+    public function getPublicMediaUrl1xAttribute()
     {
-        return ($this->media_file_name) ? Storage::url($this->media_url) : null;
+        return ($this->media_file_name_1x) ? Storage::url($this->media_url_1x) : null;
     }
 
-    public function getMediaUrlAttribute()
+    public function getPublicMediaUrl2xAttribute()
     {
-        return $this->file_path.'/'.$this->media_file_name;
+        return ($this->media_file_name_2x) ? Storage::url($this->media_url_2x) : null;
+    }
+
+    public function getPublicMediaUrl3xAttribute()
+    {
+        return ($this->media_file_name_3x) ? Storage::url($this->media_url_3x) : null;
+    }
+
+    public function getMediaUrl1xAttribute()
+    {
+        return $this->file_path.'/'.$this->media_file_name_1x;
+    }
+
+    public function getMediaUrl2xAttribute()
+    {
+        return $this->file_path.'/'.$this->media_file_name_2x;
+    }
+
+    public function getMediaUrl3xAttribute()
+    {
+        return $this->file_path.'/'.$this->media_file_name_3x;
     }
 
     public function getFilePathAttribute()
@@ -23,10 +43,10 @@ trait HasMedia
         return Str::snake(class_basename(self::class));
     }
 
-    public function saveFile($file, $path = null)
+    public function saveFile($file, $path = null, $size = '')
     {
         if ($path === null) {
-            $path = $this->media_url;
+            $path = $this->{'media_url_'.$size};
         }
 
         if ($file != null && $path !== null) {
@@ -34,14 +54,16 @@ trait HasMedia
 
             if ($file instanceof UploadedFile) {
                 $name = $file->hashName();
-                $this->media_file_name = $fileName.'.'.pathinfo($name, PATHINFO_EXTENSION);
+                $this->{'media_file_name_'.$size} = $fileName.'.'.pathinfo($name, PATHINFO_EXTENSION);
 
-                Storage::putFileAs($this->file_path, $file, $this->media_file_name, ['visibility' => 'public']);
+                Storage::putFileAs($this->file_path, $file, $this->{'media_file_name_'.$size}, ['visibility' => 'public']);
             } else {
                 $content = @file_get_contents($file);
 
                 if ($content !== false) {
-                    Storage::put($this->media_url, $content, 'public');
+                    $pictureFileName = Str::random(40);
+                    $this->{'media_file_name_'.$size} = $pictureFileName.'.'.pathinfo($file, PATHINFO_EXTENSION);
+                    Storage::put($this->{'media_url_'.$size}, $content, 'public');
                 }
             }
 
@@ -49,13 +71,13 @@ trait HasMedia
         }
     }
 
-    public function removeFile()
+    public function removeFile($size)
     {
-        $fileName = $this->media_file_name;
+        $fileName = $this->{'media_file_name_'.$size};
 
         if (! is_null($fileName)) {
-            Storage::delete($this->media_url);
-            $this->media_file_name = null;
+            Storage::delete($this->{'media_url_'.$size});
+            $this->{'media_file_name_'.$size} = null;
             $this->save();
         }
     }
