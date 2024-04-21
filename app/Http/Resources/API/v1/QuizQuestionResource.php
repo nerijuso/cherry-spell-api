@@ -14,7 +14,11 @@ class QuizQuestionResource extends JsonResource
             'question' => $this->question,
             'order' => $this->order,
             'type' => $this->type,
-            'media_url' => $this->public_media_url,
+            'media_url' => [
+                '1x' => $this->public_media_url_1x,
+                '2x' => $this->public_media_url_2x,
+                '3x' => $this->public_media_url_3x,
+            ],
             'options' => QuizQuestionOptionResource::collection($this->options->where('is_active', true)->sortBy('order')),
         ];
     }
