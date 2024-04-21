@@ -10,7 +10,6 @@ use App\Models\FunnelQuiz\FunnelQuizQuestionOption;
 use App\Models\Subscription\SubscriptionPlan;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
