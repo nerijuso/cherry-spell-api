@@ -10,7 +10,7 @@ class SubscriptionPlanFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'key' => fake()->uuid(),
+            'ref_id' => fake()->uuid(),
             'is_popular' => false,
             'has_trial' => false,
             'is_hidden' => false,
