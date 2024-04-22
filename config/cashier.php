@@ -62,6 +62,7 @@ return [
     */
 
     'currency' => env('CASHIER_CURRENCY', 'usd'),
+    'currency_symbol' => env('CASHIER_CURRENCY_SYMBOL', '$'),
 
     /*
     |--------------------------------------------------------------------------
