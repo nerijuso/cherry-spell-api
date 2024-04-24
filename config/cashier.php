@@ -123,4 +123,9 @@ return [
 
     'logger' => env('CASHIER_LOGGER'),
 
+
+    'stripe' => [
+        'api_key' => env('STRIPE_API_KEY')
+    ]
+
 ];

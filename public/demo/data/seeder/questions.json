@@ -184,6 +184,37 @@
         ]
     },
     {
+        "question": "Does your partner have any sex related issue?",
+        "description": "Choose any that you think apply:",
+        "type": "multi_select",
+        "options": [
+            {
+                "name": "Problems with low libido",
+                "description": null
+            },
+            {
+                "name": "Problems getting an orgasm",
+                "description": null
+            },
+            {
+                "name": "Orgasming too quickly",
+                "description": null
+            },
+            {
+                "name": "Difficulty with arousal/erection",
+                "description": null
+            },
+            {
+                "name": "Discomfort/Pain during sex",
+                "description": null
+            },
+            {
+                "name": "None",
+                "description": null
+            }
+        ]
+    },
+    {
         "question": "Who is typically the initiator of sex in your relationship",
         "description": null,
         "type": "single",

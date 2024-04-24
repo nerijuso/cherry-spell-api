@@ -10,10 +10,7 @@ class FunnelQuizDataResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'code' => $this->code,
-            'configuration' => $this->configuration,
-            'quiz' => new QuizResource($this->quiz()->where('is_published', true)->first()),
+            'session_id' => $this->code,
         ];
     }
 

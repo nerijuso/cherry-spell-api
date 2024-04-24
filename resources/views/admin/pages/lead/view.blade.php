@@ -22,18 +22,6 @@
                         <td>{{$lead->email}}</td>
                     </tr>
                     <tr>
-                        <td>{{ trans('admin.page.lead.content.quiz') }}</td>
-                        <td>
-                            @if($lead->quiz_id)
-                                <a href="{{route('admin.quizzes.edit', $lead->quiz_id)}}">
-                                    {{data_get( $lead->quiz, 'title', '-')}}
-                                </a>
-                            @else
-                                -
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
                         <td>{{ trans('admin.page.lead.content.funnel') }}</td>
                         <td>
                             @if($lead->funnel_id)

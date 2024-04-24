@@ -17,7 +17,7 @@ class QuizQuestionOptionResource extends JsonResource
                 '1x' => $this->public_media_url_1x,
                 '2x' => $this->public_media_url_2x,
                 '3x' => $this->public_media_url_3x,
-            ]
+            ],
         ];
     }
 

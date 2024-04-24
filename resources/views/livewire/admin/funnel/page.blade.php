@@ -3,17 +3,28 @@
         <div class="col-sm-8">
             <h3>Enabled pages:</h3>
             <ul class="list-group">
+                @php
+                    app(App\Services\Funnel\FunnelPageService::class)->preloadFunnelPageData($this->funnelPages, ['funnelQuestion.options', 'subscriptionPlans']);
+                @endphp
                 @foreach($funnelPages as $page)
                     <li class="list-group-item d-flex justify-content-between align-items-left @if(!$page->is_active) bg-muted-lt @endif">
-                        <strong>{{ $page->position }}. {{ $availablePages->firstWhere('id', $page->type)['name'] }} </strong><br>
+                        <span><strong>{{ $page->position }}. {{ $availablePages->firstWhere('id', $page->type)['name'] }} </strong><br>
+                        @if(in_array($page->type, [
+                            Str::snake(class_basename(FunnelPageLandingQuestion::class)),
+                            Str::snake(class_basename(FunnelPageQuestion::class)),
+                        ]))
+
+                               <span class="text-muted">{{$page->funnelQuestion->question}}</span>
+                        @endif
+                        </span>
                         <div class="btn-group btn-group-xs pull-right" role="group">
                             @if (!$loop->first)
-                                <button wire:click="changePosition('{{ $page->id }}', {{ $page->position }}, {{ $page->position - 1 }})" class="btn btn-sm">
+                                <button wire:click="changePosition('{{ $page->id }}', {{ $page->position }}, {{ $page->position - 10 }})" class="btn btn-sm">
                                     <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M18 11l-6 -6" /><path d="M6 11l6 -6" /></svg>
                                 </button>
                             @endif
                             @if (!$loop->last)
-                                <button wire:click="changePosition('{{ $page->id }}', {{ $page->position }}, {{ $page->position +1 }})" class="btn btn-sm">
+                                <button wire:click="changePosition('{{ $page->id }}', {{ $page->position }}, {{ $page->position + 10 }})" class="btn btn-sm">
                                     <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M18 13l-6 6" /><path d="M6 13l6 6" /></svg>
                                 </button>
                             @endif

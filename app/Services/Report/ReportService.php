@@ -10,10 +10,15 @@ use Illuminate\Support\Facades\Redis;
 class ReportService
 {
     const REPORT_QR_CODE_PREVIEW_TRACKING_KEY = 'qr:preview:user_id';
+
     const REPORT_DAILY_REGISTERED_USERS_LAST_30_DAYS = 'daily_users_registered_last_30_days';
+
     const REPORT_DAILY_QR_SCANS_LAST_30_DAYS = 'daily_qr_scans_last_30_days';
+
     const REPORT_DAILY_TOTAL_REGISTERED_USERS = 'daily_users_total_registered_users';
+
     const REPORT_DAILY_QR_SCANS = 'daily_qr_scans';
+
     const REPORT_TOTAL_QR_SCANS = 'total_qr_scans';
 
     public function trackUserQRCodeGeneratedPreviews(int $userId): void
@@ -30,7 +35,7 @@ class ReportService
     {
         foreach (Redis::HGETALL(ReportService::REPORT_QR_CODE_PREVIEW_TRACKING_KEY) as $userId => $count) {
             $report = AggregatedReport::firstOrNew([
-                'type' => ReportService::REPORT_QR_CODE_PREVIEW_TRACKING_KEY . ':' . $userId
+                'type' => ReportService::REPORT_QR_CODE_PREVIEW_TRACKING_KEY.':'.$userId,
             ]);
 
             $report->incValueField($count);
@@ -67,7 +72,7 @@ class ReportService
     {
         DB::transaction(function () use ($scans, $dateIndex) {
             $report = AggregatedReport::lockForUpdate()->where([
-                'type' => self::REPORT_DAILY_QR_SCANS
+                'type' => self::REPORT_DAILY_QR_SCANS,
             ])->latest()->first();
 
             if ($report->created_at->format('Ymd') !== $dateIndex) {
@@ -84,7 +89,7 @@ class ReportService
     {
         DB::transaction(function () use ($scans) {
             $report = AggregatedReport::lockForUpdate()->firstOrNew([
-                'type' => self::REPORT_TOTAL_QR_SCANS
+                'type' => self::REPORT_TOTAL_QR_SCANS,
             ]);
             $report->incValueField($scans);
             $report->save();
@@ -93,12 +98,12 @@ class ReportService
 
     public function generateLastMonthQrScans()
     {
-        $data = AggregatedReport::where('type', self::REPORT_DAILY_QR_SCANS)->limit(30)->latest()->get()->flatMap(function($item) {
+        $data = AggregatedReport::where('type', self::REPORT_DAILY_QR_SCANS)->limit(30)->latest()->get()->flatMap(function ($item) {
             return [$item->created_at->format('Y-m-d') => data_get($item->data, 'value', 0)];
         })->all();
 
         $report = AggregatedReport::firstOrNew([
-            'type' => self::REPORT_DAILY_QR_SCANS_LAST_30_DAYS
+            'type' => self::REPORT_DAILY_QR_SCANS_LAST_30_DAYS,
         ]);
         $report->data = $data;
         $report->save();

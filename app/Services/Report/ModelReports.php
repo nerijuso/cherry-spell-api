@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services\Report;
 
 use Carbon\Carbon;
@@ -22,8 +23,8 @@ class ModelReports
         Carbon $from,
         Carbon $to,
         string $dateFieldName = 'created_at',
-               $queryFilter = null,
-               $cumulated = false
+        $queryFilter = null,
+        $cumulated = false
     ) {
         $dataQuery = $this->class::where($dateFieldName, '>=', $from->startOfDay())
             ->where($dateFieldName, '<=', $to->endOfDay())

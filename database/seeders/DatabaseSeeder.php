@@ -53,7 +53,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         foreach (json_decode(file_get_contents(public_path('demo/data/seeder/questions.json'))) as $key => $demo) {
-
             $question = FunnelQuizQuestion::factory()->create([
                 'question' => $demo->question,
                 'description' => $demo->description,
@@ -94,7 +93,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'funnel_page_landing_question',
             'is_active' => true,
             'position' => 10,
-            'data' => ['question_id'=>1],
+            'data' => ['question_id' => 1],
             'configuration' => [],
         ]);
 
@@ -103,7 +102,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'funnel_page_question',
             'is_active' => true,
             'position' => 20,
-            'data' =>  ['question_id'=>2],
+            'data' => ['question_id' => 2],
             'configuration' => [],
         ]);
 
@@ -112,7 +111,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'funnel_page_question',
             'is_active' => true,
             'position' => 30,
-            'data' => ['question_id'=>3],
+            'data' => ['question_id' => 3],
             'configuration' => [],
         ]);
 
@@ -121,7 +120,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'funnel_page_question',
             'is_active' => true,
             'position' => 40,
-            'data' => ['question_id'=>4],
+            'data' => ['question_id' => 4],
             'configuration' => [],
         ]);
 
@@ -131,13 +130,13 @@ class DatabaseSeeder extends Seeder
             'is_active' => true,
             'position' => 50,
             'data' => [
-                "media_file_name_1x" =>"",
-                "media_file_name_2x" => "",
-                "media_file_name_3x" => ""
+                'media_file_name_1x' => '',
+                'media_file_name_2x' => '',
+                'media_file_name_3x' => '',
             ],
             'configuration' => [
-                "content" => "Before we proceed with more intimate questions about your sex life, we want to assure you that your responses and personal information are kept confidential and secure."
-            ]
+                'content' => 'Before we proceed with more intimate questions about your sex life, we want to assure you that your responses and personal information are kept confidential and secure.',
+            ],
         ]);
 
         FunnelPage::factory()->create([
@@ -145,7 +144,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'funnel_page_question',
             'is_active' => true,
             'position' => 60,
-            'data' => ['question_id'=>5],
+            'data' => ['question_id' => 5],
             'configuration' => [],
         ]);
 
@@ -154,7 +153,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'funnel_page_question',
             'is_active' => true,
             'position' => 70,
-            'data' => ['question_id'=>6],
+            'data' => ['question_id' => 6],
             'configuration' => [],
         ]);
 
@@ -163,7 +162,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'funnel_page_question',
             'is_active' => true,
             'position' => 80,
-            'data' => ['question_id'=>7],
+            'data' => ['question_id' => 7],
             'configuration' => [],
         ]);
 
@@ -172,27 +171,25 @@ class DatabaseSeeder extends Seeder
             'type' => 'funnel_page_question',
             'is_active' => true,
             'position' => 90,
-            'data' => ['question_id'=>8],
+            'data' => ['question_id' => 8],
             'configuration' => [],
         ]);
-
 
         FunnelPage::factory()->create([
             'funnel_id' => $funnel->id,
             'type' => 'funnel_page_question',
             'is_active' => true,
             'position' => 100,
-            'data' => ['question_id'=>9],
+            'data' => ['question_id' => 9],
             'configuration' => [],
         ]);
-
 
         FunnelPage::factory()->create([
             'funnel_id' => $funnel->id,
             'type' => 'funnel_page_question',
             'is_active' => true,
             'position' => 110,
-            'data' => ['question_id'=>10],
+            'data' => ['question_id' => 10],
             'configuration' => [],
         ]);
 
@@ -202,15 +199,15 @@ class DatabaseSeeder extends Seeder
             'is_active' => true,
             'position' => 120,
             'data' => [
-                "media_file_name_1x" =>"",
-                "media_file_name_2x" => "",
-                "media_file_name_3x" => ""
+                'media_file_name_1x' => '',
+                'media_file_name_2x' => '',
+                'media_file_name_3x' => '',
             ],
             'configuration' => [
-                "title" => "Yes, it actually works",
-                "sub_title" => "Loved by couples just like yours.",
-                "content" => "It literally saved our relationship. My hubby and I are feeling much closer and more intimate in a way we haven't in ages (we've been married 7 years).  It’s full of actionable tips that help you understand each other’s needs better.",
-                "content_author" => "Emma & Phil, NY, USA"
+                'title' => 'Yes, it actually works',
+                'sub_title' => 'Loved by couples just like yours.',
+                'content' => "It literally saved our relationship. My hubby and I are feeling much closer and more intimate in a way we haven't in ages (we've been married 7 years).  It’s full of actionable tips that help you understand each other’s needs better.",
+                'content_author' => 'Emma & Phil, NY, USA',
             ],
         ]);
 
@@ -221,25 +218,25 @@ class DatabaseSeeder extends Seeder
             'position' => 130,
             'data' => [],
             'configuration' => [
-                "title" => "All set! We'll need a moment to analyze your data...",
-                "content_list" => ["Analyzing your answers","Reviewing your habits","Building your summary","Finalizing your personal plan"],
-                "slider" => [
+                'title' => "All set! We'll need a moment to analyze your data...",
+                'content_list' => ['Analyzing your answers', 'Reviewing your habits', 'Building your summary', 'Finalizing your personal plan'],
+                'slider' => [
                     [
-                        "images" => [
-                            "media_file_name_1x" =>"",
-                            "media_file_name_2x" => "",
-                            "media_file_name_3x" => ""
-                        ]
+                        'images' => [
+                            'media_file_name_1x' => '',
+                            'media_file_name_2x' => '',
+                            'media_file_name_3x' => '',
+                        ],
                     ],
                     [
-                        "images" => [
-                            "media_file_name_1x" => "",
-                            "media_file_name_2x" => "",
-                            "media_file_name_3x" => ""
-                        ]
-                    ]
-                ]
-            ]
+                        'images' => [
+                            'media_file_name_1x' => '',
+                            'media_file_name_2x' => '',
+                            'media_file_name_3x' => '',
+                        ],
+                    ],
+                ],
+            ],
         ]);
 
         FunnelPage::factory()->create([
@@ -249,10 +246,10 @@ class DatabaseSeeder extends Seeder
             'position' => 140,
             'data' => [],
             'configuration' => [
-                "title" => "Your results are ready",
-                "content" => "Enter your email to unlock your personalized summary and see how Cherry Spell can help you to reignite the passion you once had.",
-                "rules_checkbox" => "I agree to get future information from Cherry Spell team.",
-                "info" => "Your personal data is safe with us. Also, we don’t send spam or share email addresses with third parties."
+                'title' => 'Your results are ready',
+                'content' => 'Enter your email to unlock your personalized summary and see how Cherry Spell can help you to reignite the passion you once had.',
+                'rules_checkbox' => 'I agree to get future information from Cherry Spell team.',
+                'info' => 'Your personal data is safe with us. Also, we don’t send spam or share email addresses with third parties.',
             ],
         ]);
 
@@ -271,7 +268,7 @@ class DatabaseSeeder extends Seeder
             'is_active' => true,
             'position' => 160,
             'data' => [
-                "subscription_plan_ids"=>[1,2,3]
+                'subscription_plan_ids' => [1, 2, 3],
             ],
             'configuration' => [
             ],

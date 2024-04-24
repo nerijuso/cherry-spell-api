@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Subscription;
 
+use App\Actions\Subscription\CreateSubscriptionPlan;
+use App\Actions\Subscription\UpdateSubscriptionPlan;
 use App\Http\Controllers\Controller as Controller;
 use App\Http\Requests\Admin\Subscription\SubscriptionPlanRequest;
-use App\Models\Funnel;
 use App\Models\Subscription\SubscriptionPlan;
 use Illuminate\Http\Request;
-use Laravel\Cashier\Subscription;
 
 class SubscriptionPlansController extends Controller
 {
@@ -44,30 +44,16 @@ class SubscriptionPlansController extends Controller
 
     public function store(SubscriptionPlanRequest $request)
     {
-        $subscriptionPlan = (new SubscriptionPlan())->create([
-            'name' => $request->name,
-            'sort' => $request->sort,
-            'price' => $request->price,
-            'old_price' => $request->old_price,
-            'is_hidden' => (bool) $request->is_hidden,
-            'is_popular' => (bool) $request->is_popular,
-        ]);
+        $subscriptionPlan = (new CreateSubscriptionPlan())($request);
 
-        $request->session()->flash('alert-success', trans('admin.page.subscriptions.messages.subscription_plan_created'));
+        $request->session()->flash('alert-success', trans('admin.page.subscription.messages.subscription_plan_created'));
 
-        return redirect(route('admin.subscriptions.plans.edit.edit', ['subscriptionPlan' => $subscriptionPlan->id]));
+        return redirect(route('admin.subscriptions.plans.edit', ['subscriptionPlan' => $subscriptionPlan->id]));
     }
 
     public function update(SubscriptionPlan $subscriptionPlan, SubscriptionPlanRequest $request)
     {
-        $subscriptionPlan->update([
-            'name' => $request->name,
-            'sort' => $request->sort,
-            'price' => $request->price,
-            'old_price' => $request->old_price,
-            'is_hidden' => (bool) $request->is_hidden,
-            'is_popular' => (bool) $request->is_popular,
-        ]);
+        (new UpdateSubscriptionPlan())($subscriptionPlan, $request);
 
         $request->session()->flash('alert-success', trans('admin.page.subscription.messages.subscription_plan_updated'));
 

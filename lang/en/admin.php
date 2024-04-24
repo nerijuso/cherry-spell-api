@@ -168,7 +168,7 @@ return [
             ],
             'buttons' => [
                 'filter' => 'Filter',
-                'create_plan' => 'Create new plan'
+                'create_plan' => 'Create new plan',
             ],
             'form' => [
                 'filter_by_name' => 'Filter by name',
@@ -182,7 +182,7 @@ return [
             ],
             'messages' => [
                 'subscription_plan_created' => 'Subscription plan created',
-                'subscription_plan_updated' => 'Subscription plan updated'
+                'subscription_plan_updated' => 'Subscription plan updated',
             ],
             'content' => [
                 'id' => 'ID',

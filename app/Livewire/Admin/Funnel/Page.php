@@ -5,7 +5,10 @@ namespace App\Livewire\Admin\Funnel;
 use App\Models\Funnel;
 use App\Models\FunnelPage;
 use App\Services\Funnel\FunnelPageService;
+use App\Services\Funnel\PageTypes\FunnelPageLandingQuestion;
+use App\Services\Funnel\PageTypes\FunnelPageQuestion;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -24,6 +27,7 @@ class Page extends Component
     public function mount()
     {
         $this->funnelPages = $this->funnel->funnelPages()->orderBy('position')->get();
+
     }
 
     public function render()
@@ -42,7 +46,7 @@ class Page extends Component
 
     public function create(string $type): void
     {
-        $position = $this->funnel->funnelPages->count() + 1;
+        $position = $this->funnel->funnelPages->count() + 10;
         $this->funnel->funnelPages()->create([
             'position' => $position,
             'type' => $type,

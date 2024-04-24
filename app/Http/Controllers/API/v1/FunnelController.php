@@ -20,7 +20,7 @@ class FunnelController extends Controller
         return new FunnelResource($funnel);
     }
 
-    public function storeQuizData(Funnel $funnel, StoreFunnelQuizRequest $request)
+    public function storeQuizData(Funnel $funnel, StoreFunnelQuizRequest $request): FunnelQuizDataResource
     {
         $lead = (new GenerateFunnelLead())($funnel, $request);
 

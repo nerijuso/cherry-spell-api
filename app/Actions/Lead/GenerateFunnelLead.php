@@ -14,9 +14,8 @@ class GenerateFunnelLead
         $lead = new Lead();
         $lead->email = $request->email;
         $lead->code = Uuid::uuid7();
-        $lead->funnel_quiz_id = $funnel->funnel_quiz_id;
         $lead->funnel_id = $funnel->id;
-        $lead->quiz_answers = $request->all(); //handle quiz answers.
+        $lead->quiz_answers = $request->all();
         $lead->save();
 
         return $lead;

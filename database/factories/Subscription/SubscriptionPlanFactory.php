@@ -15,7 +15,7 @@ class SubscriptionPlanFactory extends Factory
             'has_trial' => false,
             'is_hidden' => false,
             'trial_days' => 3,
-            'description' => "{}",
+            'description' => '{}',
         ];
     }
 }

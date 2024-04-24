@@ -10,11 +10,11 @@ class AggregatedReport extends Model
     protected $table = 'aggregated_reports';
 
     protected $casts = [
-        'data' => AsCollection::class
+        'data' => AsCollection::class,
     ];
 
     protected $fillable = [
-        'type'
+        'type',
     ];
 
     public function incValueField($count)

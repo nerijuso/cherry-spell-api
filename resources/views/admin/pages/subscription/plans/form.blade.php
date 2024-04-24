@@ -3,7 +3,7 @@
 
     <div class="form-group mb-3">
         <label for="name">{{ trans('admin.page.subscription.form.name') }}</label>
-        <input type="text" class="form-control" name="name" id="name" value="{{ old('name', $subscriptionPlan?->name) }}"/>
+        <input type="text" class="form-control" name="name" id="name" value="{{ old('name', $subscriptionPlan?->name) }}" />
     </div>
 
     <div class="form-group mb-3">
@@ -13,7 +13,7 @@
 
     <div class="form-group mb-3">
         <label for="price">{{ trans('admin.page.subscription.form.price') }}</label>
-        <input type="text" class="form-control" name="price" id="price" value="{{ old('price', $subscriptionPlan?->price) }}"/>
+        <input type="text" class="form-control @if($subscriptionPlan?->id) disabled @endif" name="price" id="price" value="{{ old('price', $subscriptionPlan?->price) }}" @readonly($subscriptionPlan?->id)/>
     </div>
 
     <div class="form-group mb-3">

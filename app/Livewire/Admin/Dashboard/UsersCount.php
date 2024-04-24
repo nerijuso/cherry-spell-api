@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Admin\Dashboard;
 
-use App\Models\QrCode\QrCode;
 use App\Models\User;
 use Livewire\Component;
 

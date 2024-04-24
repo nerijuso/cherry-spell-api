@@ -22,7 +22,7 @@ class UsersByDay extends Component
             );
 
         return view('livewire.admin.dashboard.users-by-day')->with([
-            'dailyRegisteredUsers' => $data
+            'dailyRegisteredUsers' => $data,
         ]);
     }
 }

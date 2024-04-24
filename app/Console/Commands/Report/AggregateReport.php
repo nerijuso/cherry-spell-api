@@ -13,7 +13,7 @@ class AggregateReport extends Command
 
     public function handle(): void
     {
-       ReportService::generateDailyRegisteredUsers();
-       ReportService::generateDailyTotalRegisteredUsers();
+        ReportService::generateDailyRegisteredUsers();
+        ReportService::generateDailyTotalRegisteredUsers();
     }
 }

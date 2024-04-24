@@ -20,5 +20,4 @@ class SubscriptionController extends Controller
 
         return view('admin.pages.subscription.index', ['items' => $items]);
     }
-
 }
