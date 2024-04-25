@@ -3,6 +3,7 @@
 namespace App\Actions\Subscription;
 
 use App\Models\Subscription\SubscriptionPlan;
+use Laravel\Cashier\Cashier;
 use Stripe\Price;
 
 class CreateSubscriptionPlan
@@ -19,7 +20,7 @@ class CreateSubscriptionPlan
         $subscriptionPlan->description = '{}';
         $subscriptionPlan->save();
 
-        $price = Price::create([
+        $price = Cashier::stripe()->prices->create([
             'unit_amount' => $request->price * 100,
             'currency' => config('cashier.currency'),
             'recurring' => [

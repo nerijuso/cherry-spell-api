@@ -129,12 +129,9 @@ class DatabaseSeeder extends Seeder
             'type' => 'funnel_page_text_with_logo',
             'is_active' => true,
             'position' => 50,
-            'data' => [
-                'media_file_name_1x' => '',
-                'media_file_name_2x' => '',
-                'media_file_name_3x' => '',
-            ],
+            'data' => [],
             'configuration' => [
+                'media_url' => 'https://cherryspell.nerijuso.lt/storage/funnel/frame_1.svg',
                 'content' => 'Before we proceed with more intimate questions about your sex life, we want to assure you that your responses and personal information are kept confidential and secure.',
             ],
         ]);
@@ -154,7 +151,9 @@ class DatabaseSeeder extends Seeder
             'is_active' => true,
             'position' => 70,
             'data' => ['question_id' => 6],
-            'configuration' => [],
+            'configuration' => [
+                'layout' => 'column'
+            ],
         ]);
 
         FunnelPage::factory()->create([
@@ -198,12 +197,9 @@ class DatabaseSeeder extends Seeder
             'type' => 'funnel_page_review',
             'is_active' => true,
             'position' => 120,
-            'data' => [
-                'media_file_name_1x' => '',
-                'media_file_name_2x' => '',
-                'media_file_name_3x' => '',
-            ],
+            'data' => [],
             'configuration' => [
+                'media_url' => 'https://cherryspell.nerijuso.lt/storage/funnel/Frame1214135874.png',
                 'title' => 'Yes, it actually works',
                 'sub_title' => 'Loved by couples just like yours.',
                 'content' => "It literally saved our relationship. My hubby and I are feeling much closer and more intimate in a way we haven't in ages (we've been married 7 years).  It’s full of actionable tips that help you understand each other’s needs better.",
@@ -222,17 +218,23 @@ class DatabaseSeeder extends Seeder
                 'content_list' => ['Analyzing your answers', 'Reviewing your habits', 'Building your summary', 'Finalizing your personal plan'],
                 'slider' => [
                     [
-                        'images' => [
-                            'media_file_name_1x' => '',
-                            'media_file_name_2x' => '',
-                            'media_file_name_3x' => '',
+                        'media_url' => [
+                            '1x' => 'https://cherryspell.nerijuso.lt/storage/funnel/slider1.png',
                         ],
                     ],
                     [
-                        'images' => [
-                            'media_file_name_1x' => '',
-                            'media_file_name_2x' => '',
-                            'media_file_name_3x' => '',
+                        'media_url' => [
+                            '1x' => 'https://cherryspell.nerijuso.lt/storage/funnel/slider2.png',
+                        ],
+                    ],
+                    [
+                        'media_url' => [
+                            '1x' => 'https://cherryspell.nerijuso.lt/storage/funnel/slider4.png',
+                        ],
+                    ],
+                    [
+                        'media_url' => [
+                            '1x' => 'https://cherryspell.nerijuso.lt/storage/funnel/slider5.png',
                         ],
                     ],
                 ],

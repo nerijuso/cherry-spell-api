@@ -5,12 +5,16 @@
         "description": null,
         "options": [
             {
-                "name": "Male",
-                "description": null
+                "name": "Female",
+                "sort": 10,
+                "description": null,
+                "media_file_name_1x": "demo/data/images/question_options/female_sign.svg"
             },
             {
-                "name": "Female",
-                "description": null
+                "name": "Male",
+                "sort": 20,
+                "description": null,
+                "media_file_name_1x": "demo/data/images/question_options/male_sign.svg"
             }
         ]
     },
@@ -76,37 +80,27 @@
             {
                 "name": "No kids",
                 "description": "Help text",
-                "media_file_name_1x": "demo/data/images/question_options/close_circle.png",
-                "media_file_name_2x": "demo/data/images/question_options/close_circle@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/close_circle@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/close_circle.svg"
             },
             {
                 "name": "Baby",
                 "description": "Under 1 year",
-                "media_file_name_1x": "demo/data/images/question_options/crib.png",
-                "media_file_name_2x": "demo/data/images/question_options/crib@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/crib@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/crib.svg"
             },
             {
                 "name": "Young children",
                 "description": "Up to 4 year",
-                "media_file_name_1x": "demo/data/images/question_options/child.png",
-                "media_file_name_2x": "demo/data/images/question_options/child@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/child@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/child.svg"
             },
             {
                 "name": "School age children",
                 "description": "Up to 4 years",
-                "media_file_name_1x": "demo/data/images/question_options/smile.png",
-                "media_file_name_2x": "demo/data/images/question_options/smile@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/smile@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/smile.svg"
             },
             {
                 "name": "Teenage",
                 "description": "Up to 12 years",
-                "media_file_name_1x": "demo/data/images/question_options/teenage.png",
-                "media_file_name_2x": "demo/data/images/question_options/teenage@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/teenage@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/teenager.svg"
             }
         ]
     },
@@ -118,37 +112,27 @@
             {
                 "name": "I want to enjoy sex again",
                 "description": null,
-                "media_file_name_1x": "demo/data/images/question_options/fire_hot.png",
-                "media_file_name_2x": "demo/data/images/question_options/fire_hot@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/fire_hot@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/fire_hot.svg"
             },
             {
                 "name": "I want to improve sex life",
                 "description": null,
-                "media_file_name_1x": "demo/data/images/question_options/love_life.png",
-                "media_file_name_2x": "demo/data/images/question_options/love_life@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/love_life@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/love_life.svg"
             },
             {
                 "name": "I want to feel more connected with my partner",
                 "description": null,
-                "media_file_name_1x": "demo/data/images/question_options/support.png",
-                "media_file_name_2x": "demo/data/images/question_options/support@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/support@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/support.svg"
             },
             {
                 "name": "I want my body to respond differently during sex",
                 "description": null,
-                "media_file_name_1x": "demo/data/images/question_options/person.png",
-                "media_file_name_2x": "demo/data/images/question_options/person@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/person@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/person.svg"
             },
             {
                 "name": "I want to feel less anxious about sex",
                 "description": null,
-                "media_file_name_1x": "demo/data/images/question_options/calm.png",
-                "media_file_name_2x": "demo/data/images/question_options/calm@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/calm@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/calm.svg"
             }
         ]
     },
@@ -245,30 +229,22 @@
             {
                 "name": "Very openly",
                 "description": null,
-                "media_file_name_1x": "demo/data/images/question_options/smile_happy.png",
-                "media_file_name_2x": "demo/data/images/question_options/smile_happy@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/smile_happy@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/smile_happy.svg"
             },
             {
                 "name": "Openly",
                 "description": null,
-                "media_file_name_1x": "demo/data/images/question_options/smile.png",
-                "media_file_name_2x": "demo/data/images/question_options/smile@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/smile@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/smile.svg"
             },
             {
                 "name": "Not very open",
                 "description": null,
-                "media_file_name_1x": "demo/data/images/question_options/smile_neutral.png",
-                "media_file_name_2x": "demo/data/images/question_options/smile_neutral@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/smile_neutral@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/smile_neutral.svg"
             },
             {
                 "name": "We don't talk",
                 "description": null,
-                "media_file_name_1x": "demo/data/images/question_options/smile_sad.png",
-                "media_file_name_2x": "demo/data/images/question_options/smile_sad@2x.png",
-                "media_file_name_3x": "demo/data/images/question_options/smile_sad@3x.png"
+                "media_file_name_1x": "demo/data/images/question_options/smile_sad.svg"
             }
         ]
     },

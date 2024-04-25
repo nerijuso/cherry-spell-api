@@ -17,7 +17,6 @@ class FunnelResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'configuration' => $this->configuration,
-            'subscription_plans' => $this->subscriptionPlans,
             'pages' => FunnelPageResource::collection($pages),
         ];
     }

@@ -126,6 +126,9 @@ return [
 
     'stripe' => [
         'api_key' => env('STRIPE_API_KEY')
-    ]
+    ],
+
+    'success_url' => 'https://cherryspell.com/%s/checkout/success?session_id={CHECKOUT_SESSION_ID}',
+    'cancel_url' => 'https://cherryspell.com/%s/checkout/cancel',
 
 ];

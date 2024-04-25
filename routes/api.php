@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\v1\SubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,6 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\API\v1'], f
     Route::group(['prefix' => 'leads'], function () {
         Route::get('{lead}/summary', 'LeadController@summary')->name('leaders.summary');
     });
+
+    Route::post('{funnelID}/checkout', [SubscriptionController::class, 'checkout'])->name('checkout')->whereNumber('funnelID');
 });
