@@ -29,7 +29,7 @@
     <div class="mb-3">
         <div class="form-label">Icon 1x</div>
         @if(is_null($question->media_file_name_1x))
-            <input accept="image/png, image/jpeg" type="file" name="media_file_name_1x" class="form-control">
+            <input accept="image/png, image/jpeg, image/svg+xml" type="file" name="media_file_name_1x" class="form-control">
         @else
             <div class="form-group">
                 {{ trans('admin.page.quiz.questions.form.remove_image') }}
@@ -43,7 +43,7 @@
     <div class="mb-3">
         <div class="form-label">Icon 2x</div>
         @if(is_null($question->media_file_name_2x))
-            <input accept="image/png, image/jpeg" type="file" name="media_file_name_2x" class="form-control">
+            <input accept="image/png, image/jpeg, image/svg+xml" type="file" name="media_file_name_2x" class="form-control">
         @else
             <div class="form-group">
                 {{ trans('admin.page.quiz.questions.form.remove_image') }}
@@ -57,7 +57,7 @@
     <div class="mb-3">
         <div class="form-label">Icon 3x</div>
         @if(is_null($question->media_file_name_3x))
-            <input accept="image/png, image/jpeg" type="file" name="media_file_name_3x" class="form-control">
+            <input accept="image/png, image/jpeg, image/svg+xml" type="file" name="media_file_name_3x" class="form-control">
         @else
             <div class="form-group">
                 {{ trans('admin.page.quiz.questions.form.remove_image') }}
