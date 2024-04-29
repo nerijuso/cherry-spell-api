@@ -10,7 +10,6 @@ class OptionBelongsQuestion implements Rule
 
     public function __construct(public $quizItems, public $options)
     {
-
     }
 
     public function passes($attribute, $value)
@@ -23,11 +22,11 @@ class OptionBelongsQuestion implements Rule
 
         $questionId = data_get($this->quizItems, str_replace('option', 'question_id', $attribute));
 
-        if ($this->options->where('funnel_quiz_question_id', $questionId)->whereIn('id', $value)->count() !== $optionsCount) {
-            return false;
+        if ($this->options->where('funnel_quiz_question_id', $questionId)->whereIn('id', $value)->count() === $optionsCount) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     public function message()

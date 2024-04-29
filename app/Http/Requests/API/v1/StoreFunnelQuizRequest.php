@@ -38,9 +38,9 @@ class StoreFunnelQuizRequest extends FormRequest
             Str::snake(class_basename(FunnelPageLandingQuestion::class)),
             Str::snake(class_basename(FunnelPageQuestion::class)),
         ]);
-
-        $options = FunnelQuizQuestionOption::where('is_active', true)->whereIn('funnel_quiz_question_id', array_unique(data_get($funnelPages, '*.data.question_id')))->get();
-        $questions = FunnelQuizQuestion::where('is_active', true)->whereIn('id', array_unique(data_get($funnelPages, '*.data.question_id')))->get();
+        $questionIds = array_unique(data_get($funnelPages, '*.data.question_id'));
+        $options = FunnelQuizQuestionOption::where('is_active', true)->whereIn('funnel_quiz_question_id', $questionIds)->get();
+        $questions = FunnelQuizQuestion::where('is_active', true)->whereIn('id', $questionIds)->get();
 
         $data = [
             'email' => 'required|email',
@@ -48,7 +48,6 @@ class StoreFunnelQuizRequest extends FormRequest
             'quiz.*.question_id' => 'required|in:'.implode(',', array_unique($questions->pluck('id')->all())),
             'quiz.*.option' => [
                 'required',
-                'in:'.implode(',', array_unique($options->pluck('id')->all())),
                 new OptionBelongsQuestion($this->all(), $options),
             ],
         ];
@@ -56,14 +55,16 @@ class StoreFunnelQuizRequest extends FormRequest
         foreach ($this->input('quiz.*') as $key => $item) {
             $question = $questions->firstWhere('id', $item['question_id']);
 
-            if ($question->type === FunnelQuizQuestionType::MULTIPLE_CHOICE) {
-                $data[ 'quiz.'.$key.'.option'] = 'array';
-            } elseif ($question->type === FunnelQuizQuestionType::SINGLE_CHOICE) {
-                $data[ 'quiz.'.$key.'.option'] = 'integer';
-            } elseif ($question->type === FunnelQuizQuestionType::NUMBER_INPUT) {
-                $data[ 'quiz.'.$key.'.option'] = 'integer';
-            } elseif ($question->type === FunnelQuizQuestionType::TEXT_INPUT) {
-                $data[ 'quiz.'.$key.'.option'] = 'string';
+            if ($question) {
+                if ($question->type === FunnelQuizQuestionType::MULTIPLE_CHOICE) {
+                    $data['quiz.' . $key . '.option'] = 'array';
+                } elseif ($question->type === FunnelQuizQuestionType::SINGLE_CHOICE) {
+                    $data['quiz.' . $key . '.option'] = 'integer';
+                } elseif ($question->type === FunnelQuizQuestionType::NUMBER_INPUT) {
+                    $data['quiz.' . $key . '.option'] = 'integer';
+                } elseif ($question->type === FunnelQuizQuestionType::TEXT_INPUT) {
+                    $data['quiz.' . $key . '.option'] = 'string';
+                }
             }
         }
 
