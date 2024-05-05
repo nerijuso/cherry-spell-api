@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+//        User::factory()->create([
+//            'name' => 'Test User',
+//            'email' => 'test@example.com',
+//        ]);
 
         $this->seedFunnelQuizQuestionWithoptions();
         $this->seedSubscriptionPlans();
@@ -33,34 +33,21 @@ class DatabaseSeeder extends Seeder
         SubscriptionPlan::factory()->create([
             'name' => '7-day plan',
             'price' => '1',
-            'configuration' => [
-                'price_item' => [
-                    'price' => 0.54,
-                    'desc' => 'per day',
-                ],
-            ],
+            'configuration' => "{\"price_item\": {\"desc\": \"per day\", \"price\": 0.54}}",
         ]);
 
         SubscriptionPlan::factory()->create([
             'name' => '1-month plan',
             'price' => '10',
-            'configuration' => [
-                'price_item' => [
-                    'price' => 0.54,
-                    'desc' => 'per day',
-                ],
-            ],
+            'configuration' => "{\"price_item\": {\"desc\": \"per day\", \"price\": 0.54}}",
+
         ]);
 
         SubscriptionPlan::factory()->create([
             'name' => '3-month plan',
             'price' => '30',
-            'configuration' => [
-                'price_item' => [
-                    'price' => 0.54,
-                    'desc' => 'per day',
-                ],
-            ],
+            'configuration' => "{\"price_item\": {\"desc\": \"per day\", \"price\": 0.54}}",
+
         ]);
     }
 

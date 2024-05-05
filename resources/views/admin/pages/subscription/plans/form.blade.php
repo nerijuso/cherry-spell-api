@@ -21,6 +21,11 @@
         <input type="text" class="form-control" name="sort" id="sort" value="{{ old('sort', $subscriptionPlan?->sort) }}"/>
     </div>
 
+    <div class="form-group mb-3">
+        <label for="configuration">{{ trans('admin.page.subscription.form.configuration') }}</label>
+        <textarea class="form-control" rows="20" name="configuration" id="configuration" >{{ old('configuration', $subscriptionPlan?->configuration) }}</textarea>
+    </div>
+
     <div class="form-check mb-3">
         <input type="checkbox" value="1" class="form-check-input" name="is_popular" id="is_popular" @checked(old('is_popular', $subscriptionPlan?->is_popular))/>
         <label for="is_popular">{{ trans('admin.page.subscription.form.is_popular') }}</label>

@@ -14,7 +14,7 @@ class UpdateSubscriptionPlan
         $subscriptionPlan->old_price = $request->old_price;
         $subscriptionPlan->is_hidden = (bool) $request->is_hidden;
         $subscriptionPlan->is_popular = (bool) $request->is_popular;
-        $subscriptionPlan->description = '{}';
+        $subscriptionPlan->configuration = $request->configuration;
         $subscriptionPlan->save();
 
         $price = Cashier::stripe()->prices->retrieve($subscriptionPlan->ref_id);

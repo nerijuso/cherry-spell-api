@@ -184,6 +184,7 @@ return [
                 'create_plan' => 'Create new plan',
             ],
             'form' => [
+                'configuration' => 'Configuration json',
                 'filter_by_name' => 'Filter by name',
                 'name' => 'Name',
                 'is_active' => 'Is active',
