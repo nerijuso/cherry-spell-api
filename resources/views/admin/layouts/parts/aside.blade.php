@@ -90,6 +90,14 @@
                         </div>
                     </div>
                 </li>
+                <li class="nav-item @if(preg_match('/^admin.ai_prompts/', Route::currentRouteName())) active @endif">
+                    <a class="nav-link" href="{{route('admin.ai_prompts')}}">
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-prompt"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 7l5 5l-5 5" /><path d="M13 17l6 0" /></svg>
+                        <span class="nav-link-title">
+                            {{ trans('admin.aside.ai_prompts') }}
+                      </span>
+                    </a>
+                </li>
                 <li class="nav-item dropdown @if(preg_match('/^admin.system/', Route::currentRouteName())) active @endif">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true">
                         <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->

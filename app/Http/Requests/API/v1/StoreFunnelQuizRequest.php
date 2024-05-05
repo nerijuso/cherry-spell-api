@@ -8,8 +8,10 @@ use App\Models\FunnelQuiz\FunnelQuizQuestionOption;
 use App\Rules\OptionBelongsQuestion;
 use App\Services\Funnel\PageTypes\FunnelPageLandingQuestion;
 use App\Services\Funnel\PageTypes\FunnelPageQuestion;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class StoreFunnelQuizRequest extends FormRequest
 {
@@ -43,7 +45,13 @@ class StoreFunnelQuizRequest extends FormRequest
         $questions = FunnelQuizQuestion::where('is_active', true)->whereIn('id', $questionIds)->get();
 
         $data = [
-            'email' => 'required|email',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->where(function (Builder $query) {
+                    return $query->where('email', $this->email)->whereNotNull('password');
+                }),
+            ],
             'quiz' => 'required|array',
             'quiz.*.question_id' => 'required|in:'.implode(',', array_unique($questions->pluck('id')->all())),
             'quiz.*.option' => [
@@ -57,17 +65,27 @@ class StoreFunnelQuizRequest extends FormRequest
 
             if ($question) {
                 if ($question->type === FunnelQuizQuestionType::MULTIPLE_CHOICE) {
-                    $data['quiz.' . $key . '.option'] = 'array';
+                    $data['quiz.'.$key.'.option'] = 'array';
                 } elseif ($question->type === FunnelQuizQuestionType::SINGLE_CHOICE) {
-                    $data['quiz.' . $key . '.option'] = 'integer';
+                    $data['quiz.'.$key.'.option'] = 'integer';
                 } elseif ($question->type === FunnelQuizQuestionType::NUMBER_INPUT) {
-                    $data['quiz.' . $key . '.option'] = 'integer';
+                    $data['quiz.'.$key.'.option'] = 'integer';
                 } elseif ($question->type === FunnelQuizQuestionType::TEXT_INPUT) {
-                    $data['quiz.' . $key . '.option'] = 'string';
+                    $data['quiz.'.$key.'.option'] = 'string';
                 }
             }
         }
 
         return $data;
+    }
+
+    public function messages()
+    {
+        return [
+            'email.required' => 'Email is required',
+            'email.unique' => 'This email address is already in use. Please download the Cherry Spell app and log in – or use a different email. Need help accessing your account? Email us at hello@cherryspell.com.',
+            'quiz.required' => 'Quiz data is required',
+            'quiz.array' => 'Quiz data should be array',
+        ];
     }
 }

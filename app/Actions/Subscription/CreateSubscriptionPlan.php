@@ -4,7 +4,6 @@ namespace App\Actions\Subscription;
 
 use App\Models\Subscription\SubscriptionPlan;
 use Laravel\Cashier\Cashier;
-use Stripe\Price;
 
 class CreateSubscriptionPlan
 {
@@ -24,11 +23,11 @@ class CreateSubscriptionPlan
             'unit_amount' => $request->price * 100,
             'currency' => config('cashier.currency'),
             'recurring' => [
-                'interval' => 'month' //day, week, month or year.
+                'interval' => 'month', //day, week, month or year.
             ],
             'product_data' => [
-                'name' => $subscriptionPlan->name
-            ]
+                'name' => $subscriptionPlan->name,
+            ],
         ]);
 
         $subscriptionPlan->ref_id = $price->id;

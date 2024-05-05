@@ -14,10 +14,15 @@ class QuizQuestionOptionResource extends JsonResource
             'order' => $this->order,
             'option' => $this->option,
             'description' => $this->description,
-            'media_url' => [
-                '1x' => $this->public_media_url_1x,
-                '2x' => $this->public_media_url_2x,
-                '3x' => $this->public_media_url_3x,
+            'image' => [
+                'size_1x' => $this->getPublicMediaUrl('size_1x'),
+                'size_2x' => $this->getPublicMediaUrl('size_2x'),
+                'size_3x' => $this->getPublicMediaUrl('size_3x'),
+            ],
+            'image_mobile' => [
+                'size_1x' => $this->getPublicMediaUrl('size_mobile_1x'),
+                'size_2x' => $this->getPublicMediaUrl('size_mobile_2x'),
+                'size_3x' => $this->getPublicMediaUrl('size_mobile_3x'),
             ],
         ];
     }

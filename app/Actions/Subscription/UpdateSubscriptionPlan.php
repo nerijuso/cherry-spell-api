@@ -4,9 +4,6 @@ namespace App\Actions\Subscription;
 
 use App\Models\Subscription\SubscriptionPlan;
 use Laravel\Cashier\Cashier;
-use Stripe\Price;
-use Stripe\Product;
-
 
 class UpdateSubscriptionPlan
 {
@@ -22,7 +19,7 @@ class UpdateSubscriptionPlan
 
         $price = Cashier::stripe()->prices->retrieve($subscriptionPlan->ref_id);
         Cashier::stripe()->products->update($price->product, [
-            'name' => $subscriptionPlan->name
+            'name' => $subscriptionPlan->name,
         ]);
 
         return $subscriptionPlan;

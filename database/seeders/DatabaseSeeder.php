@@ -33,16 +33,34 @@ class DatabaseSeeder extends Seeder
         SubscriptionPlan::factory()->create([
             'name' => '7-day plan',
             'price' => '1',
+            'configuration' => [
+                'price_item' => [
+                    'price' => 0.54,
+                    'desc' => 'per day',
+                ],
+            ],
         ]);
 
         SubscriptionPlan::factory()->create([
             'name' => '1-month plan',
             'price' => '10',
+            'configuration' => [
+                'price_item' => [
+                    'price' => 0.54,
+                    'desc' => 'per day',
+                ],
+            ],
         ]);
 
         SubscriptionPlan::factory()->create([
             'name' => '3-month plan',
             'price' => '30',
+            'configuration' => [
+                'price_item' => [
+                    'price' => 0.54,
+                    'desc' => 'per day',
+                ],
+            ],
         ]);
     }
 
@@ -68,14 +86,10 @@ class DatabaseSeeder extends Seeder
                     'order' => $keyOption * 10,
                 ]);
 
-                if (isset($demoOption->media_file_name_1x)) {
-                    $option->saveFile(public_path($demoOption->media_file_name_1x), null, '1x');
-                }
-                if (isset($demoOption->media_file_name_2x)) {
-                    $option->saveFile(public_path($demoOption->media_file_name_2x), null, '2x');
-                }
-                if (isset($demoOption->media_file_name_3x)) {
-                    $option->saveFile(public_path($demoOption->media_file_name_3x), null, '3x');
+                foreach ((new FunnelQuizQuestionOption())->imageSizes as $size) {
+                    if (isset($demoOption->{'img_'.$size})) {
+                        $option->saveFile(public_path($demoOption->{'img_'.$size}), null, $size);
+                    }
                 }
             }
         }
@@ -131,8 +145,15 @@ class DatabaseSeeder extends Seeder
             'position' => 50,
             'data' => [],
             'configuration' => [
-                'media_url' => 'https://cherryspell.nerijuso.lt/storage/funnel/frame_1.svg',
-                'content' => 'Before we proceed with more intimate questions about your sex life, we want to assure you that your responses and personal information are kept confidential and secure.',
+                'image' => [
+                    'size_1x' => 'https://cherryspell.nerijuso.lt/storage/funnel/frame_1.svg',
+                    'size_2x' => '',
+                ],
+                'image_mobile' => [
+                    'size_1x' => 'https://cherryspell.nerijuso.lt/storage/funnel/frame_1.svg',
+                    'size_2x' => '',
+                ],
+                'content' => 'Before we continue with more intimate questions about your sex life, we want to assure you that all your responses are confidential and secure',
             ],
         ]);
 
@@ -152,7 +173,7 @@ class DatabaseSeeder extends Seeder
             'position' => 70,
             'data' => ['question_id' => 6],
             'configuration' => [
-                'layout' => 'column'
+                'layout' => 'column',
             ],
         ]);
 
@@ -199,9 +220,16 @@ class DatabaseSeeder extends Seeder
             'position' => 120,
             'data' => [],
             'configuration' => [
-                'media_url' => 'https://cherryspell.nerijuso.lt/storage/funnel/Frame1214135874.png',
-                'title' => 'Yes, it actually works',
-                'sub_title' => 'Loved by couples just like yours.',
+                'image' => [
+                    'size_1x' => 'https://cherryspell.nerijuso.lt/storage/funnel/Frame1214135874.png',
+                    'size_2x' => '',
+                ],
+                'image_mobile' => [
+                    'size_1x' => 'https://cherryspell.nerijuso.lt/storage/funnel/frame_1.svg',
+                    'size_2x' => '',
+                ],
+                'title' => 'YWe’ve already helped 100,000+ couples. We’ll help you, too.',
+                'sub_title' => '',
                 'content' => "It literally saved our relationship. My hubby and I are feeling much closer and more intimate in a way we haven't in ages (we've been married 7 years).  It’s full of actionable tips that help you understand each other’s needs better.",
                 'content_author' => 'Emma & Phil, NY, USA',
             ],
@@ -214,30 +242,8 @@ class DatabaseSeeder extends Seeder
             'position' => 130,
             'data' => [],
             'configuration' => [
-                'title' => "All set! We'll need a moment to analyze your data...",
+                'title' => "All set! We're now creating your  personal plan...",
                 'content_list' => ['Analyzing your answers', 'Reviewing your habits', 'Building your summary', 'Finalizing your personal plan'],
-                'slider' => [
-                    [
-                        'media_url' => [
-                            '1x' => 'https://cherryspell.nerijuso.lt/storage/funnel/slider1.png',
-                        ],
-                    ],
-                    [
-                        'media_url' => [
-                            '1x' => 'https://cherryspell.nerijuso.lt/storage/funnel/slider2.png',
-                        ],
-                    ],
-                    [
-                        'media_url' => [
-                            '1x' => 'https://cherryspell.nerijuso.lt/storage/funnel/slider4.png',
-                        ],
-                    ],
-                    [
-                        'media_url' => [
-                            '1x' => 'https://cherryspell.nerijuso.lt/storage/funnel/slider5.png',
-                        ],
-                    ],
-                ],
             ],
         ]);
 
@@ -249,9 +255,10 @@ class DatabaseSeeder extends Seeder
             'data' => [],
             'configuration' => [
                 'title' => 'Your results are ready',
-                'content' => 'Enter your email to unlock your personalized summary and see how Cherry Spell can help you to reignite the passion you once had.',
-                'rules_checkbox' => 'I agree to get future information from Cherry Spell team.',
-                'info' => 'Your personal data is safe with us. Also, we don’t send spam or share email addresses with third parties.',
+                'content' => 'Enter your email to unlock your personalized summary and see how Cherry Spell can help you reignite your passion.',
+                'rules_checkbox' => 'I agree to get future information from the Cherry Spell team.',
+                'privacy_checkbox' => 'I agree to the <b>Privacy policy <span>*</span></b>',
+                'info' => 'Your personal data is safe. We don’t send spam or share email addresses with third parties. Unsubscribe any time.',
             ],
         ]);
 
@@ -292,7 +299,6 @@ class DatabaseSeeder extends Seeder
             'position' => 180,
             'data' => [],
             'configuration' => [],
-
         ]);
     }
 }

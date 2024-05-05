@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('is_hidden')->default(false)->index();
             $table->integer('trial_days')->unsigned()->nullable();
             $table->integer('sort')->default(0);
-            $table->json('description');
+            $table->json('configuration');
             $table->softDeletes();
             $table->timestamps();
         });

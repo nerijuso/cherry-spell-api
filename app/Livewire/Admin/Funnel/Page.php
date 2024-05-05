@@ -5,10 +5,7 @@ namespace App\Livewire\Admin\Funnel;
 use App\Models\Funnel;
 use App\Models\FunnelPage;
 use App\Services\Funnel\FunnelPageService;
-use App\Services\Funnel\PageTypes\FunnelPageLandingQuestion;
-use App\Services\Funnel\PageTypes\FunnelPageQuestion;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Livewire\Attributes\On;
 use Livewire\Component;
 

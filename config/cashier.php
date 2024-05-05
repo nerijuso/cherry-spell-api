@@ -123,12 +123,11 @@ return [
 
     'logger' => env('CASHIER_LOGGER'),
 
-
     'stripe' => [
-        'api_key' => env('STRIPE_API_KEY')
+        'api_key' => env('STRIPE_API_KEY'),
     ],
 
-    'success_url' => 'https://cherryspell.com/%s/checkout/success?session_id={CHECKOUT_SESSION_ID}',
-    'cancel_url' => 'https://cherryspell.com/%s/checkout/cancel',
+    'success_url' => env('STRIPE_SUCCESS_URL'),
+    'cancel_url' => env('STRIPE_CANCEL_URL'),
 
 ];

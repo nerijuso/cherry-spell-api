@@ -24,9 +24,7 @@ return new class extends Migration
             $table->text('question');
             $table->foreignId('funnel_quiz_id')->nullable()->constrained()->cascadeOnDelete();
             $table->text('description')->nullable();
-            $table->string('media_file_name_1x')->nullable();
-            $table->string('media_file_name_2x')->nullable();
-            $table->string('media_file_name_3x')->nullable();
+            $table->json('media_file')->nullable();
             $table->string('type')->nullable();
             $table->unsignedInteger('order')->default(0);
             $table->boolean('is_active')->default(true);
@@ -39,9 +37,7 @@ return new class extends Migration
             $table->foreignId('funnel_quiz_question_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('option')->nullable();
             $table->text('description')->nullable();
-            $table->string('media_file_name_1x')->nullable();
-            $table->string('media_file_name_2x')->nullable();
-            $table->string('media_file_name_3x')->nullable();
+            $table->json('media_file')->nullable();
             $table->boolean('is_active')->default(true);
             $table->unsignedInteger('order')->default(0);
             $table->index(['funnel_quiz_question_id', 'is_active'], 'f_q_q_id_i_active');

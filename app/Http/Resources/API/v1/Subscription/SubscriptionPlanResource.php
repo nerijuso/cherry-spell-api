@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\API\v1;
+namespace App\Http\Resources\API\v1\Subscription;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -20,7 +20,7 @@ class SubscriptionPlanResource extends JsonResource
             'currency' => config('cashier.currency'),
             'currency_symbol' => config('cashier.currency_symbol'),
             'sort' => $this->sort,
-            'description' => $this->description,
+            'configuration' => $this->configuration,
         ];
     }
 

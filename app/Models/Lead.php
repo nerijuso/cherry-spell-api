@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Casts\Uuid;
 use App\Models\FunnelQuiz\FunnelQuiz;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +14,6 @@ class Lead extends Model
 
     protected $casts = [
         'quiz_answers' => 'array',
-        'code' => Uuid::class,
     ];
 
     public function quiz()

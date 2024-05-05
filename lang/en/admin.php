@@ -18,6 +18,7 @@ return [
         'transactional_email' => 'Transactional emails',
         'subscriptions' => 'Subscriptions',
         'plans' => 'Plans',
+        'ai_prompts' => 'AI prompts',
     ],
     'button' => [
         'cancel' => 'Cancel',
@@ -102,6 +103,12 @@ return [
                     'is_active' => 'Is active',
                     'remove_image' => 'Remove image',
                     'types' => 'Question type',
+                    'size_1x' => 'WEB image 1x',
+                    'size_2x' => 'WEB image 2x',
+                    'size_3x' => 'WEB image 3x',
+                    'size_mobile_1x' => 'Mobile image 1x',
+                    'size_mobile_2x' => 'Mobile image 2x',
+                    'size_mobile_3x' => 'Mobile image 3x',
                 ],
                 'options' => [
                     'content_header' => [
@@ -122,6 +129,12 @@ return [
                         'order' => 'Order in the list (10, 20)',
                         'is_active' => 'Is active',
                         'remove_image' => 'Remove image',
+                        'size_1x' => 'WEB image 1x',
+                        'size_2x' => 'WEB image 2x',
+                        'size_3x' => 'WEB image 3x',
+                        'size_mobile_1x' => 'Mobile image 1x',
+                        'size_mobile_2x' => 'Mobile image 2x',
+                        'size_mobile_3x' => 'Mobile image 3x',
                     ],
                 ],
             ],
@@ -209,6 +222,27 @@ return [
                 'folder' => 'Folder',
                 'file' => 'File',
                 'file_name' => 'File name',
+            ],
+        ],
+        'ai_prompt' => [
+            'content_header' => [
+                'ai_prompts' => 'AI Prompts',
+                'ai_prompt' => 'AI Prompt:',
+            ],
+            'content' => [
+                'identifier' => 'Unique system identifier',
+                'short_desc' => 'Short description',
+                'updated_at' => 'Updated at',
+                'alert_info' => 'Be careful updating prompt value. This will impact how system will generate response for the users!',
+            ],
+            'form' => [
+                'identifier' => 'Unique system identifier',
+                'short_desc' => 'Short description',
+                'value' => 'Prompt content',
+                'updated_at' => 'Updated at',
+            ],
+            'messages' => [
+                'prompt_updated' => 'Prompt updated',
             ],
         ],
     ],

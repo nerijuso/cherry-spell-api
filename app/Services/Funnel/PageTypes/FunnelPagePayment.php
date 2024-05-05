@@ -14,7 +14,7 @@ class FunnelPagePayment extends FunnelPageType
     public function getResource($funnelPage): array
     {
         return [
-            'checkout_url' => route('checkout', ['funnelID' => $funnelPage->funnel_id]),
+
         ];
     }
 }

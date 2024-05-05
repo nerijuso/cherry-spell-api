@@ -60,6 +60,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('{lead}', 'LeadController@view')->name('leads.view')->whereNumber('lead');
     });
 
+    Route::group(['prefix' => 'ai-prompts'], function () {
+        Route::get('/', 'AIPromptsController@index')->name('ai_prompts');
+        Route::get('/{prompt}', 'AIPromptsController@edit')->name('ai_prompts.edit');
+        Route::post('/{prompt}', 'AIPromptsController@update')->name('ai_prompts.update');
+    });
+
     Route::group(['prefix' => 'subscriptions'], function () {
         Route::get('/', 'Subscription\SubscriptionController@index')->name('subscriptions');
         Route::get('plans', 'Subscription\SubscriptionPlansController@plans')->name('subscriptions.plans');

@@ -8,34 +8,11 @@ use Illuminate\Support\Str;
 
 trait HasMedia
 {
-    public function getPublicMediaUrl1xAttribute()
+    public function getPublicMediaUrl($field)
     {
-        return ($this->media_file_name_1x) ? Storage::url($this->media_url_1x) : null;
-    }
+        $image = $this->filePathWithName($field);
 
-    public function getPublicMediaUrl2xAttribute()
-    {
-        return ($this->media_file_name_2x) ? Storage::url($this->media_url_2x) : null;
-    }
-
-    public function getPublicMediaUrl3xAttribute()
-    {
-        return ($this->media_file_name_3x) ? Storage::url($this->media_url_3x) : null;
-    }
-
-    public function getMediaUrl1xAttribute()
-    {
-        return $this->file_path.'/'.$this->media_file_name_1x;
-    }
-
-    public function getMediaUrl2xAttribute()
-    {
-        return $this->file_path.'/'.$this->media_file_name_2x;
-    }
-
-    public function getMediaUrl3xAttribute()
-    {
-        return $this->file_path.'/'.$this->media_file_name_3x;
+        return ! is_null($image) ? Storage::url($image) : null;
     }
 
     public function getFilePathAttribute()
@@ -43,41 +20,53 @@ trait HasMedia
         return Str::snake(class_basename(self::class));
     }
 
-    public function saveFile($file, $path = null, $size = '')
+    public function saveFile($file, $path = null, $field = '')
     {
-        if ($path === null) {
-            $path = $this->{'media_url_'.$size};
-        }
+        $mediaFile = $this->media_file;
 
-        if ($file != null && $path !== null) {
+        if ($file != null) {
             $fileName = Str::random(40);
 
             if ($file instanceof UploadedFile) {
                 $name = $file->hashName();
-                $this->{'media_file_name_'.$size} = $fileName.'.'.pathinfo($name, PATHINFO_EXTENSION);
+                $name = $fileName.'.'.pathinfo($name, PATHINFO_EXTENSION);
+                data_set($mediaFile, $field, $name);
 
-                Storage::putFileAs($this->file_path, $file, $this->{'media_file_name_'.$size}, ['visibility' => 'public']);
+                Storage::putFileAs($this->file_path, $file, $name, ['visibility' => 'public']);
             } else {
                 $content = @file_get_contents($file);
 
                 if ($content !== false) {
-                    $pictureFileName = Str::random(40);
-                    $this->{'media_file_name_'.$size} = $pictureFileName.'.'.pathinfo($file, PATHINFO_EXTENSION);
-                    Storage::put($this->{'media_url_'.$size}, $content, 'public');
+                    $pictureFileName = Str::random(20).'.'.\File::extension($file);
+                    data_set($mediaFile, $field, $pictureFileName);
+                    $this->media_file = $mediaFile;
+                    $filePath = $this->filePathWithName($field);
+
+                    Storage::put($filePath, $content, 'public');
                 }
             }
 
+            $this->media_file = $mediaFile;
             $this->save();
         }
     }
 
-    public function removeFile($size)
+    public function filePathWithName($field): ?string
     {
-        $fileName = $this->{'media_file_name_'.$size};
+        $img = data_get($this->media_file, $field);
+
+        return ! is_null($img) ? $this->file_path.'/'.$img : null;
+    }
+
+    public function removeFile($field)
+    {
+        $mediaFiles = $this->media_file;
+        $fileName = $this->filePathWithName($field);
 
         if (! is_null($fileName)) {
-            Storage::delete($this->{'media_url_'.$size});
-            $this->{'media_file_name_'.$size} = null;
+            Storage::delete($fileName);
+            data_set($mediaFiles, $field, null);
+            $this->media_file = $mediaFiles;
             $this->save();
         }
     }

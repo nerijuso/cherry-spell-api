@@ -10,7 +10,7 @@ class FunnelQuizDataResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'session_id' => $this->code,
+            'session_id' => $this->session_id,
         ];
     }
 
