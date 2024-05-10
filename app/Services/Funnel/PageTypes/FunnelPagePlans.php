@@ -24,7 +24,6 @@ class FunnelPagePlans extends FunnelPageType
     {
 
         return [
-            'checkout_url' => route('checkout', ['funnel' => $funnelPage->funnel_id]),
             'subscription_plans' => SubscriptionPlanResource::collection($funnelPage->subscriptionPlans),
         ];
     }

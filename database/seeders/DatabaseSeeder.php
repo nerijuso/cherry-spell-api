@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Enums\SubscriptionPlanHighlightedOption;
+use App\Models\Enums\SubscriptionPlanPeriodType;
 use App\Models\Funnel;
 use App\Models\FunnelPage;
 use App\Models\FunnelQuiz\FunnelQuiz;
@@ -18,10 +20,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-//        User::factory()->create([
-//            'name' => 'Test User',
-//            'email' => 'test@example.com',
-//        ]);
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
 
         $this->seedFunnelQuizQuestionWithoptions();
         $this->seedSubscriptionPlans();
@@ -31,23 +33,29 @@ class DatabaseSeeder extends Seeder
     private function seedSubscriptionPlans()
     {
         SubscriptionPlan::factory()->create([
-            'name' => '7-day plan',
-            'price' => '1',
-            'configuration' => "{\"price_item\": {\"desc\": \"per day\", \"price\": 0.54}}",
+            'name' => '12-month membership',
+            'old_price' => '25.99',
+            'price' => '9.09',
+            'period' => SubscriptionPlanPeriodType::YEARLY,
+            'highlighted_option' => SubscriptionPlanHighlightedOption::BEST_VALUE,
+            'configuration' => '{"price_item": {"period": "per month", "save_percentage": "65", "desc": "$109.15 billed every 12 months"}}',
         ]);
 
         SubscriptionPlan::factory()->create([
-            'name' => '1-month plan',
-            'price' => '10',
-            'configuration' => "{\"price_item\": {\"desc\": \"per day\", \"price\": 0.54}}",
+            'name' => '6-month membership',
+            'old_price' => '29.99',
+            'price' => '14.99',
+            'period' => SubscriptionPlanPeriodType::EVERY_SIX_MONTHS,
+            'configuration' => '{"price_item": {"period": "per month", "save_percentage": "50", "desc": "$89.97 billed every 6 months"}}',
 
         ]);
 
         SubscriptionPlan::factory()->create([
-            'name' => '3-month plan',
-            'price' => '30',
-            'configuration' => "{\"price_item\": {\"desc\": \"per day\", \"price\": 0.54}}",
-
+            'name' => '3-month membership',
+            'old_price' => null,
+            'price' => '35.99',
+            'period' => SubscriptionPlanPeriodType::EVERY_THREE_MONTHS,
+            'configuration' => '{"price_item": {"period": "per month", "save_percentage": null, "desc": "$107.97 billed every 3 months"}}',
         ]);
     }
 
@@ -170,7 +178,9 @@ class DatabaseSeeder extends Seeder
             'is_active' => true,
             'position' => 80,
             'data' => ['question_id' => 7],
-            'configuration' => [],
+            'configuration' => [
+                'layout' => 'column',
+            ],
         ]);
 
         FunnelPage::factory()->create([
@@ -188,7 +198,9 @@ class DatabaseSeeder extends Seeder
             'is_active' => true,
             'position' => 100,
             'data' => ['question_id' => 9],
-            'configuration' => [],
+            'configuration' => [
+                'layout' => 'row',
+            ],
         ]);
 
         FunnelPage::factory()->create([
@@ -244,7 +256,6 @@ class DatabaseSeeder extends Seeder
                 'title' => 'Your results are ready',
                 'content' => 'Enter your email to unlock your personalized summary and see how Cherry Spell can help you reignite your passion.',
                 'rules_checkbox' => 'I agree to get future information from the Cherry Spell team.',
-                'privacy_checkbox' => 'I agree to the <b>Privacy policy <span>*</span></b>',
                 'info' => 'Your personal data is safe. We don’t send spam or share email addresses with third parties. Unsubscribe any time.',
             ],
         ]);

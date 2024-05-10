@@ -22,8 +22,8 @@ class FunnelPageQuestion extends Component
 
     public $quizzes = [];
 
-    #[Validate('required|json')]
-    public $configuration = [];
+    #[Validate('sometimes|nullable|json')]
+    public $configuration = null;
 
     public function mount()
     {

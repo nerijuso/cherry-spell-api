@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('page_head_title')
-    <h1>{{ trans('admin.page.quiz.content_header.create_new') }}</h1>
+    <h1>{{ trans('admin.page.tags.content_header.create_new') }}</h1>
 @endsection
 
 @section('content')

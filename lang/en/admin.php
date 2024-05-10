@@ -19,6 +19,9 @@ return [
         'subscriptions' => 'Subscriptions',
         'plans' => 'Plans',
         'ai_prompts' => 'AI prompts',
+        'cms' => 'CMS',
+        'posts' => 'Posts',
+        'tags' => 'Tags',
     ],
     'button' => [
         'cancel' => 'Cancel',
@@ -193,6 +196,7 @@ return [
                 'sort' => 'Sort (10, 20, 30...)',
                 'is_popular' => 'Is popular',
                 'is_hidden' => 'Is hidden',
+                'period' => 'Payment period',
             ],
             'messages' => [
                 'subscription_plan_created' => 'Subscription plan created',
@@ -209,6 +213,7 @@ return [
                 'no' => 'No',
                 'created_at' => 'Created at',
                 'is_hidden' => 'Is hidden',
+                'period' => 'Payment period',
             ],
         ],
         'file_manager' => [
@@ -244,6 +249,72 @@ return [
             ],
             'messages' => [
                 'prompt_updated' => 'Prompt updated',
+            ],
+        ],
+        'tags' => [
+            'content_header' => [
+                'index' => 'Tags',
+                'create_new' => 'Create new tag',
+            ],
+            'buttons' => [
+                'filter_by_title' => 'Filter by title',
+                'filter' => 'Filter',
+                'create_tag' => 'Create tag',
+            ],
+            'content' => [
+                'id' => 'ID',
+                'is_active' => 'Is active',
+                'title' => 'Name',
+                'created_at' => 'Created at',
+                'position' => 'Position',
+                'yes' => 'Yes',
+                'no' => 'No',
+            ],
+            'form' => [
+                'identifier' => 'Unique system identifier',
+                'short_desc' => 'Short description',
+                'value' => 'Prompt content',
+                'updated_at' => 'Updated at',
+                'title' => 'Title',
+                'is_active' => 'Is active',
+                'position' => 'Position',
+            ],
+            'messages' => [
+                'tag_updated' => 'Tag was updated',
+                'tag_created' => 'Tag was created',
+            ],
+        ],
+        'posts' => [
+            'content_header' => [
+                'index' => 'Tags',
+                'create_new' => 'Create new post',
+            ],
+            'buttons' => [
+                'filter_by_title' => 'Filter by title',
+                'filter' => 'Filter',
+                'create_post' => 'Create post',
+            ],
+            'content' => [
+                'id' => 'ID',
+                'is_active' => 'Is active',
+                'title' => 'Name',
+                'created_at' => 'Created at',
+                'position' => 'Position',
+                'yes' => 'Yes',
+                'no' => 'No',
+            ],
+            'form' => [
+                'identifier' => 'Unique system identifier',
+                'short_desc' => 'Short description',
+                'value' => 'Prompt content',
+                'updated_at' => 'Updated at',
+                'title' => 'Title',
+                'is_active' => 'Is active',
+                'position' => 'Position',
+            ],
+            'messages' => [
+                'tag_updated' => 'Tag was updated',
+                'tag_created' => 'Tag was created',
             ],
         ],
     ],

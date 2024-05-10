@@ -79,6 +79,23 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'AppQuestionController@index')->name('app_questions');
     });
 
+    Route::group(['prefix' => 'cms'], function () {
+        Route::group(['prefix' => 'posts'], function () {
+            Route::get('/', 'CMS\PostsController@index')->name('cms.posts');
+            Route::get('/create', 'CMS\PostsController@create')->name('cms.posts.create');
+            Route::post('/store', 'CMS\PostsController@store')->name('cms.posts.store');
+            Route::get('/{post}/edit', 'CMS\PostsController@create')->name('cms.posts.edit');
+            Route::post('/{post}/update', 'CMS\PostsController@update')->name('cms.posts.update');
+        });
+        Route::group(['prefix' => 'tags'], function () {
+            Route::get('/', 'CMS\TagsController@index')->name('cms.tags');
+            Route::get('/create', 'CMS\TagsController@create')->name('cms.tags.create');
+            Route::post('/store', 'CMS\TagsController@store')->name('cms.tags.store');
+            Route::get('/{tag}/edit', 'CMS\TagsController@create')->name('cms.tags.edit');
+            Route::post('/{tag}/update', 'CMS\TagsController@update')->name('cms.tags.update');
+        });
+    });
+
     Route::group(['prefix' => 'system'], function () {
         Route::any('my_sql_console', 'Adminer\AdminerController@index')->name('adminer');
         Route::get('view-mail-template', 'System\MailTemplateController@index')->name('mail_templates.index');

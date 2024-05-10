@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller as Controller;
 use App\Models\AIPrompt;
-use App\Models\Lead;
 use Illuminate\Http\Request;
 
 class AIPromptsController extends Controller

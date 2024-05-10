@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
-
     public function index()
     {
         return new UserResource(auth_user());

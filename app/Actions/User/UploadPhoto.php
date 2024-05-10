@@ -2,7 +2,6 @@
 
 namespace App\Actions\User;
 
-
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -26,9 +25,9 @@ class UploadPhoto
                 }
             }
 
-            $path = 'user/images/' . $user->id;
-            $fileNameSave = Str::random(10) . '.' . $file->extension();
-            $image = $file->storePubliclyAs($path, 'original_' . $fileNameSave);
+            $path = 'user/images/'.$user->id;
+            $fileNameSave = Str::random(10).'.'.$file->extension();
+            $image = $file->storePubliclyAs($path, 'original_'.$fileNameSave);
             data_set($images, 'original', $image);
             $manager = new ImageManager(new Driver());
 
@@ -42,14 +41,13 @@ class UploadPhoto
                     $img->coverDown($size['dimensions']['width'], $size['dimensions']['height']);
                 }
 
-                $imageResized = $path . '/' . $size['name'] . '_' . $fileNameSave;
+                $imageResized = $path.'/'.$size['name'].'_'.$fileNameSave;
                 Storage::put($imageResized, $img->encode(), 'public');
                 data_set($images, $size['name'], $imageResized);
             }
 
             $user->photo = $images;
         }
-
 
         $user->save();
 

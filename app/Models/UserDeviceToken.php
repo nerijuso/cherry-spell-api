@@ -9,7 +9,7 @@ class UserDeviceToken extends Model
     protected $table = 'user_device_tokens';
 
     protected $fillable = [
-        'user_id'
+        'user_id',
     ];
 
     public function user()

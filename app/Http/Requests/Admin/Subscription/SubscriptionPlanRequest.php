@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin\Subscription;
 
+use App\Models\Enums\SubscriptionPlanPeriodType;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SubscriptionPlanRequest extends FormRequest
@@ -30,7 +31,8 @@ class SubscriptionPlanRequest extends FormRequest
             'sort' => 'required|integer|min:1',
             'price' => 'required|decimal:2',
             'old_price' => 'sometimes|nullable|decimal:2',
-            'configuration' => 'sometimes|json',
+            'configuration' => 'sometimes|nullable|json',
+            'period' => 'required|string|in:'.implode(',', SubscriptionPlanPeriodType::all()),
             'is_hidden' => 'boolean',
             'is_popular' => 'boolean',
         ];

@@ -23,7 +23,7 @@
                 </li>
                 <li class="nav-item @if(preg_match('/^admin.users/', Route::currentRouteName())) active @endif">
                     <a class="nav-link" href="{{route('admin.users')}}" >
-                        <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-square" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                <path d="M9 10a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
@@ -33,30 +33,37 @@
                         </span>
                         <span class="nav-link-title">
                              {{ trans('admin.aside.users') }}
-                      </span>
+                        </span>
                     </a>
                 </li>
                 <li class="nav-item dropdown @if(preg_match('/^admin.leads/', Route::currentRouteName())) active @endif">
                     <a class="nav-link" href="{{route('admin.leads')}}" >
-                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-user-dollar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h3" /><path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M19 21v1m0 -8v1" /></svg>                        <span class="nav-link-title">
+                         <span class="nav-link-icon d-md-none d-lg-inline-block">
+                             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-user-dollar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h3" /><path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M19 21v1m0 -8v1" /></svg>
+                         </span>
+                         <span class="nav-link-title">
                             {{ trans('admin.aside.leads') }}
-                      </span>
+                        </span>
                     </a>
                 </li>
                 <li class="nav-item dropdown @if(preg_match('/^admin.app_questions/', Route::currentRouteName())) active @endif">
                     <a class="nav-link" href="{{route('admin.app_questions')}}" >
-                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-folder-question"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 19h-10a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2.5" /><path d="M19 22v.01" /><path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-folder-question"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 19h-10a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2.5" /><path d="M19 22v.01" /><path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
+                        </span>
                         <span class="nav-link-title">
                             {{ trans('admin.aside.app_questions') }}
-                      </span>
+                        </span>
                     </a>
                 </li>
                 <li class="nav-item dropdown @if(preg_match('/^admin.quizzes/', Route::currentRouteName()) || preg_match('/^admin.funnels/', Route::currentRouteName())) active @endif">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true" >
-                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-filter"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z" /></svg>
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-filter"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z" /></svg>
+                        </span>
                         <span class="nav-link-title">
                             {{ trans('admin.aside.funnels') }}
-                      </span>
+                        </span>
                     </a>
                     <div class="dropdown-menu @if(preg_match('/^admin.quizzes/', Route::currentRouteName()) || preg_match('/^admin.funnels/', Route::currentRouteName())) show @endif">
                         <div class="dropdown-menu-columns">
@@ -73,9 +80,12 @@
                 </li>
                 <li class="nav-item dropdown @if(preg_match('/^admin.subscriptions/', Route::currentRouteName())) active @endif">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true" >
-                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-businessplan"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 6m-5 0a5 3 0 1 0 10 0a5 3 0 1 0 -10 0" /><path d="M11 6v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" /><path d="M11 10v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" /><path d="M11 14v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" /><path d="M7 9h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M5 15v1m0 -8v1" /></svg>                        <span class="nav-link-title">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-businessplan"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 6m-5 0a5 3 0 1 0 10 0a5 3 0 1 0 -10 0" /><path d="M11 6v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" /><path d="M11 10v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" /><path d="M11 14v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4" /><path d="M7 9h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M5 15v1m0 -8v1" /></svg>
+                        </span>
+                         <span class="nav-link-title">
                             {{ trans('admin.aside.subscriptions') }}
-                      </span>
+                        </span>
                     </a>
                     <div class="dropdown-menu @if(preg_match('/^admin.subscriptions/', Route::currentRouteName())) show @endif">
                         <div class="dropdown-menu-columns">
@@ -92,12 +102,38 @@
                 </li>
                 <li class="nav-item @if(preg_match('/^admin.ai_prompts/', Route::currentRouteName())) active @endif">
                     <a class="nav-link" href="{{route('admin.ai_prompts')}}">
-                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-prompt"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 7l5 5l-5 5" /><path d="M13 17l6 0" /></svg>
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-prompt"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 7l5 5l-5 5" /><path d="M13 17l6 0" /></svg>
+                        </span>
                         <span class="nav-link-title">
                             {{ trans('admin.aside.ai_prompts') }}
                       </span>
                     </a>
                 </li>
+
+                <li class="nav-item dropdown @if(preg_match('/^admin.cms/', Route::currentRouteName())) active @endif">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-article"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M7 8h10" /><path d="M7 12h10" /><path d="M7 16h10" /></svg>
+                        </span>
+                        <span class="nav-link-title">
+                            {{ trans('admin.aside.cms') }}
+                        </span>
+                    </a>
+                    <div class="dropdown-menu @if(preg_match('/^admin.cms/', Route::currentRouteName())) show @endif">
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="{{route('admin.cms.posts')}}">
+                                    {{ trans('admin.aside.posts') }}
+                                </a>
+                                <a class="dropdown-item" href="{{route('admin.cms.tags')}}">
+                                    {{ trans('admin.aside.tags') }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
                 <li class="nav-item dropdown @if(preg_match('/^admin.system/', Route::currentRouteName())) active @endif">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true">
                         <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->

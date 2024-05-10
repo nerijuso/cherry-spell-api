@@ -7,6 +7,21 @@
     </div>
 
     <div class="form-group mb-3">
+        <label for="period">{{ trans('admin.page.subscription.form.period') }}</label>
+        @if($subscriptionPlan?->period)
+            <input type="text" class="form-control @if($subscriptionPlan?->period) disabled @endif" name="period" id="period" @readonly($subscriptionPlan?->period) value="{{ old('name', $subscriptionPlan?->period) }}" />
+        @else
+        <select class="form-control @if($subscriptionPlan?->period) disabled @endif"  name="period" id="period"  @readonly($subscriptionPlan?->period)>
+            @foreach (\App\Models\Enums\SubscriptionPlanPeriodType::all() as $period)
+                <option value="{{ $period }}" @selected(old('period', $subscriptionPlan->period) == $period)>
+                    {{ $period }}
+                </option>
+            @endforeach
+        </select>
+        @endif
+    </div>
+
+    <div class="form-group mb-3">
         <label for="old_price">{{ trans('admin.page.subscription.form.old_price') }}</label>
         <input type="text" class="form-control" name="old_price" id="old_price" value="{{ old('old_price', $subscriptionPlan?->old_price) }}"/>
     </div>

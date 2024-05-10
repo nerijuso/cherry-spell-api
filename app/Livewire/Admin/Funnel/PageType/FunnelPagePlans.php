@@ -11,8 +11,8 @@ class FunnelPagePlans extends Component
 {
     public FunnelPage $funnelPage;
 
-    #[Validate('required|json')]
-    public $configuration = [];
+    #[Validate('sometimes|nullable|json')]
+    public $configuration = null;
 
     public $plansID = [];
 

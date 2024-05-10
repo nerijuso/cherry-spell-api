@@ -17,6 +17,7 @@ class CreateSubscriptionPlan
         $subscriptionPlan->is_hidden = (bool) $request->is_hidden;
         $subscriptionPlan->is_popular = (bool) $request->is_popular;
         $subscriptionPlan->configuration = $request->configuration;
+        $subscriptionPlan->period = $request->period;
         $subscriptionPlan->save();
 
         $price = Cashier::stripe()->prices->create([

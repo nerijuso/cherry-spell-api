@@ -2,6 +2,7 @@
 
 namespace App\Models\Subscription;
 
+use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,11 +14,14 @@ class SubscriptionPlan extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'configuration' => 'array',
+        'configuration' => AsCollection::class,
         'is_popular' => 'boolean',
-        'has_trial' => 'boolean',
         'is_hidden' => 'boolean',
         'trial_days' => 'integer',
+    ];
+
+    protected $attributes = [
+        'configuration' => '{}',
     ];
 
     public function publicRefId(): Attribute

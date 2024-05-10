@@ -12,7 +12,6 @@ class SubscriptionPlanFactory extends Factory
             'name' => fake()->name(),
             'ref_id' => fake()->uuid(),
             'is_popular' => false,
-            'has_trial' => false,
             'is_hidden' => false,
             'trial_days' => 3,
             'configuration' => '{}',
