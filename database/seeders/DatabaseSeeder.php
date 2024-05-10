@@ -39,7 +39,13 @@ class DatabaseSeeder extends Seeder
             'price' => '9.09',
             'period' => SubscriptionPlanPeriodType::YEARLY,
             'highlighted_option' => SubscriptionPlanHighlightedOption::BEST_VALUE,
-            'configuration' => '{"price_item": {"period": "per month", "save_percentage": "65", "desc": "$109.15 billed every 12 months"}}',
+            'configuration' => [
+                'price_item' => [
+                    "period" => "per month",
+                    "save_percentage" => 65,
+                    "desc" => "$109.15 billed every 12 months"
+                ]
+            ],
         ]);
 
         SubscriptionPlan::factory()->create([
@@ -48,7 +54,13 @@ class DatabaseSeeder extends Seeder
             'old_price' => '29.99',
             'price' => '14.99',
             'period' => SubscriptionPlanPeriodType::EVERY_SIX_MONTHS,
-            'configuration' => '{"price_item": {"period": "per month", "save_percentage": "50", "desc": "$89.97 billed every 6 months"}}',
+            'configuration' => [
+                'price_item' => [
+                    "period" => "per month",
+                    "save_percentage" => 50,
+                    "desc" => "$89.97 billed every 6 months"
+                ]
+            ],
 
         ]);
 
@@ -58,7 +70,13 @@ class DatabaseSeeder extends Seeder
             'old_price' => null,
             'price' => '35.99',
             'period' => SubscriptionPlanPeriodType::EVERY_THREE_MONTHS,
-            'configuration' => '{"price_item": {"period": "per month", "save_percentage": null, "desc": "$107.97 billed every 3 months"}}',
+            'configuration' => [
+                'price_item' => [
+                    "period" => "per month",
+                    "save_percentage" => null,
+                    "desc" => "$107.97 billed every 3 months"
+                ]
+            ],
         ]);
     }
 
