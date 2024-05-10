@@ -13,7 +13,8 @@ class UpdateSubscriptionPlan
         $subscriptionPlan->sort = $request->sort;
         $subscriptionPlan->old_price = $request->old_price;
         $subscriptionPlan->is_hidden = (bool) $request->is_hidden;
-        $subscriptionPlan->is_popular = (bool) $request->is_popular;
+        $subscriptionPlan->period = $request->period;
+        $subscriptionPlan->highlighted_option = $request->highlighted_option;
         $subscriptionPlan->configuration = $request->configuration;
         $subscriptionPlan->save();
 

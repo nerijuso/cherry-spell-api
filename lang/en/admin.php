@@ -194,7 +194,7 @@ return [
                 'price' => 'Price',
                 'old_price' => 'Old Price',
                 'sort' => 'Sort (10, 20, 30...)',
-                'is_popular' => 'Is popular',
+                'highlighted_option' => 'Is highlighted',
                 'is_hidden' => 'Is hidden',
                 'period' => 'Payment period',
             ],

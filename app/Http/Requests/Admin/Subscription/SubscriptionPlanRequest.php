@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests\Admin\Subscription;
 
+use App\Models\Enums\SubscriptionPlanHighlightedOption;
 use App\Models\Enums\SubscriptionPlanPeriodType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SubscriptionPlanRequest extends FormRequest
 {
@@ -26,15 +28,16 @@ class SubscriptionPlanRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
             'name' => 'required|max:255',
             'sort' => 'required|integer|min:1',
             'price' => 'required|decimal:2',
             'old_price' => 'sometimes|nullable|decimal:2',
             'configuration' => 'sometimes|nullable|json',
-            'period' => 'required|string|in:'.implode(',', SubscriptionPlanPeriodType::all()),
+            'period' => [Rule::enum(SubscriptionPlanPeriodType::class)],
             'is_hidden' => 'boolean',
-            'is_popular' => 'boolean',
+            'highlighted_option' => ['sometimes', Rule::enum(SubscriptionPlanHighlightedOption::class)],
         ];
     }
 }

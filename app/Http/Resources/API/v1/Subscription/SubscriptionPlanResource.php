@@ -14,7 +14,7 @@ class SubscriptionPlanResource extends JsonResource
             'name' => $this->name,
             'price' => $this->price,
             'old_price' => $this->old_price,
-            'is_popular' => $this->is_popular,
+            'highlighted_option' => $this->highlighted_option,
             'trial_days' => $this->trial_days,
             'currency' => config('cashier.currency'),
             'currency_symbol' => config('cashier.currency_symbol'),

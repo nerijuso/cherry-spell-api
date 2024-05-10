@@ -2,6 +2,8 @@
 
 namespace App\Models\Subscription;
 
+use App\Models\Enums\SubscriptionPlanHighlightedOption;
+use App\Models\Enums\SubscriptionPlanPeriodType;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +17,8 @@ class SubscriptionPlan extends Model
 
     protected $casts = [
         'configuration' => AsCollection::class,
-        'is_popular' => 'boolean',
+       // 'highlighted_option' => SubscriptionPlanHighlightedOption::class,
+      //  'period' => SubscriptionPlanPeriodType::class,
         'is_hidden' => 'boolean',
         'trial_days' => 'integer',
     ];

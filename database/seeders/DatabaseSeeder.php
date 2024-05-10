@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
     {
         SubscriptionPlan::factory()->create([
             'name' => '12-month membership',
+            'ref_id' => 'price_1P9Y9OJ9G5oEDfjdPIHz0grO',
             'old_price' => '25.99',
             'price' => '9.09',
             'period' => SubscriptionPlanPeriodType::YEARLY,
@@ -43,6 +44,7 @@ class DatabaseSeeder extends Seeder
 
         SubscriptionPlan::factory()->create([
             'name' => '6-month membership',
+            'ref_id' => 'price_1PEnzKJ9G5oEDfjdkARG8uoe',
             'old_price' => '29.99',
             'price' => '14.99',
             'period' => SubscriptionPlanPeriodType::EVERY_SIX_MONTHS,
@@ -52,6 +54,7 @@ class DatabaseSeeder extends Seeder
 
         SubscriptionPlan::factory()->create([
             'name' => '3-month membership',
+            'ref_id' => 'price_1P8owuJ9G5oEDfjdAm68mz5y',
             'old_price' => null,
             'price' => '35.99',
             'period' => SubscriptionPlanPeriodType::EVERY_THREE_MONTHS,

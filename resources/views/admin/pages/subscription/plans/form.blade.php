@@ -8,13 +8,13 @@
 
     <div class="form-group mb-3">
         <label for="period">{{ trans('admin.page.subscription.form.period') }}</label>
-        @if($subscriptionPlan?->period)
-            <input type="text" class="form-control @if($subscriptionPlan?->period) disabled @endif" name="period" id="period" @readonly($subscriptionPlan?->period) value="{{ old('name', $subscriptionPlan?->period) }}" />
+        @if(!$subscriptionPlan?->period)
+            <input type="text" class="form-control @if($subscriptionPlan?->period) disabled @endif" name="period" id="period" @readonly($subscriptionPlan?->period) value="{{ old('period', $subscriptionPlan?->period) }}" />
         @else
         <select class="form-control @if($subscriptionPlan?->period) disabled @endif"  name="period" id="period"  @readonly($subscriptionPlan?->period)>
-            @foreach (\App\Models\Enums\SubscriptionPlanPeriodType::all() as $period)
-                <option value="{{ $period }}" @selected(old('period', $subscriptionPlan->period) == $period)>
-                    {{ $period }}
+            @foreach (\App\Models\Enums\SubscriptionPlanPeriodType::cases() as $period)
+                <option value="{{ $period->value }}" @selected(old('period', $subscriptionPlan->period) == $period->value)>
+                    {{ $period->name }}
                 </option>
             @endforeach
         </select>
@@ -41,9 +41,15 @@
         <textarea class="form-control" rows="20" name="configuration" id="configuration" >{{ old('configuration', $subscriptionPlan?->configuration) }}</textarea>
     </div>
 
-    <div class="form-check mb-3">
-        <input type="checkbox" value="1" class="form-check-input" name="is_popular" id="is_popular" @checked(old('is_popular', $subscriptionPlan?->is_popular))/>
-        <label for="is_popular">{{ trans('admin.page.subscription.form.is_popular') }}</label>
+    <div class="form-group mb-3">
+        <label for="highlighted_option">{{ trans('admin.page.subscription.form.highlighted_option') }}</label>
+        <select class="form-control"  name="highlighted_option" id="highlighted_option">
+            @foreach (\App\Models\Enums\SubscriptionPlanHighlightedOption::cases() as $highlightedOption)
+                <option value="{{ $highlightedOption->value }}" @selected(old('highlighted_option', $subscriptionPlan->highlighted_option) == $highlightedOption->value)>
+                    {{ $highlightedOption->name }}
+                </option>
+            @endforeach
+        </select>
     </div>
 
     <div class="form-check mb-3">

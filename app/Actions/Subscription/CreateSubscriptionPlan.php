@@ -15,7 +15,7 @@ class CreateSubscriptionPlan
         $subscriptionPlan->price = $request->price;
         $subscriptionPlan->old_price = $request->old_price;
         $subscriptionPlan->is_hidden = (bool) $request->is_hidden;
-        $subscriptionPlan->is_popular = (bool) $request->is_popular;
+        $subscriptionPlan->highlighted_option = $request->highlighted_option;
         $subscriptionPlan->configuration = $request->configuration;
         $subscriptionPlan->period = $request->period;
         $subscriptionPlan->save();
