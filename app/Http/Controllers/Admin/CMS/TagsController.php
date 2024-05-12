@@ -39,17 +39,27 @@ class TagsController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $images = [];
+
+        foreach ((new Tag())->imageSizes as $size) {
+            $images[$size] = 'sometimes|file|image';
+        }
+
+        $request->validate(array_merge([
             'name' => 'required|min:1|max:255',
             'position' => 'required|integer',
             'is_active' => 'boolean',
-        ]);
+        ]));
 
         $item = (new Tag())->create([
             'name' => $request->name,
             'position' => $request->position,
             'is_active' => (bool) $request->is_active,
         ]);
+
+        foreach ($item->imageSizes as $size) {
+            $item->saveFile($request->{$size}, null, $size);
+        }
 
         $request->session()->flash('alert-success', trans('admin.page.tags.messages.tag_created'));
 
@@ -58,11 +68,17 @@ class TagsController extends Controller
 
     public function update(Tag $tag, Request $request)
     {
-        $request->validate([
+        $images = [];
+
+        foreach ($tag->imageSizes as $size) {
+            $images[$size] = 'sometimes|file|image';
+        }
+
+        $request->validate(array_merge([
             'name' => 'required|min:1|max:255',
             'position' => 'required|integer',
             'is_active' => 'boolean',
-        ]);
+        ], $images));
 
         $tag->update([
             'name' => $request->name,
@@ -70,7 +86,18 @@ class TagsController extends Controller
             'is_active' => (bool) $request->is_active,
         ]);
 
+        foreach ($tag->imageSizes as $size) {
+            $tag->saveFile($request->{$size}, null, $size);
+        }
+
         $request->session()->flash('alert-success', trans('admin.page.tags.messages.tag_updated'));
+
+        return back();
+    }
+
+    public function removeImage(Tag $tag, $size)
+    {
+        $tag->removeFile($size);
 
         return back();
     }

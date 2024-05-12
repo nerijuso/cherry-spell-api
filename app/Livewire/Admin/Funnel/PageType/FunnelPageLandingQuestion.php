@@ -58,7 +58,6 @@ class FunnelPageLandingQuestion extends Component
         $this->funnelPage->save();
         $this->dispatch('modal-closed');
         session()->flash('status', 'Successfully updated.');
-
     }
 
     public function closeModal()

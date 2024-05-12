@@ -197,6 +197,7 @@ return [
                 'highlighted_option' => 'Is highlighted',
                 'is_hidden' => 'Is hidden',
                 'period' => 'Payment period',
+                'select' => 'Select option',
             ],
             'messages' => [
                 'subscription_plan_created' => 'Subscription plan created',
@@ -255,6 +256,7 @@ return [
             'content_header' => [
                 'index' => 'Tags',
                 'create_new' => 'Create new tag',
+                'edit' => 'Edit tag',
             ],
             'buttons' => [
                 'filter_by_title' => 'Filter by title',
@@ -269,6 +271,7 @@ return [
                 'position' => 'Position',
                 'yes' => 'Yes',
                 'no' => 'No',
+                'posts_count' => 'Posts count',
             ],
             'form' => [
                 'identifier' => 'Unique system identifier',
@@ -278,6 +281,10 @@ return [
                 'title' => 'Title',
                 'is_active' => 'Is active',
                 'position' => 'Position',
+                'size_1x' => 'Image 1x',
+                'size_2x' => 'Image 2x',
+                'size_3x' => 'Image 3x',
+                'remove_image' => 'Remove image',
             ],
             'messages' => [
                 'tag_updated' => 'Tag was updated',
@@ -288,6 +295,7 @@ return [
             'content_header' => [
                 'index' => 'Tags',
                 'create_new' => 'Create new post',
+                'edit' => 'Edit post',
             ],
             'buttons' => [
                 'filter_by_title' => 'Filter by title',
@@ -302,6 +310,7 @@ return [
                 'position' => 'Position',
                 'yes' => 'Yes',
                 'no' => 'No',
+                'tags' => 'Tags',
             ],
             'form' => [
                 'identifier' => 'Unique system identifier',
@@ -311,10 +320,16 @@ return [
                 'title' => 'Title',
                 'is_active' => 'Is active',
                 'position' => 'Position',
+                'size_1x' => 'Image 1x',
+                'size_2x' => 'Image 2x',
+                'size_3x' => 'Image 3x',
+                'remove_image' => 'Remove image',
+                'content' => 'Content',
+                'tags_alert' => 'Please save post before assigning the tag',
             ],
             'messages' => [
-                'tag_updated' => 'Tag was updated',
-                'tag_created' => 'Tag was created',
+                'post_updated' => 'Post was updated',
+                'post_created' => 'Post was created',
             ],
         ],
     ],

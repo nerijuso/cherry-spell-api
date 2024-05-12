@@ -37,20 +37,23 @@
                 <div class="card">
                     <table class="table table-hover">
                         <tr>
-                            <th nowrap>{{ trans('admin.page.tags.content.id') }}</th>
-                            <th nowrap>{{ trans('admin.page.tags.content.title') }}</th>
-                            <th nowrap>{{ trans('admin.page.tags.content.is_active') }}</th>
-                            <th nowrap>{{ trans('admin.page.tags.content.tags') }}</th>
-                            <th nowrap>{{ trans('admin.page.tags.content.position') }}</th>
-                            <th nowrap>{{ trans('admin.page.tags.content.created_at') }}</th>
+                            <th nowrap>{{ trans('admin.page.posts.content.id') }}</th>
+                            <th nowrap >{{ trans('admin.page.posts.content.title') }}</th>
+                            <th nowrap>{{ trans('admin.page.posts.content.is_active') }}</th>
+                            <th >{{ trans('admin.page.posts.content.tags') }}</th>
+                            <th nowrap>{{ trans('admin.page.posts.content.position') }}</th>
+                            <th nowrap>{{ trans('admin.page.posts.content.created_at') }}</th>
                             <th nowrap></th>
                         </tr>
                         @foreach($items as $item)
                             <tr>
                                 <td nowrap>{{ $item->id }}</td>
-                                <td nowrap>{{ $item->name }}</td>
-                                <td nowrap>{{ $item->is_active ? trans('admin.page.tags.content.yes') : trans('admin.page.tags.content.no') }}</td>
-                                <td nowrap>{{ $item->tags }}</td>
+                                <td >{{ $item->title }}</td>
+                                <td nowrap>{{ $item->is_active ? trans('admin.page.posts.content.yes') : trans('admin.page.posts.content.no') }}</td>
+                                <td>
+                                    @foreach($item->tags as $tag)
+                                        <span class="badge bg-blue-lt mb-1">{{ $tag->name }}</span>
+                                    @endforeach</td>
                                 <td nowrap>{{ $item->position }}</td>
                                 <td nowrap>{{ $item->created_at }}</td>
                                 <td class="text-right">

@@ -31,7 +31,7 @@ class SubscriptionPlanRequest extends FormRequest
 
         return [
             'name' => 'required|max:255',
-            'sort' => 'required|integer|min:1',
+            'sort' => 'required|integer|min:0',
             'price' => 'required|decimal:2',
             'old_price' => 'sometimes|nullable|decimal:2',
             'configuration' => 'sometimes|nullable|json',

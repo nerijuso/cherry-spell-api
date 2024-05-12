@@ -17,8 +17,8 @@ class SubscriptionPlan extends Model
 
     protected $casts = [
         'configuration' => AsCollection::class,
-       // 'highlighted_option' => SubscriptionPlanHighlightedOption::class,
-      //  'period' => SubscriptionPlanPeriodType::class,
+        'highlighted_option' => SubscriptionPlanHighlightedOption::class,
+        'period' => SubscriptionPlanPeriodType::class,
         'is_hidden' => 'boolean',
         'trial_days' => 'integer',
     ];

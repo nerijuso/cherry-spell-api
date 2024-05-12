@@ -41,6 +41,7 @@
                             <th nowrap>{{ trans('admin.page.tags.content.title') }}</th>
                             <th nowrap>{{ trans('admin.page.tags.content.is_active') }}</th>
                             <th nowrap>{{ trans('admin.page.tags.content.position') }}</th>
+                            <th nowrap>{{ trans('admin.page.tags.content.posts_count') }}</th>
                             <th nowrap>{{ trans('admin.page.tags.content.created_at') }}</th>
                             <th nowrap></th>
                         </tr>
@@ -50,6 +51,7 @@
                                 <td nowrap>{{ $item->name }}</td>
                                 <td nowrap>{{ $item->is_active ? trans('admin.page.tags.content.yes') : trans('admin.page.tags.content.no') }}</td>
                                 <td nowrap>{{ $item->position }}</td>
+                                <td nowrap>{{ $item->count }}</td>
                                 <td nowrap>{{ $item->created_at }}</td>
                                 <td class="text-right">
                                     <a href="{{ route('admin.cms.tags.edit', $item->id) }}">

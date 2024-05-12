@@ -8,12 +8,13 @@
 
     <div class="form-group mb-3">
         <label for="period">{{ trans('admin.page.subscription.form.period') }}</label>
-        @if(!$subscriptionPlan?->period)
+        @if($subscriptionPlan?->period)
             <input type="text" class="form-control @if($subscriptionPlan?->period) disabled @endif" name="period" id="period" @readonly($subscriptionPlan?->period) value="{{ old('period', $subscriptionPlan?->period) }}" />
         @else
         <select class="form-control @if($subscriptionPlan?->period) disabled @endif"  name="period" id="period"  @readonly($subscriptionPlan?->period)>
+            <option>{{ trans('admin.page.subscription.form.select') }}</option>
             @foreach (\App\Models\Enums\SubscriptionPlanPeriodType::cases() as $period)
-                <option value="{{ $period->value }}" @selected(old('period', $subscriptionPlan->period) == $period->value)>
+                <option value="{{ $period->value }}" @selected(old('period', $subscriptionPlan->period?->value) == $period->value)>
                     {{ $period->name }}
                 </option>
             @endforeach
@@ -44,8 +45,9 @@
     <div class="form-group mb-3">
         <label for="highlighted_option">{{ trans('admin.page.subscription.form.highlighted_option') }}</label>
         <select class="form-control"  name="highlighted_option" id="highlighted_option">
+            <option>{{ trans('admin.page.subscription.form.select') }}</option>
             @foreach (\App\Models\Enums\SubscriptionPlanHighlightedOption::cases() as $highlightedOption)
-                <option value="{{ $highlightedOption->value }}" @selected(old('highlighted_option', $subscriptionPlan->highlighted_option) == $highlightedOption->value)>
+                <option value="{{ $highlightedOption->value }}" @selected(old('highlighted_option', $subscriptionPlan->highlighted_option?->value) == $highlightedOption->value)>
                     {{ $highlightedOption->name }}
                 </option>
             @endforeach

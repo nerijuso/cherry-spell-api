@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\CMS\Post;
+use App\Models\CMS\Tag;
 use App\Models\Enums\SubscriptionPlanHighlightedOption;
 use App\Models\Enums\SubscriptionPlanPeriodType;
 use App\Models\Funnel;
@@ -12,6 +14,7 @@ use App\Models\FunnelQuiz\FunnelQuizQuestionOption;
 use App\Models\Subscription\SubscriptionPlan;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,6 +31,10 @@ class DatabaseSeeder extends Seeder
         $this->seedFunnelQuizQuestionWithoptions();
         $this->seedSubscriptionPlans();
         $this->seedFunnel();
+        $tags = $this->seedTags();
+        for ($i = 0; $i <= 10; $i++) {
+            $this->seedPosts($tags, $i);
+        }
     }
 
     private function seedSubscriptionPlans()
@@ -41,10 +48,10 @@ class DatabaseSeeder extends Seeder
             'highlighted_option' => SubscriptionPlanHighlightedOption::BEST_VALUE,
             'configuration' => [
                 'price_item' => [
-                    "period" => "per month",
-                    "save_percentage" => 65,
-                    "desc" => "$109.15 billed every 12 months"
-                ]
+                    'period' => 'per month',
+                    'save_percentage' => 65,
+                    'desc' => '$109.15 billed every 12 months',
+                ],
             ],
         ]);
 
@@ -56,10 +63,10 @@ class DatabaseSeeder extends Seeder
             'period' => SubscriptionPlanPeriodType::EVERY_SIX_MONTHS,
             'configuration' => [
                 'price_item' => [
-                    "period" => "per month",
-                    "save_percentage" => 50,
-                    "desc" => "$89.97 billed every 6 months"
-                ]
+                    'period' => 'per month',
+                    'save_percentage' => 50,
+                    'desc' => '$89.97 billed every 6 months',
+                ],
             ],
 
         ]);
@@ -72,10 +79,10 @@ class DatabaseSeeder extends Seeder
             'period' => SubscriptionPlanPeriodType::EVERY_THREE_MONTHS,
             'configuration' => [
                 'price_item' => [
-                    "period" => "per month",
-                    "save_percentage" => null,
-                    "desc" => "$107.97 billed every 3 months"
-                ]
+                    'period' => 'per month',
+                    'save_percentage' => null,
+                    'desc' => '$107.97 billed every 3 months',
+                ],
             ],
         ]);
     }
@@ -319,5 +326,76 @@ class DatabaseSeeder extends Seeder
             'data' => [],
             'configuration' => [],
         ]);
+    }
+
+    private function seedTags(): array
+    {
+        $imgSizes = [];
+        $tags = [];
+        foreach ((new Tag())->imageSizes as $size) {
+            $imgSizes[$size] = match ($size) {
+                'size_1x' => '',
+                'size_2x' => '@2x',
+                'size_3x' => '@3x',
+            };
+        }
+
+        $tag = Tag::factory()->create([
+            'name' => 'Intimacy',
+        ]);
+        $tags[] = $tag->id;
+
+        foreach ($imgSizes as $key => $size) {
+            $tag->saveFile(public_path('demo/data/images/cms/fire_hot'.$size.'.png'), null, $key);
+        }
+
+        $tag = Tag::factory()->create([
+            'name' => 'Commitment',
+        ]);
+        $tags[] = $tag->id;
+        foreach ($imgSizes as $key => $size) {
+            $tag->saveFile(public_path('demo/data/images/cms/heart'.$size.'.png'), null, $key);
+        }
+
+        $tag = Tag::factory()->create([
+            'name' => 'Conflict resolution',
+        ]);
+        $tags[] = $tag->id;
+        foreach ($imgSizes as $key => $size) {
+            $tag->saveFile(public_path('demo/data/images/cms/smile_angry'.$size.'.png'), null, $key);
+        }
+
+        return $tags;
+    }
+
+    private function seedPosts($tags, $key)
+    {
+        $imgSizes = [];
+        $domain = config('app.url');
+        foreach ((new Post())->imageSizes as $size) {
+            $imgSizes[$size] = match ($size) {
+                'size_1x' => '',
+                'size_2x' => '@2x',
+                'size_3x' => '@3x',
+            };
+        }
+
+        $post = Post::factory()->create([
+            'title' => 'Explore the foundations of intimacy, from effective communication to embracing vulnerability '.$key,
+            'slug' => Str::slug('Explore the foundations of intimacy, from effective communication to embracing vulnerability '.$key),
+            'content' => "<p>Lorem ipsum dolor sit amet consectetur. Praesent netus lacus quam consequat tincidunt viverra. Pellentesque elementum sed ac adipiscing mauris odio. Pharetra donec aenean tortor et tristique fusce. Vel odio volutpat nibh facilisi faucibus euismod orci.</p><img src='{$domain}/demo/data/images/cms/post.png' alt='demo'/> <ul><li>Lorem ipsum dolor sit</li><li>Lorem ipsum dolor sit</li><li>Lorem ipsum dolor sit</li></ul><p>Lorem ipsum dolor sit amet consectetur. Praesent netus lacus quam consequat tincidunt viverra. Pellentesque elemen.</p><p><strong>Lorem ipsum dolor sit amet consectetur. Praesent netus lacus quam consequat tincidunt viverra. Pellentesque elementum sed ac adipiscing mauris odio.</strong></p><h1>Lorem ipsum dolor sit amet consectetur</h1><h2>Lorem ipsum dolor sit amet consectetur</h2><h3>Lorem ipsum</h3><h4>Lorem ipsum</h4><h5>Lorem ipsum</h5><h6>Lorem ipsum</h6>",
+        ]);
+
+        foreach ($imgSizes as $key => $size) {
+            $post->saveFile(public_path('demo/data/images/cms/post'.$size.'.png'), null, $key);
+        }
+
+        $post->tags()->sync($tags);
+
+        foreach ($tags as $tag) {
+            $tagObj = Tag::find($tag);
+            $tagObj->count++;
+            $tagObj->save();
+        }
     }
 }

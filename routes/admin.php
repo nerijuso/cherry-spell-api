@@ -37,14 +37,14 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('store', 'FunnelQuizzes\FunnelQuestionController@storeNew')->name('quizzes.questions.store');
             Route::get('{question}', 'FunnelQuizzes\FunnelQuestionController@edit')->name('quizzes.questions.edit')->whereNumber('question');
             Route::post('{question}', 'FunnelQuizzes\FunnelQuestionController@update')->name('quizzes.questions.update')->whereNumber('question');
-            Route::get('{question}/remove_image/{size}', 'FunnelQuizzes\FunnelQuestionController@removeImage')->name('quizzes.questions.remove_image')->whereNumber('question');
+            Route::get('{question}/remove-image/{size}', 'FunnelQuizzes\FunnelQuestionController@removeImage')->name('quizzes.questions.remove_image')->whereNumber('question');
 
             Route::group(['prefix' => '{question}/options'], function () {
                 Route::get('create', 'FunnelQuizzes\FunnelQuestionOptionController@create')->name('quizzes.questions.options.create');
                 Route::post('store', 'FunnelQuizzes\FunnelQuestionOptionController@storeNew')->name('quizzes.questions.options.store');
                 Route::get('{option}', 'FunnelQuizzes\FunnelQuestionOptionController@edit')->name('quizzes.questions.options.edit')->whereNumber('option');
                 Route::post('{option}', 'FunnelQuizzes\FunnelQuestionOptionController@update')->name('quizzes.questions.options.update')->whereNumber('option');
-                Route::get('{option}/remove_image/{size}', 'FunnelQuizzes\FunnelQuestionOptionController@removeImage')->name('quizzes.questions.options.remove_image')->whereNumber('option');
+                Route::get('{option}/remove-image/{size}', 'FunnelQuizzes\FunnelQuestionOptionController@removeImage')->name('quizzes.questions.options.remove_image')->whereNumber('option');
             })->whereNumber('question');
         })->whereNumber('quiz');
 
@@ -80,19 +80,25 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'cms'], function () {
+        Route::group(['prefix' => 'tinymce'], function () {
+            Route::post('upload', 'CMS\TinyMCEController@uploadImage')->name('cms.tinymce.upload');
+        });
+
         Route::group(['prefix' => 'posts'], function () {
             Route::get('/', 'CMS\PostsController@index')->name('cms.posts');
             Route::get('/create', 'CMS\PostsController@create')->name('cms.posts.create');
             Route::post('/store', 'CMS\PostsController@store')->name('cms.posts.store');
-            Route::get('/{post}/edit', 'CMS\PostsController@create')->name('cms.posts.edit');
+            Route::get('/{post}/edit', 'CMS\PostsController@edit')->name('cms.posts.edit');
             Route::post('/{post}/update', 'CMS\PostsController@update')->name('cms.posts.update');
+            Route::get('/{tag}/image-remove/{size}', 'CMS\TagsController@removeImage')->name('cms.posts.remove_image');
         });
         Route::group(['prefix' => 'tags'], function () {
             Route::get('/', 'CMS\TagsController@index')->name('cms.tags');
             Route::get('/create', 'CMS\TagsController@create')->name('cms.tags.create');
             Route::post('/store', 'CMS\TagsController@store')->name('cms.tags.store');
-            Route::get('/{tag}/edit', 'CMS\TagsController@create')->name('cms.tags.edit');
+            Route::get('/{tag}/edit', 'CMS\TagsController@edit')->name('cms.tags.edit');
             Route::post('/{tag}/update', 'CMS\TagsController@update')->name('cms.tags.update');
+            Route::get('/{tag}/image-remove/{size}', 'CMS\TagsController@removeImage')->name('cms.tags.remove_image');
         });
     });
 

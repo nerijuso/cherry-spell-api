@@ -17,21 +17,22 @@ return new class extends Migration
             $table->tinyInteger('position')->default(1)->index();
             $table->boolean('is_active')->default(true)->index();
             $table->integer('count')->default(0)->unsigned();
+            $table->json('media_file')->nullable();
             $table->timestamps();
         });
 
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('slug', 255)->unique();
+            $table->json('media_file')->nullable();
             $table->tinyInteger('position')->default(1)->index();
             $table->string('title', 255);
-            $table->longText('excerpt');
             $table->longText('content');
             $table->boolean('is_active')->default(true)->index();
             $table->timestamps();
         });
 
-        Schema::create('post_tags', function (Blueprint $table) {
+        Schema::create('post_tag', function (Blueprint $table) {
             $table->foreignId('post_id')->constrained()->cascadeOnDelete();
             $table->foreignId('tag_id')->constrained()->cascadeOnDelete();
         });

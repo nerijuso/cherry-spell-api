@@ -5,11 +5,20 @@
 @endsection
 
 @section('content')
-    <div class="card container-tight">
-        <form action="{{route('admin.cms.posts.store')}}" method="POST">
-            @method('POST')
-            @csrf
-            @include('admin.pages.cms.post.form', ['submitButton' => trans('admin.button.create')])
-        </form>
+    <div class="row">
+        <div class="col-9">
+            <div class="card">
+                <form action="{{route('admin.cms.posts.store')}}" method="POST" enctype="multipart/form-data">
+                    @method('POST')
+                    @csrf
+                    @include('admin.pages.cms.post.form', ['submitButton' => trans('admin.button.update')])
+                </form>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                @include('admin.pages.cms.post.tags')
+            </div>
+        </div>
     </div>
 @endsection

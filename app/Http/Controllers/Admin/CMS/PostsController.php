@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin\CMS;
 
 use App\Http\Controllers\Controller as Controller;
+use App\Http\Requests\Admin\CMS\SavePostRequest;
 use App\Models\CMS\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
@@ -30,47 +32,50 @@ class PostsController extends Controller
         ]);
     }
 
-    public function edit(Post $tag)
+    public function edit(Post $post)
     {
         return view('admin.pages.cms.post.edit', [
-            'item' => $tag,
+            'item' => $post,
         ]);
     }
 
-    public function store(Request $request)
+    public function store(SavePostRequest $request)
     {
-        $request->validate([
-            'title' => 'required|min:1|max:255',
-            'position' => 'required|integer',
-            'is_active' => 'boolean',
-        ]);
-
         $item = (new Post())->create([
             'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'content' => $request->text,
             'position' => $request->position,
             'is_active' => (bool) $request->is_active,
         ]);
 
-        $request->session()->flash('alert-success', trans('admin.page.posts.messages.tag_created'));
+        foreach ($item->imageSizes as $size) {
+            $item->saveFile($request->{$size}, null, $size);
+        }
+
+        $request->session()->flash('alert-success', trans('admin.page.posts.messages.post_created'));
 
         return redirect(route('admin.cms.posts.edit', ['post' => $item->id]));
     }
 
-    public function update(Post $post, Request $request)
+    public function update(Post $post, SavePostRequest $request)
     {
-        $request->validate([
-            'title' => 'required|min:1|max:255',
-            'position' => 'required|integer',
-            'is_active' => 'boolean',
-        ]);
-
         $post->update([
-            'name' => $request->title,
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'content' => $request->text,
             'position' => $request->position,
             'is_active' => (bool) $request->is_active,
         ]);
 
-        $request->session()->flash('alert-success', trans('admin.page.posts.messages.tag_updated'));
+        $request->session()->flash('alert-success', trans('admin.page.posts.messages.post_updated'));
+
+        return back();
+    }
+
+    public function removeImage(Post $post, $size)
+    {
+        $post->removeFile($size);
 
         return back();
     }
