@@ -57,6 +57,10 @@ class User extends Authenticatable
 
     public function getPhotoVariationsAttribute()
     {
+        if (is_null($this->photo)) {
+            return [];
+        }
+
         $variations = [];
         $variations['original'] = Storage::url(data_get($this->photo, 'original', null));
         foreach (config('media.types.user.variations') as $size) {

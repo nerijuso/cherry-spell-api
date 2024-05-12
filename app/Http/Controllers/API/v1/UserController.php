@@ -27,11 +27,11 @@ class UserController extends Controller
     public function login(UserLoginRequest $request): \Illuminate\Http\JsonResponse|AuthResource
     {
         if (Auth::guard('api')->attempt($request->only(['email', 'password']))) {
-            $user = Auth::user();
+            $user = Auth::guard('api')->user();
 
             return new AuthResource([
                 'user' => $user,
-                'token' => $user->createToken('')->plainTextToken,
+                'token' => $user->createToken('auth')->plainTextToken,
             ]);
         } else {
             return (new DefaultResource([

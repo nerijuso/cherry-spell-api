@@ -28,7 +28,7 @@ class AuthController extends Controller
 
         return new AuthResource([
             'user' => $user,
-            'token' => $user->createToken('')->plainTextToken,
+            'token' => $user->createToken('auth')->plainTextToken,
         ]);
     }
 }
