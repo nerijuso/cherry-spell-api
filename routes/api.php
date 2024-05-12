@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\API\v1'], function () {
     Route::post('/user/register', 'AuthController@register')->name('user.register');
-    Route::post('/login', 'UserController@login')->name('user.login');
+    Route::post('user/login', 'UserController@login')->name('user.login');
 
     Route::group(['prefix' => 'user', 'middleware' => 'auth:sanctum'], function () {
         Route::get('/', 'UserController@index')->name('user');
