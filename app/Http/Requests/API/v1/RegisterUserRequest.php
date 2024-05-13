@@ -12,11 +12,11 @@ class RegisterUserRequest extends FormRequest
 {
     protected $stopOnFirstFailure = true;
 
-    protected $lead = null;
+    protected Lead|null $lead;
 
     public function authorize(): bool
     {
-        $this->lead = Lead::where('session_id', $this->session_id)->first();
+        $this->lead = Lead::where('session_id', $this->session_id)->where('converted', 0)->first();
 
         if (! is_null($this->lead) && $this->lead->funnel->is_active) {
             return true;
@@ -43,6 +43,7 @@ class RegisterUserRequest extends FormRequest
                 }),
             ],
             'password' => ['required', 'confirmed', Password::min(8)->mixedCase()],
+            'checkout_session_id' => 'required'
         ];
     }
 }

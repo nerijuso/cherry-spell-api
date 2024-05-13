@@ -14,6 +14,7 @@ class Lead extends Model
 
     protected $casts = [
         'quiz_answers' => 'array',
+        'converted' => 'boolean',
     ];
 
     public function quiz()
@@ -34,5 +35,10 @@ class Lead extends Model
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    public function setToConverted() {
+        $this->converted = 1;
+        $this->save();
     }
 }

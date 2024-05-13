@@ -19,7 +19,6 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\API\v1'], f
         Route::get('{funnel}', 'FunnelController@index')->name('funnels');
         Route::post('{funnel}/quiz-data', 'FunnelController@storeQuizData')->name('funnels.store_quiz');
         Route::post('{funnel}/checkout', [SubscriptionController::class, 'checkout'])->name('funnels.checkout')->whereNumber('funnel');
-        Route::post('{funnel}/validate-checkout', [SubscriptionController::class, 'validateCheckout'])->name('funnels.checkout.validate')->whereNumber('funnel');
     });
 
     Route::group(['prefix' => 'leads'], function () {
