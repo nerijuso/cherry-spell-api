@@ -4,13 +4,10 @@ namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\v1\RegisterUserRequest;
-use App\Http\Requests\API\v1\SubscriptionCheckoutValidateRequest;
 use App\Http\Resources\API\DefaultResource;
 use App\Http\Resources\API\v1\AuthResource;
-use App\Http\Resources\API\v1\CheckoutValidationResource;
 use App\Models\Lead;
 use App\Models\User;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
 use Laravel\Cashier\Cashier;
 
@@ -36,7 +33,7 @@ class AuthController extends Controller
             $user->password = $request->password;
             $user->save();
 
-            $lead->setToConverted();
+            $lead->setToRegistered();
 
             return $user;
         }, 5);

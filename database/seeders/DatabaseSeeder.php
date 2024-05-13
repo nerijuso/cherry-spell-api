@@ -306,6 +306,7 @@ class DatabaseSeeder extends Seeder
                 'subscription_plan_ids' => [1, 2, 3],
             ],
             'configuration' => [
+                "default_plan_id" => "1PEnzKJ9G5oEDfjdkARG8uoe"
             ],
         ]);
 

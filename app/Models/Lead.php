@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Enums\LeadConversionStatus;
 use App\Models\FunnelQuiz\FunnelQuiz;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +15,7 @@ class Lead extends Model
 
     protected $casts = [
         'quiz_answers' => 'array',
-        'converted' => 'boolean',
+        'conversion_status' => LeadConversionStatus::class,
     ];
 
     public function quiz()
@@ -37,8 +38,20 @@ class Lead extends Model
         return $this->belongsTo(Country::class);
     }
 
-    public function setToConverted() {
-        $this->converted = 1;
+    public function setToRegistered()
+    {
+        $this->conversion_status = LeadConversionStatus::REGISTERED;
         $this->save();
+    }
+
+    public function setToInitCheckout($save = true)
+    {
+        $this->conversion_status = LeadConversionStatus::INIT_CHECKOUT;
+
+        if ($save === true) {
+            $this->save();
+        }
+
+        return $this;
     }
 }

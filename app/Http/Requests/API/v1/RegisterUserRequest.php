@@ -16,7 +16,7 @@ class RegisterUserRequest extends FormRequest
 
     public function authorize(): bool
     {
-        $this->lead = Lead::where('session_id', $this->session_id)->where('converted', 0)->first();
+        $this->lead = Lead::where('session_id', $this->session_id)->whereNull('conversion_status')->first();
 
         if (! is_null($this->lead) && $this->lead->funnel->is_active) {
             return true;

@@ -12,9 +12,8 @@ use Illuminate\Http\Request;
 class SubscriptionPlansController extends Controller
 {
     /**
-     * Display a listing of the resources.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
     public function plans(Request $request)
     {

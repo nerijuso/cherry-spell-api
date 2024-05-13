@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller as Controller;
 use App\Http\Requests\API\v1\SubscriptionCheckoutRequest;
 use App\Http\Resources\API\DefaultResource;
 use App\Http\Resources\API\v1\Subscription\SubscriptionCheckoutResource;
+use App\Http\Resources\API\v1\Subscription\UserOrderSummaryResource;
 use App\Http\Resources\API\v1\Subscription\UserSubscriptionSummaryResource;
 use App\Models\Funnel;
 use App\Models\Lead;
@@ -21,29 +22,23 @@ class SubscriptionController extends Controller
             'email' => $lead->email,
         ]);
         $lead->user()->associate($user);
+        $lead->setToInitCheckout();
         $lead->save();
 
         return new SubscriptionCheckoutResource(
             $user
                 ->newSubscription('default', transform_price_id_back($request->plan_id))
+              //  ->newSubscription('default', [ transform_price_id_back($request->plan_id), 'price_1PG1jDLpRSg6kmye7y9L0rLC'])
                 ->allowPromotionCodes()
+               // ->withCoupon('v6RERRhs')
                 ->checkout([
                     'success_url' => sprintf(config('cashier.success_url'), $funnel->id).'&session_id='.$request->session_id.'&email='.$lead->email,
                     'cancel_url' => sprintf(config('cashier.cancel_url'), $funnel->id).'?session_id='.$request->session_id,
                 ]));
     }
 
-    public function userSubscriptionSummary()
+    public function userOrderSummary()
     {
-        $subscription = auth_user()->subscription();
-
-        if (! $subscription) {
-            return (new DefaultResource([
-                'status' => 'error',
-                'message' => trans('kernel.messages.subscription_does_not_exist'),
-            ]))->response()->setStatusCode(406);
-        }
-
-        return new UserSubscriptionSummaryResource($subscription);
+        return new UserOrderSummaryResource(auth_user());
     }
 }

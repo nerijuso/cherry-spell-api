@@ -18,9 +18,9 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('country_id')->nullable()->constrained();
             $table->string('email');
-            $table->boolean('converted')->default(false)->index();
+            $table->string('conversion_status')->nullable()->index();
             $table->json('quiz_answers');
-            $table->index(['user_id', 'converted'], 'converted_user');
+            $table->index(['user_id', 'conversion_status'], 'converted_user');
             $table->timestamps();
         });
     }
