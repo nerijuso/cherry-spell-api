@@ -32,7 +32,7 @@ class SubscriptionController extends Controller
                 ->allowPromotionCodes()
                // ->withCoupon('v6RERRhs')
                 ->checkout([
-                    'success_url' => sprintf(config('cashier.success_url'), $funnel->id).'&checkout_session_id='.$request->session_id.'&email='.$lead->email,
+                    'success_url' => sprintf(config('cashier.success_url'), $funnel->id).'&session_id='.$request->session_id.'&email='.$lead->email,
                     'cancel_url' => sprintf(config('cashier.cancel_url'), $funnel->id).'?session_id='.$request->session_id,
                 ]));
     }
