@@ -43,7 +43,8 @@ class RegisterUserRequest extends FormRequest
                 }),
             ],
             'password' => ['required', 'confirmed', Password::min(8)->mixedCase()],
-            'checkout_session_id' => 'required'
+            'checkout_session_id' => 'required',
+            'session_id' => 'required',
         ];
     }
 }
