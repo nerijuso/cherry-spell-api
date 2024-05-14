@@ -20,5 +20,4 @@ class DefaultResource extends JsonResource
         ];
     }
 
-    public static $wrap = '';
 }
