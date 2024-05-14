@@ -18,7 +18,7 @@ class SubscriptionCheckoutRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->funnel->is_active && $this->funnel->leads()->whereNull('conversion_status')->exists()) {
+        if ($this->funnel->is_active ) {
             return true;
         }
 
