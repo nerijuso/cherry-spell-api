@@ -13,8 +13,7 @@ class UserOrderSummaryResource extends JsonResource
 
         return [
             'user' => new UserResource($this),
-           // 'subscription' => new UserSubscriptionSummaryResource($this->subscription()),
-            'order_items' => $this->subscription() ?  SubscriptionOrderItemResource::collection($this->subscription()->items): [],
+            'subscription' => new UserSubscriptionSummaryResource($this->subscription()),
         ];
     }
 

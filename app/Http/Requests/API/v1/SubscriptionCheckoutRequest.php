@@ -42,7 +42,7 @@ class SubscriptionCheckoutRequest extends FormRequest
             'session_id' => [
                 'required',
                 'string',
-                ! Rule::unique('leads')->where(function (Builder $query) {
+                Rule::exists('leads')->where(function (Builder $query) {
                     return $query
                         ->where('funnel_id', $this->funnel->id)
                         ->where('session_id', $this->session_id);

@@ -15,20 +15,19 @@ class AuthController extends Controller
 {
     public function register(RegisterUserRequest $request): \Illuminate\Http\JsonResponse|AuthResource
     {
+        $sessionId = $request->get('checkout_session_id');
+        $session = Cashier::stripe()->checkout->sessions->retrieve($sessionId);
+
+        if ($session->payment_status !== 'paid') {
+            return (new DefaultResource([
+                'status' => 'failed',
+                'message' => trans('kernel.messages.subscription_is_not_payed'),
+            ]))->response()->setStatusCode(406);
+        }
+
         $user = DB::transaction(function () use ($request) {
             $lead = Lead::where('session_id', $request->session_id)->firstOrFail();
             $user = User::lockForUpdate()->where('id', $lead->user_id)->firstOrFail();
-
-            $sessionId = $request->get('checkout_session_id');
-            $session = Cashier::stripe()->checkout->sessions->retrieve($sessionId);
-
-            if ($session->payment_status !== 'paid') {
-                return (new DefaultResource([
-                    'status' => 'failed',
-                    'message' => trans('kernel.messages.subscription_is_not_payed'),
-                ]))->response()->setStatusCode(406);
-            }
-
             $user->email = $request->email;
             $user->password = $request->password;
             $user->save();
