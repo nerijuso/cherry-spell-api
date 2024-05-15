@@ -15,6 +15,4 @@ class TagResource extends JsonResource
             'post_count' => $this->count,
         ];
     }
-
-    public static $wrap = '';
 }

@@ -21,6 +21,4 @@ class PostResource extends JsonResource
             'tags' => TagResource::collection($this->tags),
         ];
     }
-
-    public static $wrap = '';
 }
