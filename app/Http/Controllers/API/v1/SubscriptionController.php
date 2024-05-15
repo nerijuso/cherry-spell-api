@@ -26,7 +26,7 @@ class SubscriptionController extends Controller
         return new SubscriptionCheckoutResource(
             $user
              //   ->newSubscription('default', transform_price_id_back($request->plan_id))
-                ->newSubscription('default', [['price' => 'price_1PGRu3LpRSg6kmyeKkaKrOgN', 'quantity' => 1],  ['price' => transform_price_id_back($request->plan_id), 'quantity' => 1], ])
+                ->newSubscription('default', [  ['price' => transform_price_id_back($request->plan_id), 'quantity' => 1], ])
 
               //  ->allowPromotionCodes()
              //   ->withCoupon('v6RERRhs')
