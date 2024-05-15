@@ -16,6 +16,4 @@ class UserOrderSummaryResource extends JsonResource
             'subscription' => new UserSubscriptionSummaryResource($this->subscription()),
         ];
     }
-
-    public static $wrap = '';
 }
