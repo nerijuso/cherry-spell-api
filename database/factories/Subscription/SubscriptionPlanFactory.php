@@ -13,7 +13,6 @@ class SubscriptionPlanFactory extends Factory
             'ref_id' => fake()->uuid(),
             'highlighted_option' => null,
             'is_hidden' => false,
-            'trial_days' => 3,
             'configuration' => '{}',
         ];
     }

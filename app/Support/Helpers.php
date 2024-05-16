@@ -14,7 +14,7 @@ if (! function_exists('auth_user')) {
 if (! function_exists('dumper')) {
     function dumper($value)
     {
-        return VarDumper::dump($value);
+        VarDumper::dump($value);
     }
 }
 

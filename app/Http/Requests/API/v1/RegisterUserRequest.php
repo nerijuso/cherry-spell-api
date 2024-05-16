@@ -12,7 +12,7 @@ class RegisterUserRequest extends FormRequest
 {
     protected $stopOnFirstFailure = true;
 
-    protected Lead|null $lead;
+    protected ?Lead $lead;
 
     public function authorize(): bool
     {

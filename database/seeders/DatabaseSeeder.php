@@ -6,11 +6,13 @@ use App\Models\CMS\Post;
 use App\Models\CMS\Tag;
 use App\Models\Enums\SubscriptionPlanHighlightedOption;
 use App\Models\Enums\SubscriptionPlanPeriodType;
+use App\Models\Enums\SubscriptionPlanType;
 use App\Models\Funnel;
 use App\Models\FunnelPage;
 use App\Models\FunnelQuiz\FunnelQuiz;
 use App\Models\FunnelQuiz\FunnelQuizQuestion;
 use App\Models\FunnelQuiz\FunnelQuizQuestionOption;
+use App\Models\Subscription\PromoCode;
 use App\Models\Subscription\SubscriptionPlan;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -39,11 +41,38 @@ class DatabaseSeeder extends Seeder
 
     private function seedSubscriptionPlans()
     {
+        $promo50 = PromoCode::factory()->create([
+            'name' => '50 % discount',
+            'id' => 'QjUZwU12',
+        ]);
+
+        $promo65 = PromoCode::factory()->create([
+            'name' => '65 % discount',
+            'id' => 'tI9MGmIz',
+        ]);
+
+        $gift = SubscriptionPlan::factory()->create([
+            'name' => '“Intimacy & Beyond” card deck',
+            'ref_id' => 'price_1PGf0uLpRSg6kmyeBXHk8GoC',
+            'old_price' => null,
+            'price' => '0.01',
+            'type' => SubscriptionPlanType::SUBSCRIPTION_GIFT,
+            'period' => SubscriptionPlanPeriodType::ONE_TIME,
+            'configuration' => [
+                'price_item' => [
+                    'desc' => 'Limited offer',
+                ],
+            ],
+        ]);
+
         SubscriptionPlan::factory()->create([
             'name' => '12-month membership',
-            'ref_id' => 'price_1PFyvwLpRSg6kmye8lzUIoBy',
+            'ref_id' => 'price_1PH2RKLpRSg6kmyeS8mNA88d',
             'old_price' => '25.99',
             'price' => '9.09',
+            'free_gift_id' => $gift->ref_id,
+            'promo_code_id' => $promo65->id,
+            'type' => SubscriptionPlanType::SUBSCRIPTION_PLAN,
             'period' => SubscriptionPlanPeriodType::YEARLY,
             'highlighted_option' => SubscriptionPlanHighlightedOption::BEST_VALUE,
             'configuration' => [
@@ -57,9 +86,11 @@ class DatabaseSeeder extends Seeder
 
         SubscriptionPlan::factory()->create([
             'name' => '6-month membership',
-            'ref_id' => 'price_1PGErgLpRSg6kmyeL5UZBUxs',
+            'ref_id' => 'price_1PGz5NLpRSg6kmyevO3wHMMh',
             'old_price' => '29.99',
             'price' => '14.99',
+            'promo_code_id' => $promo50->id,
+            'type' => SubscriptionPlanType::SUBSCRIPTION_PLAN,
             'period' => SubscriptionPlanPeriodType::EVERY_SIX_MONTHS,
             'configuration' => [
                 'price_item' => [
@@ -73,9 +104,10 @@ class DatabaseSeeder extends Seeder
 
         SubscriptionPlan::factory()->create([
             'name' => '3-month membership',
-            'ref_id' => 'price_1PGEsNLpRSg6kmye31LOjFWc',
+            'ref_id' => 'price_1PGz6PLpRSg6kmyezDqiSOFM',
             'old_price' => null,
             'price' => '35.99',
+            'type' => SubscriptionPlanType::SUBSCRIPTION_PLAN,
             'period' => SubscriptionPlanPeriodType::EVERY_THREE_MONTHS,
             'configuration' => [
                 'price_item' => [
@@ -85,6 +117,7 @@ class DatabaseSeeder extends Seeder
                 ],
             ],
         ]);
+
     }
 
     private function seedFunnelQuizQuestionWithoptions()
@@ -306,7 +339,7 @@ class DatabaseSeeder extends Seeder
                 'subscription_plan_ids' => [1, 2, 3],
             ],
             'configuration' => [
-                "default_plan_id" => "1PEnzKJ9G5oEDfjdkARG8uoe"
+                'default_plan_id' => '1PH2RKLpRSg6kmyeS8mNA88d',
             ],
         ]);
 

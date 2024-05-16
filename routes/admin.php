@@ -73,6 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('plans/store', 'Subscription\SubscriptionPlansController@store')->name('subscriptions.plans.store');
         Route::get('plans/{subscriptionPlan}', 'Subscription\SubscriptionPlansController@edit')->name('subscriptions.plans.edit');
         Route::post('plans/{subscriptionPlan}', 'Subscription\SubscriptionPlansController@update')->name('subscriptions.plans.update');
+        Route::get('plans/{subscriptionPlan}/image-remove/{size}', 'Subscription\SubscriptionPlansController@removeImage')->name('subscriptions.plans.remove_image');
     });
 
     Route::group(['prefix' => 'app_questions'], function () {

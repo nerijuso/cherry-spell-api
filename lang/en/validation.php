@@ -8,5 +8,10 @@ return [
             'max' => 'Name too long. Limit: 32 characters.',
         ],
     ],
-
+    'subscription' => [
+        'user' => [
+            'exist' => 'User already exist. Please download the Cherry Spell app and log in – or use a different email.',
+            'has_subscription' => 'User already has a subscription. Please download the Cherry Spell app and log in – or use a different email.',
+        ],
+    ],
 ];

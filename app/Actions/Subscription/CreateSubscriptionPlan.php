@@ -16,21 +16,37 @@ class CreateSubscriptionPlan
         $subscriptionPlan->old_price = $request->old_price;
         $subscriptionPlan->is_hidden = (bool) $request->is_hidden;
         $subscriptionPlan->highlighted_option = $request->highlighted_option;
-        $subscriptionPlan->configuration = $request->configuration;
+        $subscriptionPlan->configuration = json_decode($request->configuration);
         $subscriptionPlan->period = $request->period;
         $subscriptionPlan->save();
+        $subscriptionPlan->saveFile($request->{'size_1x'}, null, 'size_1x');
+
+        $productData = [];
+        $priceData = [];
+        $productData['name'] = $subscriptionPlan->name;
+        $priceData['name'] = $subscriptionPlan->name;
+
+        if ($subscriptionPlan->media_file) {
+            $productData['images'] = [$subscriptionPlan->getPublicMediaUrl('size_1x')];
+        }
+
+        $desc = data_get($subscriptionPlan->configuration, 'price_item.stripe_desc');
+        if ($desc) {
+            $priceData['description'] = $desc;
+        }
 
         $price = Cashier::stripe()->prices->create([
             'unit_amount' => $request->price * 100,
             'currency' => config('cashier.currency'),
             'recurring' => [
-                'interval' => 'month', //day, week, month or year.
+                'interval' => $subscriptionPlan->period->value,
             ],
-            'product_data' => [
-                'name' => $subscriptionPlan->name,
-            ],
+            'product_data' => $productData,
         ]);
 
+        Cashier::stripe()->products->update($price->product, $priceData);
+
+        $subscriptionPlan->product_ref_id = $price->product;
         $subscriptionPlan->ref_id = $price->id;
         $subscriptionPlan->save();
 

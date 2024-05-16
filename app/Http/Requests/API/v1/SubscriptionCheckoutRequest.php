@@ -3,11 +3,14 @@
 namespace App\Http\Requests\API\v1;
 
 use App\Models\FunnelPage;
+use App\Models\Lead;
 use App\Models\Subscription\SubscriptionPlan;
+use App\Models\User;
 use App\Services\Funnel\PageTypes\FunnelPagePlans;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Validator;
 
 class SubscriptionCheckoutRequest extends FormRequest
 {
@@ -18,7 +21,7 @@ class SubscriptionCheckoutRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->funnel->is_active ) {
+        if ($this->funnel->is_active) {
             return true;
         }
 
@@ -49,5 +52,21 @@ class SubscriptionCheckoutRequest extends FormRequest
                 }),
             ],
         ];
+    }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function (Validator $validator) {
+            $lead = Lead::where('funnel_id', $this->funnel->id)->where('session_id', $this->session_id)->first();
+            $user = User::where('email', $lead->email)->first();
+
+            if (! is_null($user) && ! is_null($user->password)) {
+                $validator->errors()->add('session_id', trans('validation.subscription.user.exist'));
+            }
+
+            if ($user?->subscribed() === true) {
+                $validator->errors()->add('session_id', trans('validation.subscription.user.has_subscription'));
+            }
+        });
     }
 }

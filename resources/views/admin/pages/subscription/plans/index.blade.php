@@ -40,15 +40,17 @@
                             <th nowrap>{{ trans('admin.page.subscription.content.id') }}</th>
                             <th nowrap>{{ trans('admin.page.subscription.content.name') }}</th>
                             <th nowrap>{{ trans('admin.page.subscription.content.price') }}</th>
+                            <th nowrap>{{ trans('admin.page.subscription.content.type') }}</th>
                             <th nowrap>{{ trans('admin.page.subscription.content.is_hidden') }}</th>
                             <th nowrap>{{ trans('admin.page.subscription.content.created_at') }}</th>
                             <th nowrap></th>
                         </tr>
                         @foreach($items as $item)
                             <tr>
-                                <td nowrap>{{ $item->id }}</td>
+                                <td nowrap>{{ transform_price_id_to_public($item->ref_id) }}</td>
                                 <td nowrap>{{ $item->name }}</td>
                                 <td nowrap>{{ $item->price }}</td>
+                                <td nowrap>{{ $item->type->name }}</td>
                                 <td nowrap>{{ $item->is_hidden ? trans('admin.page.subscription.content.yes') : trans('admin.page.subscription.content.no') }}</td>
                                 <td nowrap>{{ $item->created_at }}</td>
                                 <td class="text-right">

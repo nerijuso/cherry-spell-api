@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="card">
-        <form action="{{route('admin.subscriptions.plans.store')}}" method="POST">
+        <form action="{{route('admin.subscriptions.plans.store')}}" method="POST" enctype="multipart/form-data">
             @method('POST')
             @csrf
             @include('admin.pages.subscription.plans.form', ['submitButton' => trans('admin.button.create')])

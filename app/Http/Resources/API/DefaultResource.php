@@ -19,5 +19,4 @@ class DefaultResource extends JsonResource
             'message' => $this->resource['message'],
         ];
     }
-
 }
